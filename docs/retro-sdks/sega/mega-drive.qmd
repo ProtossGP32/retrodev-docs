@@ -99,6 +99,3 @@ Once done, go to the _Run and Debug_ option (CTRL + SHIFT + D), select the _Debu
 :::{.callout-warning}
 ## TODO: create a VS Codium Docker image that already includes Marsdev installed
 :::
-
-```{.lua include="../../_extensions/quarto-ext/include-code-files/include-code-files.lua" filename="include-code-files.lua"}
-```

@@ -23,10 +23,10 @@ jobs:
           # uncomment below and fill to pin a version
           # version: SPECIFIC-QUARTO-VERSION-HERE
       
-      # add software dependencies here
-      - name: Install Jupyter
-        run: |
-          python3 -m pip install jupyter
+      ## add software dependencies here
+      #- name: Install Jupyter
+      #  run: |
+      #    python3 -m pip install jupyter
 
       # Publish to GitHub Pages
       - name: Publish to GitHub Pages (and render)

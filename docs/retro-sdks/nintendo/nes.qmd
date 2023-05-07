@@ -8,3 +8,7 @@ description: Learn how to configure your development environment
 # Getting started
 ## Installing SDK
 ## Text editors
+
+```{.bash}
+blablabla
+```
