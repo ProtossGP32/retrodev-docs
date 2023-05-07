@@ -1,8 +1,8 @@
 project:
   type: website
 
-#filters:
-#  - include-code-files
+filters:
+  - include-code-files
 
 editor:
   render-on-save: true

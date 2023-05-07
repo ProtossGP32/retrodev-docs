@@ -21,8 +21,9 @@ SGDK works natively on Windows, but there are options to make it work on Linux:
     - Quick installation steps: [link](https://github.com/andwn/marsdev#too-long-didnt-read-i-just-want-to-use-sgdk-on-linux)
     - Compile time is long, so let it do its thing
     - Set the `$MARSDEV` environment variable in `.bashrc` like this: `export MARSDEV=/home/$USER/mars`
-    - Create a softlink within the `$MARSDEV` path that points to the SGDK created on compile time within the marsdev repository. This is required for later use in VS Code extensions
-    ```{.bash}
+    - Create a softlink within the `$MARSDEV` path that points to the SGDK created on compile time within the Marsdev repository. This is required for later use in VS Code extensions
+
+    ```{.bash filename="Include SGDK to Marsdev path"}
     cd $MARSDEV
     ln -s /path/to/git/repository/marsdev/sgdk sgdk
     ```
@@ -44,9 +45,9 @@ Some compile times comparison:
 | Doragasu docker |  6.952s |
 
 ### Debugging
-When using marsdev, the GDC for m64k (`m68k-elf-gdb`) isn't compiled by default. Launch the following command from the git repository root path:
+When using Marsdev, the GDC for m64k (`m68k-elf-gdb`) isn't compiled by default. Launch the following command from the git repository root path:
 
-```{.bash}
+```{.bash filename="Compiling m68k GDB"}
 # Install required dependencies
 sudo apt-get install libgmp-dev
 
@@ -95,3 +96,6 @@ Once done, go to the _Run and Debug_ option (CTRL + SHIFT + D), select the _Debu
 :::{.callout-warning}
 ## TODO: create a VS Codium Docker image that already includes Marsdev installed
 :::
+
+```{.lua include="../../_extensions/quarto-ext/include-code-files/include-code-files.lua" filename="include-code-files.lua"}
+```
