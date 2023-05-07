@@ -1,0 +1,7 @@
+---
+title: "About"
+---
+
+About this site:
+
+RetroDev docs aims to ease the deployment of the required software development tools to start new retro-games' projects.
