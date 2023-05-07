@@ -1,5 +1,5 @@
 ---
-title: "."
+title: "RetroDev docs"
 ---
 
 Welcome to RetroDev docs. Here you'll find guides and hints for retro-gaming development.
