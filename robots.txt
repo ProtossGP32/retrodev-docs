@@ -1,1 +1,1 @@
-Sitemap: https://protossgp32.github.cio/retrodev-docs/sitemap.xml
+Sitemap: https://protossgp32.github.io/retrodev-docs/sitemap.xml
