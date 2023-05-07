@@ -7,6 +7,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="ProtossGP32">
+<meta name="dcterms.date" content="2023-05-07">
+<meta name="description" content="Learn how to configure your development environment">
 
 <title>RetroDev docs - Mega Drive SDKs</title>
 <style>
@@ -65,6 +67,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../retro-sdks/nintendo/nes.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -126,6 +129,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Retro SDKs</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-retro-sdks">    
+        <li class="dropdown-header">Nintendo</li>
+        <li>
+    <a class="dropdown-item" href="../../retro-sdks/nintendo/nes.html" rel="" target="">
+ <span class="dropdown-text">NES SDKs</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Sega</li>
         <li>
     <a class="dropdown-item" href="../../retro-sdks/sega/mega-drive.html" rel="" target="">
@@ -176,12 +185,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
- <span class="menu-text">Sega</span></a>
+ <span class="menu-text">Nintendo</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../retro-sdks/nintendo/nes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">NES SDKs</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Sega</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../retro-sdks/sega/mega-drive.html" class="sidebar-item-text sidebar-link active">
@@ -225,6 +251,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h1 class="title">Mega Drive SDKs</h1>
 </div>
 
+<div>
+  <div class="description">
+    Learn how to configure your development environment
+  </div>
+</div>
 
 
 <div class="quarto-title-meta">
@@ -236,6 +267,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           </div>
   </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">May 7, 2023</p>
+    </div>
+  </div>
   
     
   </div>
@@ -245,6 +282,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="introduction" class="level1">
 <h1>Introduction</h1>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+TODO: talk about SDK for Mega Drive
+</div>
+</div>
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
 </section>
 <section id="getting-started" class="level1">
 <h1>Getting started</h1>
@@ -261,10 +311,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Quick installation steps: <a href="https://github.com/andwn/marsdev#too-long-didnt-read-i-just-want-to-use-sgdk-on-linux">link</a></li>
 <li>Compile time is long, so let it do its thing</li>
 <li>Set the <code>$MARSDEV</code> environment variable in <code>.bashrc</code> like this: <code>export MARSDEV=/home/$USER/mars</code></li>
-<li>Create a softlink within the <code>$MARSDEV</code> path that points to the SGDK created on compile time within the marsdev repository. This is required for later use in VS Code extensions</li>
+<li>Create a softlink within the <code>$MARSDEV</code> path that points to the SGDK created on compile time within the Marsdev repository. This is required for later use in VS Code extensions</li>
 </ul>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Include SGDK to Marsdev path</strong></pre>
+</div>
 <div class="sourceCode" id="cb1"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a><span class="bu">cd</span> <span class="va">$MARSDEV</span></span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">ln</span> <span class="at">-s</span> /path/to/git/repository/marsdev/sgdk sgdk</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">ln</span> <span class="at">-s</span> /path/to/git/repository/marsdev/sgdk sgdk</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></li>
 </ul>
 </section>
 <section id="compiling" class="level3">
@@ -303,11 +358,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="debugging" class="level3">
 <h3 class="anchored" data-anchor-id="debugging">Debugging</h3>
-<p>When using marsdev, the GDC for m64k (<code>m68k-elf-gdb</code>) isn’t compiled by default. Launch the following command from the git repository root path:</p>
+<p>When using Marsdev, the GDC for m64k (<code>m68k-elf-gdb</code>) isn’t compiled by default. Launch the following command from the git repository root path:</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Compiling m68k GDB</strong></pre>
+</div>
 <div class="sourceCode" id="cb2"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># Install required dependencies</span></span>
 <span id="cb2-2"><a href="#cb2-2"></a><span class="fu">sudo</span> apt-get install libgmp-dev</span>
 <span id="cb2-3"><a href="#cb2-3"></a></span>
 <span id="cb2-4"><a href="#cb2-4"></a><span class="fu">make</span> m68k-gdb</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>Take note of the binary path as we’ll have to check it when configuring our text editor.</p>
 <p>We also need an emulator to run the code and to properly attach when debugging. <a href="https://retrodev.com/blastem">BlastEm</a> is a relatively modern emulator with embedded debugger. <a href="http://www.gens.me/">Gens</a> is another good option with very intuitive GUI for debugging purposes.</p>
 <section id="blastem---use-nighly-builds" class="level4">
@@ -369,6 +429,74 @@ TODO: create a VS Codium Docker image that already includes Marsdev installed
 <div class="callout-body-container callout-body">
 
 </div>
+</div>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>include-code-files.lua</strong></pre>
+</div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource lua number-lines code-with-copy"><code class="sourceCode lua"><span id="cb3-1"><a href="#cb3-1"></a><span class="co">--- include-code-files.lua – filter to include code from source files</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="co">---</span></span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="co">--- Copyright: © 2020 Bruno BEAUFILS</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a><span class="co">--- License:   MIT – see LICENSE file for details</span></span>
+<span id="cb3-5"><a href="#cb3-5"></a></span>
+<span id="cb3-6"><a href="#cb3-6"></a><span class="co">--- Dedent a line</span></span>
+<span id="cb3-7"><a href="#cb3-7"></a><span class="kw">local</span> <span class="kw">function</span> dedent <span class="op">(</span><span class="va">line</span><span class="op">,</span> <span class="va">n</span><span class="op">)</span></span>
+<span id="cb3-8"><a href="#cb3-8"></a>  <span class="cf">return</span> <span class="va">line</span><span class="op">:</span><span class="fu">sub</span><span class="op">(</span><span class="dv">1</span><span class="op">,</span><span class="va">n</span><span class="op">):</span><span class="fu">gsub</span><span class="op">(</span><span class="st">" "</span><span class="op">,</span><span class="st">""</span><span class="op">)</span> <span class="op">..</span> <span class="va">line</span><span class="op">:</span><span class="fu">sub</span><span class="op">(</span><span class="va">n</span><span class="op">+</span><span class="dv">1</span><span class="op">)</span></span>
+<span id="cb3-9"><a href="#cb3-9"></a><span class="kw">end</span></span>
+<span id="cb3-10"><a href="#cb3-10"></a></span>
+<span id="cb3-11"><a href="#cb3-11"></a><span class="co">--- Filter function for code blocks</span></span>
+<span id="cb3-12"><a href="#cb3-12"></a><span class="kw">local</span> <span class="kw">function</span> transclude <span class="op">(</span><span class="va">cb</span><span class="op">)</span></span>
+<span id="cb3-13"><a href="#cb3-13"></a>  <span class="cf">if</span> <span class="va">cb</span><span class="op">.</span><span class="va">attributes</span><span class="op">.</span><span class="va">include</span> <span class="cf">then</span></span>
+<span id="cb3-14"><a href="#cb3-14"></a>    <span class="kw">local</span> <span class="va">content</span> <span class="op">=</span> <span class="st">""</span></span>
+<span id="cb3-15"><a href="#cb3-15"></a>    <span class="kw">local</span> <span class="va">fh</span> <span class="op">=</span> <span class="fu">io.open</span><span class="op">(</span><span class="va">cb</span><span class="op">.</span><span class="va">attributes</span><span class="op">.</span><span class="va">include</span><span class="op">)</span></span>
+<span id="cb3-16"><a href="#cb3-16"></a>    <span class="cf">if</span> <span class="kw">not</span> <span class="va">fh</span> <span class="cf">then</span></span>
+<span id="cb3-17"><a href="#cb3-17"></a>      <span class="fu">io.stderr</span><span class="op">:</span><span class="fu">write</span><span class="op">(</span><span class="st">"Cannot open file "</span> <span class="op">..</span> <span class="va">cb</span><span class="op">.</span><span class="va">attributes</span><span class="op">.</span><span class="va">include</span> <span class="op">..</span> <span class="st">" | Skipping includes</span><span class="sc">\n</span><span class="st">"</span><span class="op">)</span></span>
+<span id="cb3-18"><a href="#cb3-18"></a>    <span class="cf">else</span></span>
+<span id="cb3-19"><a href="#cb3-19"></a>      <span class="kw">local</span> <span class="va">number</span> <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb3-20"><a href="#cb3-20"></a>      <span class="kw">local</span> <span class="va">start</span> <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb3-21"><a href="#cb3-21"></a></span>
+<span id="cb3-22"><a href="#cb3-22"></a>      <span class="co">-- change hyphenated attributes to PascalCase</span></span>
+<span id="cb3-23"><a href="#cb3-23"></a>      <span class="cf">for</span> <span class="va">i</span><span class="op">,</span><span class="va">pascal</span> <span class="kw">in</span> <span class="fu">pairs</span><span class="op">({</span><span class="st">"startLine"</span><span class="op">,</span> <span class="st">"endLine"</span><span class="op">})</span></span>
+<span id="cb3-24"><a href="#cb3-24"></a>      <span class="cf">do</span></span>
+<span id="cb3-25"><a href="#cb3-25"></a>         <span class="kw">local</span> <span class="va">hyphen</span> <span class="op">=</span> <span class="va">pascal</span><span class="op">:</span><span class="fu">gsub</span><span class="op">(</span><span class="st">"%u"</span><span class="op">,</span> <span class="st">"-%0"</span><span class="op">):</span><span class="fu">lower</span><span class="op">()</span></span>
+<span id="cb3-26"><a href="#cb3-26"></a>         <span class="cf">if</span> <span class="va">cb</span><span class="op">.</span><span class="va">attributes</span><span class="op">[</span><span class="va">hyphen</span><span class="op">]</span> <span class="cf">then</span></span>
+<span id="cb3-27"><a href="#cb3-27"></a>            <span class="va">cb</span><span class="op">.</span><span class="va">attributes</span><span class="op">[</span><span class="va">pascal</span><span class="op">]</span> <span class="op">=</span> <span class="va">cb</span><span class="op">.</span><span class="va">attributes</span><span class="op">[</span><span class="va">hyphen</span><span class="op">]</span></span>
+<span id="cb3-28"><a href="#cb3-28"></a>            <span class="va">cb</span><span class="op">.</span><span class="va">attributes</span><span class="op">[</span><span class="va">hyphen</span><span class="op">]</span> <span class="op">=</span> <span class="kw">nil</span></span>
+<span id="cb3-29"><a href="#cb3-29"></a>         <span class="cf">end</span></span>
+<span id="cb3-30"><a href="#cb3-30"></a>      <span class="cf">end</span></span>
+<span id="cb3-31"><a href="#cb3-31"></a></span>
+<span id="cb3-32"><a href="#cb3-32"></a>      <span class="cf">if</span> <span class="va">cb</span><span class="op">.</span><span class="va">attributes</span><span class="op">.</span><span class="va">startLine</span> <span class="cf">then</span></span>
+<span id="cb3-33"><a href="#cb3-33"></a>        <span class="va">cb</span><span class="op">.</span><span class="va">attributes</span><span class="op">.</span><span class="va">startFrom</span> <span class="op">=</span> <span class="va">cb</span><span class="op">.</span><span class="va">attributes</span><span class="op">.</span><span class="va">startLine</span></span>
+<span id="cb3-34"><a href="#cb3-34"></a>        <span class="va">start</span> <span class="op">=</span> <span class="fu">tonumber</span><span class="op">(</span><span class="va">cb</span><span class="op">.</span><span class="va">attributes</span><span class="op">.</span><span class="va">startLine</span><span class="op">)</span></span>
+<span id="cb3-35"><a href="#cb3-35"></a>      <span class="cf">end</span></span>
+<span id="cb3-36"><a href="#cb3-36"></a>      <span class="cf">for</span> <span class="va">line</span> <span class="kw">in</span> <span class="va">fh</span><span class="op">:</span><span class="fu">lines</span> <span class="op">(</span><span class="st">"L"</span><span class="op">)</span></span>
+<span id="cb3-37"><a href="#cb3-37"></a>      <span class="cf">do</span></span>
+<span id="cb3-38"><a href="#cb3-38"></a>        <span class="cf">if</span> <span class="va">cb</span><span class="op">.</span><span class="va">attributes</span><span class="op">.</span><span class="va">dedent</span> <span class="cf">then</span></span>
+<span id="cb3-39"><a href="#cb3-39"></a>          <span class="va">line</span> <span class="op">=</span> dedent<span class="op">(</span><span class="va">line</span><span class="op">,</span> <span class="va">cb</span><span class="op">.</span><span class="va">attributes</span><span class="op">.</span><span class="va">dedent</span><span class="op">)</span></span>
+<span id="cb3-40"><a href="#cb3-40"></a>        <span class="cf">end</span></span>
+<span id="cb3-41"><a href="#cb3-41"></a>        <span class="cf">if</span> <span class="va">number</span> <span class="op">&gt;=</span> <span class="va">start</span> <span class="cf">then</span></span>
+<span id="cb3-42"><a href="#cb3-42"></a>          <span class="cf">if</span> <span class="kw">not</span> <span class="va">cb</span><span class="op">.</span><span class="va">attributes</span><span class="op">.</span><span class="va">endLine</span> <span class="kw">or</span> <span class="va">number</span> <span class="op">&lt;=</span> <span class="fu">tonumber</span><span class="op">(</span><span class="va">cb</span><span class="op">.</span><span class="va">attributes</span><span class="op">.</span><span class="va">endLine</span><span class="op">)</span> <span class="cf">then</span></span>
+<span id="cb3-43"><a href="#cb3-43"></a>            <span class="va">content</span> <span class="op">=</span> <span class="va">content</span> <span class="op">..</span> <span class="va">line</span></span>
+<span id="cb3-44"><a href="#cb3-44"></a>          <span class="cf">end</span></span>
+<span id="cb3-45"><a href="#cb3-45"></a>        <span class="cf">end</span></span>
+<span id="cb3-46"><a href="#cb3-46"></a>        <span class="va">number</span> <span class="op">=</span> <span class="va">number</span> <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb3-47"><a href="#cb3-47"></a>      <span class="cf">end</span> </span>
+<span id="cb3-48"><a href="#cb3-48"></a>      <span class="va">fh</span><span class="op">:</span><span class="fu">close</span><span class="op">()</span></span>
+<span id="cb3-49"><a href="#cb3-49"></a>    <span class="cf">end</span>     </span>
+<span id="cb3-50"><a href="#cb3-50"></a>    <span class="co">-- remove key-value pair for used keys</span></span>
+<span id="cb3-51"><a href="#cb3-51"></a>    <span class="va">cb</span><span class="op">.</span><span class="va">attributes</span><span class="op">.</span><span class="va">include</span> <span class="op">=</span> <span class="kw">nil</span></span>
+<span id="cb3-52"><a href="#cb3-52"></a>    <span class="va">cb</span><span class="op">.</span><span class="va">attributes</span><span class="op">.</span><span class="va">startLine</span> <span class="op">=</span> <span class="kw">nil</span></span>
+<span id="cb3-53"><a href="#cb3-53"></a>    <span class="va">cb</span><span class="op">.</span><span class="va">attributes</span><span class="op">.</span><span class="va">endLine</span> <span class="op">=</span> <span class="kw">nil</span></span>
+<span id="cb3-54"><a href="#cb3-54"></a>    <span class="va">cb</span><span class="op">.</span><span class="va">attributes</span><span class="op">.</span><span class="va">dedent</span> <span class="op">=</span> <span class="kw">nil</span></span>
+<span id="cb3-55"><a href="#cb3-55"></a>    <span class="co">-- return final code block</span></span>
+<span id="cb3-56"><a href="#cb3-56"></a>    <span class="cf">return</span> <span class="va">pandoc</span><span class="op">.</span>CodeBlock<span class="op">(</span><span class="va">content</span><span class="op">,</span> <span class="va">cb</span><span class="op">.</span><span class="va">attr</span><span class="op">)</span></span>
+<span id="cb3-57"><a href="#cb3-57"></a>  <span class="cf">end</span></span>
+<span id="cb3-58"><a href="#cb3-58"></a><span class="kw">end</span></span>
+<span id="cb3-59"><a href="#cb3-59"></a></span>
+<span id="cb3-60"><a href="#cb3-60"></a><span class="cf">return</span> <span class="op">{</span></span>
+<span id="cb3-61"><a href="#cb3-61"></a>  <span class="op">{</span> <span class="cn">C</span><span class="va">odeBlock</span> <span class="op">=</span> <span class="va">transclude</span> <span class="op">}</span></span>
+<span id="cb3-62"><a href="#cb3-62"></a><span class="op">}</span></span>
+<span id="cb3-63"><a href="#cb3-63"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
@@ -726,6 +854,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../retro-sdks/nintendo/nes.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">NES SDKs</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">

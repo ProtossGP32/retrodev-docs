@@ -2,14 +2,18 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://protossgp32.github.io/retrodev-docs/retro-sdks/sega/mega-drive.html</loc>
-    <lastmod>2023-05-07T14:58:02.722Z</lastmod>
+    <lastmod>2023-05-07T15:36:38.211Z</lastmod>
+  </url>
+  <url>
+    <loc>https://protossgp32.github.io/retrodev-docs/retro-sdks/nintendo/nes.html</loc>
+    <lastmod>2023-05-07T15:36:38.575Z</lastmod>
   </url>
   <url>
     <loc>https://protossgp32.github.io/retrodev-docs/about.html</loc>
-    <lastmod>2023-05-07T14:58:03.030Z</lastmod>
+    <lastmod>2023-05-07T15:36:38.911Z</lastmod>
   </url>
   <url>
     <loc>https://protossgp32.github.io/retrodev-docs/index.html</loc>
-    <lastmod>2023-05-07T14:58:03.326Z</lastmod>
+    <lastmod>2023-05-07T15:36:39.239Z</lastmod>
   </url>
 </urlset>
