@@ -1,0 +1,11 @@
+---
+title: "Mega Drive SDKs"
+author: ProtossGP32
+Description: Learn how to configure your development environment
+---
+# Introduction
+
+# Getting started
+## SGDK
+We'll be deploying the excellent and mature [SGDK](https://github.com/Stephane-D/SGDK) by [Stephane Dallongeville](https://github.com/Stephane-D), that allows to develop Mega Drive games in C language.
+
