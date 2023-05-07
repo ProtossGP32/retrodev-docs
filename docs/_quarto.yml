@@ -10,7 +10,7 @@ editor:
 website:
   # Website info
   title: "RetroDev docs"
-  site-url: https://protossgp32.github.cio/retrodev-docs
+  site-url: https://protossgp32.github.io/retrodev-docs
 
   # Repository info
   repo-url: https://github.com/protossgp32/retrodev-docs
