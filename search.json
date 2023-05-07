@@ -1,0 +1,23 @@
+[
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site:\nRetroDev docs aims to ease the deployment of the required software development tools to start new retro-games’ projects."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": ".",
+    "section": "",
+    "text": "Welcome to RetroDev docs. Here you’ll find guides and hints for retro-gaming development."
+  },
+  {
+    "objectID": "retro-sdks/sega/mega-drive.html#sgdk",
+    "href": "retro-sdks/sega/mega-drive.html#sgdk",
+    "title": "Mega Drive SDKs",
+    "section": "SGDK",
+    "text": "SGDK\nWe’ll be deploying the excellent and mature SGDK by Stephane Dallongeville, that allows to develop Mega Drive games in C language."
+  }
+]
