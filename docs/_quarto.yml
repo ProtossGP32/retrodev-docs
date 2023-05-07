@@ -1,19 +1,73 @@
 project:
   type: website
 
+filters:
+  - include-code-files
+
+editor:
+  render-on-save: true
+
 website:
-  title: "."
+  # Website info
+  title: "RetroDev docs"
+  site-url: https://protossgp32.github.cio/retrodev-docs
+
+  # Repository info
+  repo-url: https://github.com/protossgp32/retrodev-docs
+  repo-subdir: docs
+  repo-actions: [edit, issue]
+
+  # Navigation bar
   navbar:
     left:
-      - href: index.qmd
-        text: Home
-      - about.qmd
+      - text: Home
+        href: index.qmd
+      - sidebar:retro-sdks  
+      - text: About
+        file: about.qmd
+
+    right:
+      - icon: github
+        href: https://github.com/protossgp32
+        aria-label: GitHub
+
+  # Sidebars
+  sidebar:
+    # Categories
+    - id: retro-sdks
+      title: Retro SDKs
+      style: docked
+      contents: retro-sdks/**
+
+  # Page Footer
+  page-footer:
+    center:
+      - text: "About"
+        file: about.qmd
+
+  # Search options
+  search:
+    location: navbar
+    type: overlay
+
+  # Look and feel options
+  reader-mode: true
+  page-navigation: true
 
 format:
   html:
-    theme: cosmo
+    # Theme options
+    theme:
+      light: yeti
+      dark: solar
     css: styles.css
+    # Table of Contents options
     toc: true
+    # Code snippets options
+    code-fold: true
+    code-line-numbers: true
+    code-overflow: scroll
+    highlight-style: ayu
 
 
 

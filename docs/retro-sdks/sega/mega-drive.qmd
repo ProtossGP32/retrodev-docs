@@ -3,9 +3,94 @@ title: "Mega Drive SDKs"
 author: ProtossGP32
 Description: Learn how to configure your development environment
 ---
+
 # Introduction
 
 # Getting started
-## SGDK
+
+## Installing SGDK
+
 We'll be deploying the excellent and mature [SGDK](https://github.com/Stephane-D/SGDK) by [Stephane Dallongeville](https://github.com/Stephane-D), that allows to develop Mega Drive games in C language.
 
+### Developing on Linux
+
+SGDK works natively on Windows, but there are options to make it work on Linux:
+
+-   Using Wine
+-   Using [Marsdev](https://github.com/andwn/marsdev). Here we install the SDK locally instead of using a Docker image for building the project
+    - Quick installation steps: [link](https://github.com/andwn/marsdev#too-long-didnt-read-i-just-want-to-use-sgdk-on-linux)
+    - Compile time is long, so let it do its thing
+    - Set the `$MARSDEV` environment variable in `.bashrc` like this: `export MARSDEV=/home/$USER/mars`
+    - Create a softlink within the `$MARSDEV` path that points to the SGDK created on compile time within the marsdev repository. This is required for later use in VS Code extensions
+    ```{.bash}
+    cd $MARSDEV
+    ln -s /path/to/git/repository/marsdev/sgdk sgdk
+    ```
+
+### Compiling
+We can use the following alternatives to compile our projects:
+
+-   Locally, previously compiling SGDK or Marsdev toolchains
+-   Using a Docker image (Dockerfile provided in Stephane's repository). Just follow [these instructions](https://github.com/Stephane-D/SGDK#docker) to build your own SGDK docker image and use it to compile your code
+    -   This approach also uses Wine within the Docker container to launch SGDK
+-   Using [Doragasu](https://gitlab.com/doragasu/docker-sgdk), another Docker image. Again, just use [these instructions](https://gitlab.com/doragasu/docker-sgdk/-/tree/master/#building-an-sgdk-project) to build your project
+    -   This approach uses native Linux compiler, much faster
+
+Some compile times comparison:
+
+| Approach        |    Time |
+|:----------------|--------:|
+| SGDK docker     | 13.721s |
+| Doragasu docker |  6.952s |
+
+### Debugging
+When using marsdev, the GDC for m64k (`m68k-elf-gdb`) isn't compiled by default. Launch the following command from the git repository root path:
+
+```{.bash}
+# Install required dependencies
+sudo apt-get install libgmp-dev
+
+make m68k-gdb
+```
+Take note of the binary path as we'll have to check it when configuring our text editor.
+
+We also need an emulator to run the code and to properly attach when debugging. [BlastEm](https://retrodev.com/blastem) is a relatively modern emulator with embedded debugger. [Gens](http://www.gens.me/) is another good option with very intuitive GUI for debugging purposes.
+
+#### BlastEm - Use nighly builds
+
+- Download the latest [nightly build](https://www.retrodev.com/blastem/nightlies/). At the moment of writing this article (2023/05/07), the available stable 0.6.2 version fails due to missing instructions
+    - Verified version: [nightly build from 2023/04/03](https://www.retrodev.com/blastem/nightlies/blastem64-0.6.3-pre-ab3d8759da08.tar.gz)
+- Uncompress the file and add the resulting directory to your `$PATH` environment variable
+    - Make sure to update it in your `.bashrc` file
+
+## Text editors
+### VS Code
+
+We'll be using [Genesis Code](https://marketplace.visualstudio.com/items?itemName=zerasul.genesis-code) extension by Zerasul to help us with the programming side of things. This extension is compatible with all previously mentioned compiling options, both Docker images and Marsdev.
+
+Configuration:
+
+- Check `Doragasu Image` if you plan on using Doragasu GitLab image for building purposes
+- Set `docker` as the Toolchain Type if you plan on using Docker images on build stage
+- Set the `$MARSDEV` env variable
+
+Creating a new Mega Drive project is as simple as launching `Genesis Code: create project` from the Command palette. Then check that the `.vscode` path has been created and make sure that both `launch.json` and `settings.json` point towards the right `MARSDEV` paths, else VS Code won't include the SGDK headers to the project.
+
+#### Debug configuration
+In order to properly debug using BlastEm, check the `.vscode/launch.json` file and make sure that everything points towards the correct paths:
+
+- `program`: should be the ELF program created when compiling with the debug options enabled (`Genesis Code: Compile for Debugging` in the command palette).
+    - This file must include the symbols
+    - When compiling with SGDK, the generated file is `out/rom.out`
+
+- `sourcefileMap`: it must point to the SGDK `src` path, retrieved using the Marsdev make targets
+- `miDebuggerPath`: don't touch it. Just make sure you compiled the `m68k-elf-gdb` as told in previous steps
+- `miDebuggerArgs`: make sure that the emulator name is correct and that it launches the `out/rom.bin` file
+
+Once done, go to the _Run and Debug_ option (CTRL + SHIFT + D), select the _Debug with gdb remote_ profile and click on play. If a breakpoint has been set in your code, the Debug var should start to show some info:
+
+![VS Code debugging a Hello World example](../../images/retro-sdks/sega/megadrive-vs-code-debugging.png)
+
+:::{.callout-warning}
+## TODO: create a VS Codium Docker image that already includes Marsdev installed
+:::
