@@ -1,19 +1,5 @@
 [
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "About this site:\nRetroDev docs aims to ease the deployment of the required software development tools to start new retro-games’ projects."
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "RetroDev docs",
-    "section": "",
-    "text": "Welcome to RetroDev docs. Here you’ll find guides and hints for retro-gaming development."
-  },
-  {
     "objectID": "retro-sdks/sega/mega-drive.html#installing-sgdk",
     "href": "retro-sdks/sega/mega-drive.html#installing-sgdk",
     "title": "Mega Drive SDKs",
@@ -26,5 +12,19 @@
     "title": "Mega Drive SDKs",
     "section": "Text editors",
     "text": "Text editors\n\nVS Code\nWe’ll be using Genesis Code extension by Zerasul to help us with the programming side of things. This extension is compatible with all previously mentioned compiling options, both Docker images and Marsdev.\nConfiguration:\n\nCheck Doragasu Image if you plan on using Doragasu GitLab image for building purposes\nSet docker as the Toolchain Type if you plan on using Docker images on build stage\nSet the $MARSDEV env variable\n\nCreating a new Mega Drive project is as simple as launching Genesis Code: create project from the Command palette. Then check that the .vscode path has been created and make sure that both launch.json and settings.json point towards the right MARSDEV paths, else VS Code won’t include the SGDK headers to the project.\n\nDebug configuration\nIn order to properly debug using BlastEm, check the .vscode/launch.json file and make sure that everything points towards the correct paths:\n\nprogram: should be the ELF program created when compiling with the debug options enabled (Genesis Code: Compile for Debugging in the command palette).\n\nThis file must include the symbols\nWhen compiling with SGDK, the generated file is out/rom.out\n\nsourcefileMap: it must point to the SGDK src path, retrieved using the Marsdev make targets\nmiDebuggerPath: don’t touch it. Just make sure you compiled the m68k-elf-gdb as told in previous steps\nmiDebuggerArgs: make sure that the emulator name is correct and that it launches the out/rom.bin file\n\nOnce done, go to the Run and Debug option (CTRL + SHIFT + D), select the Debug with gdb remote profile and click on play. If a breakpoint has been set in your code, the Debug var should start to show some info:\n\n\n\nVS Code debugging a Hello World example\n\n\n\n\n\n\n\n\nTODO: create a VS Codium Docker image that already includes Marsdev installed"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site:\nRetroDev docs aims to ease the deployment of the required software development tools to start new retro-games’ projects."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "RetroDev docs",
+    "section": "",
+    "text": "Welcome to RetroDev docs. Here you’ll find guides and hints for retro-gaming development."
   }
 ]
