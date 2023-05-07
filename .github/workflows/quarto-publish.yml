@@ -24,15 +24,15 @@ jobs:
           # version: SPECIFIC-QUARTO-VERSION-HERE
       
       # add software dependencies here
-      - name: Install Jupyter
-        run: |
-          python3 -m pip install jupyter
+      #- name: Install Jupyter
+      #  run: |
+      #    python3 -m pip install jupyter
 
       # Publish to GitHub Pages
       - name: Publish to GitHub Pages (and render)
         uses: quarto-dev/quarto-actions/publish@v2
         with:
           target: gh-pages
-          path: docs/
+          path: docs
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # this secret is always available for github actions
