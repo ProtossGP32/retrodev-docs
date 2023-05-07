@@ -52,6 +52,7 @@ sudo apt-get install libgmp-dev
 
 make m68k-gdb
 ```
+
 Take note of the binary path as we'll have to check it when configuring our text editor.
 
 We also need an emulator to run the code and to properly attach when debugging. [BlastEm](https://retrodev.com/blastem) is a relatively modern emulator with embedded debugger. [Gens](http://www.gens.me/) is another good option with very intuitive GUI for debugging purposes.
