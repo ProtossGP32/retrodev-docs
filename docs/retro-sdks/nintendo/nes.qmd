@@ -2,13 +2,9 @@
 title: "NES SDKs"
 author: "ProtossGP32"
 date: 2023/05/07
-description: Learn how to configure your development environment
+description: "Learn how to configure your development environment"
 ---
 # Introduction
 # Getting started
 ## Installing SDK
 ## Text editors
-
-```{.bash}
-blablabla
-```
