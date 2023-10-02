@@ -22,7 +22,8 @@ website:
     left:
       - text: Home
         href: index.qmd
-      - sidebar:retro-sdks  
+      - sidebar:retro-sdks
+      - sidebar:repairs
       - text: About
         file: about.qmd
 
@@ -38,6 +39,10 @@ website:
       title: Retro SDKs
       style: docked
       contents: retro-sdks/**
+    - id: repairs
+      title: Repairs
+      style: docked
+      contents: repairs/**
 
   # Page Footer
   page-footer:
