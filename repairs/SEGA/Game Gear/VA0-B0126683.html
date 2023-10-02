@@ -7,10 +7,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="ProtossGP32">
-<meta name="dcterms.date" content="2023-05-07">
-<meta name="description" content="Learn how to configure your development environment">
+<meta name="dcterms.date" content="2023-10-02">
+<meta name="description" content="Game Gear bought on Japan">
 
-<title>RetroDev docs - NES SDKs</title>
+<title>RetroDev docs - Game Gear VA0 - 1</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -26,25 +26,24 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../">
-<link href="../../retro-sdks/sega/mega-drive.html" rel="next">
-<script src="../../site_libs/quarto-html/quarto.js"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -67,7 +66,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="../../../styles.css">
 </head>
 
 <body class="nav-sidebar docked nav-fixed">
@@ -77,7 +76,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
-    <a class="navbar-brand" href="../../index.html">
+    <a class="navbar-brand" href="../../../index.html">
     <span class="navbar-title">RetroDev docs</span>
     </a>
   </div>
@@ -88,7 +87,7 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../index.html" rel="" target="">
+    <a class="nav-link" href="../../../index.html" rel="" target="">
  <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -98,13 +97,13 @@ ul.task-list li input[type="checkbox"] {
     <ul class="dropdown-menu" aria-labelledby="nav-menu-retro-sdks">    
         <li class="dropdown-header">Nintendo</li>
         <li>
-    <a class="dropdown-item" href="../../retro-sdks/nintendo/nes.html" rel="" target="">
+    <a class="dropdown-item" href="../../../retro-sdks/nintendo/nes.html" rel="" target="">
  <span class="dropdown-text">NES SDKs</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Sega</li>
         <li>
-    <a class="dropdown-item" href="../../retro-sdks/sega/mega-drive.html" rel="" target="">
+    <a class="dropdown-item" href="../../../retro-sdks/sega/mega-drive.html" rel="" target="">
  <span class="dropdown-text">Mega Drive SDKs</span></a>
   </li>  
     </ul>
@@ -116,13 +115,13 @@ ul.task-list li input[type="checkbox"] {
     <ul class="dropdown-menu" aria-labelledby="nav-menu-repairs">    
         <li class="dropdown-header">SEGA</li>
         <li>
-    <a class="dropdown-item" href="../../repairs/SEGA/Game Gear/VA0-B0126683.html" rel="" target="">
+    <a class="dropdown-item" href="../../../repairs/SEGA/Game Gear/VA0-B0126683.html" rel="" target="">
  <span class="dropdown-text">Game Gear</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="../../about.html" rel="" target="">
+    <a class="nav-link" href="../../../about.html" rel="" target="">
  <span class="menu-text">About</span></a>
   </li>  
 </ul>
@@ -149,7 +148,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../retro-sdks/nintendo/nes.html">Nintendo</a></li><li class="breadcrumb-item"><a href="../../retro-sdks/nintendo/nes.html">NES SDKs</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">SEGA</li><li class="breadcrumb-item"><a href="../../../repairs/SEGA/Game Gear/VA0-B0126683.html">Game Gear</a></li><li class="breadcrumb-item"><a href="../../../repairs/SEGA/Game Gear/VA0-B0126683.html">Game Gear VA0 - 1</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -164,35 +163,29 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
- <span class="menu-text">Nintendo</span></a>
+ <span class="menu-text">SEGA</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../retro-sdks/nintendo/nes.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">NES SDKs</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
+          <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
- <span class="menu-text">Sega</span></a>
+ <span class="menu-text">Game Gear</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../retro-sdks/sega/mega-drive.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Mega Drive SDKs</span></a>
+  <a href="../../../repairs/SEGA/Game Gear/VA0-B0126683.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Game Gear VA0 - 1</span></a>
   </div>
 </li>
+      </ul>
+  </li>
       </ul>
   </li>
     </ul>
@@ -205,26 +198,46 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#getting-started" id="toc-getting-started" class="nav-link" data-scroll-target="#getting-started">Getting started</a>
+  <li><a href="#console-details" id="toc-console-details" class="nav-link active" data-scroll-target="#console-details">Console details</a>
   <ul class="collapse">
-  <li><a href="#installing-sdk" id="toc-installing-sdk" class="nav-link" data-scroll-target="#installing-sdk">Installing SDK</a></li>
-  <li><a href="#text-editors" id="toc-text-editors" class="nav-link" data-scroll-target="#text-editors">Text editors</a></li>
+  <li><a href="#specs" id="toc-specs" class="nav-link" data-scroll-target="#specs">Specs</a></li>
+  </ul></li>
+  <li><a href="#overview" id="toc-overview" class="nav-link" data-scroll-target="#overview">Overview</a>
+  <ul class="collapse">
+  <li><a href="#visual-inspection" id="toc-visual-inspection" class="nav-link" data-scroll-target="#visual-inspection">Visual inspection</a></li>
+  <li><a href="#first-boot" id="toc-first-boot" class="nav-link" data-scroll-target="#first-boot">First boot</a></li>
+  </ul></li>
+  <li><a href="#maintenance" id="toc-maintenance" class="nav-link" data-scroll-target="#maintenance">Maintenance</a>
+  <ul class="collapse">
+  <li><a href="#recap" id="toc-recap" class="nav-link" data-scroll-target="#recap">2023/10/01: Recap</a>
+  <ul class="collapse">
+  <li><a href="#power-board" id="toc-power-board" class="nav-link" data-scroll-target="#power-board">Power board</a></li>
+  <li><a href="#audio-board" id="toc-audio-board" class="nav-link" data-scroll-target="#audio-board">Audio board</a></li>
+  <li><a href="#main-board" id="toc-main-board" class="nav-link" data-scroll-target="#main-board">Main board</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#console-status" id="toc-console-status" class="nav-link" data-scroll-target="#console-status">Console status</a>
+  <ul class="collapse">
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section">2023/10/01</a>
+  <ul class="collapse">
+  <li><a href="#state-on-stable-boot" id="toc-state-on-stable-boot" class="nav-link" data-scroll-target="#state-on-stable-boot">State on stable boot</a></li>
+  <li><a href="#additional-issues-detected" id="toc-additional-issues-detected" class="nav-link" data-scroll-target="#additional-issues-detected">Additional issues detected</a></li>
+  </ul></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/protossgp32/retrodev-docs/edit/main/docs/retro-sdks/nintendo/nes.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/protossgp32/retrodev-docs/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/protossgp32/retrodev-docs/edit/main/docs/repairs/SEGA/Game Gear/VA0-B0126683.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/protossgp32/retrodev-docs/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">NES SDKs</h1>
+<h1 class="title">Game Gear VA0 - 1</h1>
 </div>
 
 <div>
   <div class="description">
-    Learn how to configure your development environment
+    Game Gear bought on Japan
   </div>
 </div>
 
@@ -241,7 +254,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">May 7, 2023</p>
+      <p class="date">October 2, 2023</p>
     </div>
   </div>
   
@@ -251,18 +264,216 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="introduction" class="level1">
-<h1>Introduction</h1>
+<section id="console-details" class="level1">
+<h1>Console details</h1>
+<ul>
+<li>Japanese Game Gear bought during my trip to Japan on August 2023</li>
+<li>It came with a broken japanese TV tuner</li>
+<li>The screen protector was already replaced but the console seemed unmodified (screws were tight and capacitors were the stock ones)</li>
+</ul>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Add a picture of the console here. Show them the goods!</p>
+</div>
+</div>
+<section id="specs" class="level2">
+<h2 class="anchored" data-anchor-id="specs">Specs</h2>
+<ul>
+<li>Model Number: HGG-3210</li>
+<li>Serial Number: B0126683</li>
+<li>Main board: 837-7398-01 (Twin ASIC)</li>
+<li>Power board:</li>
+<li>Audio board: 837-7400-01 (Initial release Japanese Game Gear with square-body surface mount caps similar to GG main boards)</li>
+</ul>
 </section>
-<section id="getting-started" class="level1">
-<h1>Getting started</h1>
-<section id="installing-sdk" class="level2">
-<h2 class="anchored" data-anchor-id="installing-sdk">Installing SDK</h2>
 </section>
-<section id="text-editors" class="level2">
-<h2 class="anchored" data-anchor-id="text-editors">Text editors</h2>
+<section id="overview" class="level1">
+<h1>Overview</h1>
+<section id="visual-inspection" class="level2">
+<h2 class="anchored" data-anchor-id="visual-inspection">Visual inspection</h2>
+<ul>
+<li>Outside: The outside has visible scratches from usage but no cracks</li>
+<li>Main board: capacitor leaks are visible on its legs but it doesn’t seem to have spread nor damaged any trace or pad</li>
+</ul>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>No available picture of original caps in main board</p>
+</div>
+</div>
+<ul>
+<li>Power board: no visible leaks</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../../images/repairs/SEGA/Game Gear/VA0/B0126683/20231001_power_board_original_caps.jpg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Power board - original capacitors</figcaption>
+</figure>
+</div>
+<ul>
+<li>Audio board: visible leaks in capacitors</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../../images/repairs/SEGA/Game Gear/VA0/B0126683/20231001_audio_board_original_caps.jpg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Audio board - original capacitors</figcaption>
+</figure>
+</div>
+<ul>
+<li>Battery contacts: some rust in the battery compartment as well as in some springs, but nothing serious</li>
+</ul>
+</section>
+<section id="first-boot" class="level2">
+<h2 class="anchored" data-anchor-id="first-boot">First boot</h2>
+<ul>
+<li>Power LED turns on a few seconds and then it turns off</li>
+<li>The screen doesn’t turn on and there’s no sound either</li>
+</ul>
+</section>
+</section>
+<section id="maintenance" class="level1">
+<h1>Maintenance</h1>
+<section id="recap" class="level2">
+<h2 class="anchored" data-anchor-id="recap">2023/10/01: Recap</h2>
+<ul>
+<li>Following <a href="https://www.retrosix.wiki/capacitor-replacement-game-gear">Retrosix’s wiki</a>, the capacitors are replaced like this:</li>
+</ul>
+<section id="power-board" class="level3">
+<h3 class="anchored" data-anchor-id="power-board">Power board</h3>
+<ul>
+<li>Capacitors are replaced with new electrolytic ones with the same rating</li>
+<li>The only exception is the 820uF/6.3V one that has been replaced with a <strong>solid electrolytic capacitor of the same rating</strong> (does it make any difference compared to the standard electrolytic ones?)
+<ul>
+<li>According to the data sheet, solid electrolytic capacitors have a low ESR and high ripple current</li>
+</ul></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../../images/repairs/SEGA/Game Gear/VA0/B0126683/20231001_power_board_recap.jpg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Power board - Fully recapped</figcaption>
+</figure>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+A kind advice on thru-hole capacitors removal!
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Removing some capacitors proved to be quite challenging, even with an electrical desoldering pump. The trick to keep the vias intact is to reapply new solder several times to mix old solder with new one. Flux is indispensable to help transfer heat on already old and dry solder as well!</p>
+<p>If a leg is stubbornly stuck, use some desoldering wick with new solder and a lot of flux to remove the excess inside the via by capilarity. Rinse and repeat until the leg is free!</p>
+</div>
+</div>
+</section>
+<section id="audio-board" class="level3">
+<h3 class="anchored" data-anchor-id="audio-board">Audio board</h3>
+<ul>
+<li>All capacitors are replaced with 100uF/10V ceramic capacitors</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../../images/repairs/SEGA/Game Gear/VA0/B0126683/20231001_audio_board_recap.jpg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Audio board - Fully recapped</figcaption>
+</figure>
+</div>
+</section>
+<section id="main-board" class="level3">
+<h3 class="anchored" data-anchor-id="main-board">Main board</h3>
+<ul>
+<li>All capacitors rated lower than 1uF are replaced with 1uF/50V ceramic capacitors</li>
+<li>All capacitors rated lower between 1uF and 10uF are replaced with 10uF/50V ceramic capacitors</li>
+<li>All capacitors rated higher than 10uF are replaced with 100uF/10V ceramic capacitors</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../../images/repairs/SEGA/Game Gear/VA0/B0126683/20231001_main_board_recap.jpg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Main board - Fully recapped</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../../images/repairs/SEGA/Game Gear/VA0/B0126683/20231001_main_board_recap_detail_left.jpg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Main board - Left side recap detail</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../../images/repairs/SEGA/Game Gear/VA0/B0126683/20231001_main_board_recap_detail_right.jpg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Main board - Right side recap detail</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../../images/repairs/SEGA/Game Gear/VA0/B0126683/20231001_main_board_recap_detail_right_zoom.jpg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Main board - Right side recap zoom</figcaption>
+</figure>
+</div>
+<p>Some capacitor pads presented a huge amount of corrosion, making it a little bit difficult to reheat and clean them. Before applying any heat to the corroded pads, <strong>I applied some vinegar in order to neutralize as much as possible the leaked acids</strong>. Using soldering paste proved to be quite useful in areas where the soldering iron could potentially melt plastic connectors, as its low-temp melting point made for quicker joins.</p>
+</section>
+</section>
+</section>
+<section id="console-status" class="level1">
+<h1>Console status</h1>
+<section id="section" class="level2">
+<h2 class="anchored" data-anchor-id="section">2023/10/01</h2>
+<section id="state-on-stable-boot" class="level3">
+<h3 class="anchored" data-anchor-id="state-on-stable-boot">State on stable boot</h3>
+<ul>
+<li>Console enters the <a href="https://www.retrosix.wiki/getting-to-red-light-boot-game-gear">Red Light Boot state</a>, required for further troubleshooting and repairs
+<ul>
+<li>All voltage levels are within the expected ranges</li>
+</ul></li>
+<li>Audio board also works, both the speaker output and the output jack</li>
+<li>LCD screen doesn’t turn on, neither the fluorescent tube
+<ul>
+<li>I haven’t checked if there’s really no image on the LCD, pending to use some kind of light as replacement of the tube just to be sure</li>
+</ul></li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If everything else is fine, this console could be a good candidate for a screen replacement</p>
+</div>
+</div>
+</section>
+<section id="additional-issues-detected" class="level3">
+<h3 class="anchored" data-anchor-id="additional-issues-detected">Additional issues detected</h3>
+<ul>
+<li>It seems that the zone where the voltage dividers are (full resistor network as RetroSix calls it) gets quite hot after a few seconds with the power on</li>
+<li>When turning the brightness screen to its highest position, the power board starts doing cracking-like sounds and after some seconds the console might even shut down
+<ul>
+<li>This happens either connected to an AC adapter or using batteries</li>
+<li><strong>Could it be caused by the solid electrolytic capacitor?</strong></li>
+</ul></li>
+</ul>
 
 
+</section>
 </section>
 </section>
 
@@ -615,15 +826,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="../../retro-sdks/sega/mega-drive.html" class="pagination-link">
-        <span class="nav-page-text">Mega Drive SDKs</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
@@ -633,7 +835,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <div class="nav-footer-center">
       <ul class="footer-items list-unstyled">
     <li class="nav-item">
-    <a class="nav-link" href="../../about.html">About</a>
+    <a class="nav-link" href="../../../about.html">About</a>
   </li>  
 </ul>
     </div>

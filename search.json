@@ -1,26 +1,5 @@
 [
   {
-    "objectID": "retro-sdks/sega/mega-drive.html",
-    "href": "retro-sdks/sega/mega-drive.html",
-    "title": "Mega Drive SDKs",
-    "section": "",
-    "text": "TODO: talk about SDK for Mega Drive"
-  },
-  {
-    "objectID": "retro-sdks/sega/mega-drive.html#installing-sgdk",
-    "href": "retro-sdks/sega/mega-drive.html#installing-sgdk",
-    "title": "Mega Drive SDKs",
-    "section": "Installing SGDK",
-    "text": "Installing SGDK\nWe’ll be deploying the excellent and mature SGDK by Stephane Dallongeville, that allows to develop Mega Drive games in C language.\n\nDeveloping on Linux\nSGDK works natively on Windows, but there are options to make it work on Linux:\n\nUsing Wine\nUsing Marsdev. Here we install the SDK locally instead of using a Docker image for building the project\n\nQuick installation steps: link\nCompile time is long, so let it do its thing\nSet the $MARSDEV environment variable in .bashrc like this: export MARSDEV=/home/$USER/mars\nCreate a softlink within the $MARSDEV path that points to the SGDK created on compile time within the Marsdev repository. This is required for later use in VS Code extensions\n\n\n\nInclude SGDK to Marsdev path\n\ncd $MARSDEV\nln -s /path/to/git/repository/marsdev/sgdk sgdk\n\n\n\n\nCompiling\nWe can use the following alternatives to compile our projects:\n\nLocally, previously compiling SGDK or Marsdev toolchains\nUsing a Docker image (Dockerfile provided in Stephane’s repository). Just follow these instructions to build your own SGDK docker image and use it to compile your code\n\nThis approach also uses Wine within the Docker container to launch SGDK\n\nUsing Doragasu, another Docker image. Again, just use these instructions to build your project\n\nThis approach uses native Linux compiler, much faster\n\n\nSome compile times comparison:\n\n\n\nApproach\nTime\n\n\n\n\nSGDK docker\n13.721s\n\n\nDoragasu docker\n6.952s\n\n\n\n\n\nDebugging\nWhen using Marsdev, the GDC for m64k (m68k-elf-gdb) isn’t compiled by default. Launch the following command from the git repository root path:\n\n\nCompiling m68k GDB\n\n# Install required dependencies\nsudo apt-get install libgmp-dev\n\nmake m68k-gdb\n\nTake note of the binary path as we’ll have to check it when configuring our text editor.\nWe also need an emulator to run the code and to properly attach when debugging. BlastEm is a relatively modern emulator with embedded debugger. Gens is another good option with very intuitive GUI for debugging purposes.\n\nBlastEm - Use nighly builds\n\nDownload the latest nightly build. At the moment of writing this article (2023/05/07), the available stable 0.6.2 version fails due to missing instructions\n\nVerified version: nightly build from 2023/04/03\n\nUncompress the file and add the resulting directory to your $PATH environment variable\n\nMake sure to update it in your .bashrc file"
-  },
-  {
-    "objectID": "retro-sdks/sega/mega-drive.html#text-editors",
-    "href": "retro-sdks/sega/mega-drive.html#text-editors",
-    "title": "Mega Drive SDKs",
-    "section": "Text editors",
-    "text": "Text editors\n\nVS Code\nWe’ll be using Genesis Code extension by Zerasul to help us with the programming side of things. This extension is compatible with all previously mentioned compiling options, both Docker images and Marsdev.\nConfiguration:\n\nCheck Doragasu Image if you plan on using Doragasu GitLab image for building purposes\nSet docker as the Toolchain Type if you plan on using Docker images on build stage\nSet the $MARSDEV env variable\n\nCreating a new Mega Drive project is as simple as launching Genesis Code: create project from the Command palette. Then check that the .vscode path has been created and make sure that both launch.json and settings.json point towards the right MARSDEV paths, else VS Code won’t include the SGDK headers to the project.\n\nDebug configuration\nIn order to properly debug using BlastEm, check the .vscode/launch.json file and make sure that everything points towards the correct paths:\n\nprogram: should be the ELF program created when compiling with the debug options enabled (Genesis Code: Compile for Debugging in the command palette).\n\nThis file must include the symbols\nWhen compiling with SGDK, the generated file is out/rom.out\n\nsourcefileMap: it must point to the SGDK src path, retrieved using the Marsdev make targets\nmiDebuggerPath: don’t touch it. Just make sure you compiled the m68k-elf-gdb as told in previous steps\nmiDebuggerArgs: make sure that the emulator name is correct and that it launches the out/rom.bin file\n\nOnce done, go to the Run and Debug option (CTRL + SHIFT + D), select the Debug with gdb remote profile and click on play. If a breakpoint has been set in your code, the Debug var should start to show some info:\n\n\n\nVS Code debugging a Hello World example\n\n\n\n\n\n\n\n\nTODO: create a VS Codium Docker image that already includes Marsdev installed"
-  },
-  {
     "objectID": "retro-sdks/nintendo/nes.html#installing-sdk",
     "href": "retro-sdks/nintendo/nes.html#installing-sdk",
     "title": "NES SDKs",
@@ -42,10 +21,73 @@
     "text": "About this site:\nRetroDev docs aims to ease the deployment of the required software development tools to start new retro-games’ projects."
   },
   {
+    "objectID": "repairs/SEGA/Game Gear/VA0-B0126683.html",
+    "href": "repairs/SEGA/Game Gear/VA0-B0126683.html",
+    "title": "Game Gear VA0 - 1",
+    "section": "",
+    "text": "Japanese Game Gear bought during my trip to Japan on August 2023\nIt came with a broken japanese TV tuner\nThe screen protector was already replaced but the console seemed unmodified (screws were tight and capacitors were the stock ones)\n\n\n\n\n\n\n\nWarning\n\n\n\nAdd a picture of the console here. Show them the goods!\n\n\n\n\n\nModel Number: HGG-3210\nSerial Number: B0126683\nMain board: 837-7398-01 (Twin ASIC)\nPower board:\nAudio board: 837-7400-01 (Initial release Japanese Game Gear with square-body surface mount caps similar to GG main boards)"
+  },
+  {
+    "objectID": "repairs/SEGA/Game Gear/VA0-B0126683.html#specs",
+    "href": "repairs/SEGA/Game Gear/VA0-B0126683.html#specs",
+    "title": "Game Gear VA0 - 1",
+    "section": "",
+    "text": "Model Number: HGG-3210\nSerial Number: B0126683\nMain board: 837-7398-01 (Twin ASIC)\nPower board:\nAudio board: 837-7400-01 (Initial release Japanese Game Gear with square-body surface mount caps similar to GG main boards)"
+  },
+  {
+    "objectID": "repairs/SEGA/Game Gear/VA0-B0126683.html#visual-inspection",
+    "href": "repairs/SEGA/Game Gear/VA0-B0126683.html#visual-inspection",
+    "title": "Game Gear VA0 - 1",
+    "section": "Visual inspection",
+    "text": "Visual inspection\n\nOutside: The outside has visible scratches from usage but no cracks\nMain board: capacitor leaks are visible on its legs but it doesn’t seem to have spread nor damaged any trace or pad\n\n\n\n\n\n\n\nWarning\n\n\n\nNo available picture of original caps in main board\n\n\n\nPower board: no visible leaks\n\n\n\n\nPower board - original capacitors\n\n\n\nAudio board: visible leaks in capacitors\n\n\n\n\nAudio board - original capacitors\n\n\n\nBattery contacts: some rust in the battery compartment as well as in some springs, but nothing serious"
+  },
+  {
+    "objectID": "repairs/SEGA/Game Gear/VA0-B0126683.html#first-boot",
+    "href": "repairs/SEGA/Game Gear/VA0-B0126683.html#first-boot",
+    "title": "Game Gear VA0 - 1",
+    "section": "First boot",
+    "text": "First boot\n\nPower LED turns on a few seconds and then it turns off\nThe screen doesn’t turn on and there’s no sound either"
+  },
+  {
+    "objectID": "repairs/SEGA/Game Gear/VA0-B0126683.html#recap",
+    "href": "repairs/SEGA/Game Gear/VA0-B0126683.html#recap",
+    "title": "Game Gear VA0 - 1",
+    "section": "2023/10/01: Recap",
+    "text": "2023/10/01: Recap\n\nFollowing Retrosix’s wiki, the capacitors are replaced like this:\n\n\nPower board\n\nCapacitors are replaced with new electrolytic ones with the same rating\nThe only exception is the 820uF/6.3V one that has been replaced with a solid electrolytic capacitor of the same rating (does it make any difference compared to the standard electrolytic ones?)\n\nAccording to the data sheet, solid electrolytic capacitors have a low ESR and high ripple current\n\n\n\n\n\nPower board - Fully recapped\n\n\n\n\n\n\n\n\nA kind advice on thru-hole capacitors removal!\n\n\n\nRemoving some capacitors proved to be quite challenging, even with an electrical desoldering pump. The trick to keep the vias intact is to reapply new solder several times to mix old solder with new one. Flux is indispensable to help transfer heat on already old and dry solder as well!\nIf a leg is stubbornly stuck, use some desoldering wick with new solder and a lot of flux to remove the excess inside the via by capilarity. Rinse and repeat until the leg is free!\n\n\n\n\nAudio board\n\nAll capacitors are replaced with 100uF/10V ceramic capacitors\n\n\n\n\nAudio board - Fully recapped\n\n\n\n\nMain board\n\nAll capacitors rated lower than 1uF are replaced with 1uF/50V ceramic capacitors\nAll capacitors rated lower between 1uF and 10uF are replaced with 10uF/50V ceramic capacitors\nAll capacitors rated higher than 10uF are replaced with 100uF/10V ceramic capacitors\n\n\n\n\nMain board - Fully recapped\n\n\n\n\n\nMain board - Left side recap detail\n\n\n\n\n\nMain board - Right side recap detail\n\n\n\n\n\nMain board - Right side recap zoom\n\n\nSome capacitor pads presented a huge amount of corrosion, making it a little bit difficult to reheat and clean them. Before applying any heat to the corroded pads, I applied some vinegar in order to neutralize as much as possible the leaked acids. Using soldering paste proved to be quite useful in areas where the soldering iron could potentially melt plastic connectors, as its low-temp melting point made for quicker joins."
+  },
+  {
+    "objectID": "repairs/SEGA/Game Gear/VA0-B0126683.html#section",
+    "href": "repairs/SEGA/Game Gear/VA0-B0126683.html#section",
+    "title": "Game Gear VA0 - 1",
+    "section": "2023/10/01",
+    "text": "2023/10/01\n\nState on stable boot\n\nConsole enters the Red Light Boot state, required for further troubleshooting and repairs\n\nAll voltage levels are within the expected ranges\n\nAudio board also works, both the speaker output and the output jack\nLCD screen doesn’t turn on, neither the fluorescent tube\n\nI haven’t checked if there’s really no image on the LCD, pending to use some kind of light as replacement of the tube just to be sure\n\n\n\n\n\n\n\n\nTip\n\n\n\nIf everything else is fine, this console could be a good candidate for a screen replacement\n\n\n\n\nAdditional issues detected\n\nIt seems that the zone where the voltage dividers are (full resistor network as RetroSix calls it) gets quite hot after a few seconds with the power on\nWhen turning the brightness screen to its highest position, the power board starts doing cracking-like sounds and after some seconds the console might even shut down\n\nThis happens either connected to an AC adapter or using batteries\nCould it be caused by the solid electrolytic capacitor?"
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "RetroDev docs",
     "section": "",
     "text": "Welcome to RetroDev docs. Here you’ll find guides and hints for retro-gaming development."
+  },
+  {
+    "objectID": "retro-sdks/sega/mega-drive.html",
+    "href": "retro-sdks/sega/mega-drive.html",
+    "title": "Mega Drive SDKs",
+    "section": "",
+    "text": "TODO: talk about SDK for Mega Drive"
+  },
+  {
+    "objectID": "retro-sdks/sega/mega-drive.html#installing-sgdk",
+    "href": "retro-sdks/sega/mega-drive.html#installing-sgdk",
+    "title": "Mega Drive SDKs",
+    "section": "Installing SGDK",
+    "text": "Installing SGDK\nWe’ll be deploying the excellent and mature SGDK by Stephane Dallongeville, that allows to develop Mega Drive games in C language.\n\nDeveloping on Linux\nSGDK works natively on Windows, but there are options to make it work on Linux:\n\nUsing Wine\nUsing Marsdev. Here we install the SDK locally instead of using a Docker image for building the project\n\nQuick installation steps: link\nCompile time is long, so let it do its thing\nSet the $MARSDEV environment variable in .bashrc like this: export MARSDEV=/home/$USER/mars\nCreate a softlink within the $MARSDEV path that points to the SGDK created on compile time within the Marsdev repository. This is required for later use in VS Code extensions\n\n\n\nInclude SGDK to Marsdev path\n\ncd $MARSDEV\nln -s /path/to/git/repository/marsdev/sgdk sgdk\n\n\n\n\nCompiling\nWe can use the following alternatives to compile our projects:\n\nLocally, previously compiling SGDK or Marsdev toolchains\nUsing a Docker image (Dockerfile provided in Stephane’s repository). Just follow these instructions to build your own SGDK docker image and use it to compile your code\n\nThis approach also uses Wine within the Docker container to launch SGDK\n\nUsing Doragasu, another Docker image. Again, just use these instructions to build your project\n\nThis approach uses native Linux compiler, much faster\n\n\nSome compile times comparison:\n\n\n\nApproach\nTime\n\n\n\n\nSGDK docker\n13.721s\n\n\nDoragasu docker\n6.952s\n\n\n\n\n\nDebugging\nWhen using Marsdev, the GDC for m64k (m68k-elf-gdb) isn’t compiled by default. Launch the following command from the git repository root path:\n\n\nCompiling m68k GDB\n\n# Install required dependencies\nsudo apt-get install libgmp-dev\n\nmake m68k-gdb\n\nTake note of the binary path as we’ll have to check it when configuring our text editor.\nWe also need an emulator to run the code and to properly attach when debugging. BlastEm is a relatively modern emulator with embedded debugger. Gens is another good option with very intuitive GUI for debugging purposes.\n\nBlastEm - Use nighly builds\n\nDownload the latest nightly build. At the moment of writing this article (2023/05/07), the available stable 0.6.2 version fails due to missing instructions\n\nVerified version: nightly build from 2023/04/03\n\nUncompress the file and add the resulting directory to your $PATH environment variable\n\nMake sure to update it in your .bashrc file"
+  },
+  {
+    "objectID": "retro-sdks/sega/mega-drive.html#text-editors",
+    "href": "retro-sdks/sega/mega-drive.html#text-editors",
+    "title": "Mega Drive SDKs",
+    "section": "Text editors",
+    "text": "Text editors\n\nVS Code\nWe’ll be using Genesis Code extension by Zerasul to help us with the programming side of things. This extension is compatible with all previously mentioned compiling options, both Docker images and Marsdev.\nConfiguration:\n\nCheck Doragasu Image if you plan on using Doragasu GitLab image for building purposes\nSet docker as the Toolchain Type if you plan on using Docker images on build stage\nSet the $MARSDEV env variable\n\nCreating a new Mega Drive project is as simple as launching Genesis Code: create project from the Command palette. Then check that the .vscode path has been created and make sure that both launch.json and settings.json point towards the right MARSDEV paths, else VS Code won’t include the SGDK headers to the project.\n\nDebug configuration\nIn order to properly debug using BlastEm, check the .vscode/launch.json file and make sure that everything points towards the correct paths:\n\nprogram: should be the ELF program created when compiling with the debug options enabled (Genesis Code: Compile for Debugging in the command palette).\n\nThis file must include the symbols\nWhen compiling with SGDK, the generated file is out/rom.out\n\nsourcefileMap: it must point to the SGDK src path, retrieved using the Marsdev make targets\nmiDebuggerPath: don’t touch it. Just make sure you compiled the m68k-elf-gdb as told in previous steps\nmiDebuggerArgs: make sure that the emulator name is correct and that it launches the out/rom.bin file\n\nOnce done, go to the Run and Debug option (CTRL + SHIFT + D), select the Debug with gdb remote profile and click on play. If a breakpoint has been set in your code, the Debug var should start to show some info:\n\n\n\nVS Code debugging a Hello World example\n\n\n\n\n\n\n\n\nTODO: create a VS Codium Docker image that already includes Marsdev installed"
   }
 ]
