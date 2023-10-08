@@ -92,13 +92,25 @@ Some capacitor pads presented a huge amount of corrosion, making it a little bit
 - Audio board also works, both the speaker output and the output jack
 - LCD screen doesn't turn on, neither the fluorescent tube 
     - I haven't checked if there's really no image on the LCD, pending to use some kind of light as replacement of the tube just to be sure
+- There's visible smoke and smell around transformer T1, L2 and C33
+
+### Continuity checks
+- Fluorescent tube fuses are OK
+- **No continuity between cartridge pin 1 and the +34V rail**
 
 :::callout-tip
 If everything else is fine, this console could be a good candidate for a screen replacement
 :::
 
 ### Additional issues detected
-- It seems that the zone where the voltage dividers are (full resistor network as RetroSix calls it) gets quite hot after a few seconds with the power on
-- When turning the brightness screen to its highest position, the power board starts doing cracking-like sounds and after some seconds the console might even shut down
-    - This happens either connected to an AC adapter or using batteries
-    - **Could it be caused by the solid electrolytic capacitor?**
+- It seems that the zone where the voltage dividers are (full resistor network as RetroSix calls it) gets quite hot after a few seconds with the power o
+
+# Next steps
+## 34V rail
+- Try to troubleshoot where the broken path is and repair it
+## T1 voltages
+- Check T1 voltages, see if it is faulty
+## L2 inductor
+- Check L2 inductor status
+## C33 capacitor
+- Check if C33 capacitor is faulty
