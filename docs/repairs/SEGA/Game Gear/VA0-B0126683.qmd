@@ -2,7 +2,8 @@
 title: "Game Gear VA0 - 1"
 author: ProtossGP32
 date: 2023/10/02
-description: "Game Gear bought on Japan"
+description: "Game Gear bought on Japan 2023"
+categories: ["Game Gear", "SEGA", "Repair"]
 ---
 
 # Console details
@@ -19,16 +20,17 @@ Add a picture of the console here. Show them the goods!
 - Model Number: HGG-3210
 - Serial Number: B0126683
 - Main board: 837-7398-01 (Twin ASIC)
-- Power board:
+- Power board: 837-7399-01
 - Audio board: 837-7400-01 (Initial release Japanese Game Gear with square-body surface mount caps similar to GG main boards)
 
 # Overview
 ## Visual inspection
 - Outside: The outside has visible scratches from usage but no cracks
-- Main board: capacitor leaks are visible on its legs but it doesn't seem to have spread nor damaged any trace or pad
+- Main board: capacitor leaks are visible on its legs. Zone next to the fluorescent tube is damaged, it is just below the corroded battery spring so battery leak might have been the cause
 
 :::callout-warning
-No available picture of original caps in main board
+No available picture of original caps in main board.
+Add picture of corroded zone of the main board.
 :::
 
 - Power board: no visible leaks
@@ -39,7 +41,7 @@ No available picture of original caps in main board
 
 ![Audio board - original capacitors](../../../images/repairs/SEGA/Game%20Gear/VA0/B0126683/20231001_audio_board_original_caps.jpg)
 
-- Battery contacts: some rust in the battery compartment as well as in some springs, but nothing serious
+- Battery contacts: some rust in the battery compartment as well as in some springs, but nothing serious. 
 
 ## First boot
 - Power LED turns on a few seconds and then it turns off
@@ -47,7 +49,7 @@ No available picture of original caps in main board
 
 # Maintenance
 ## 2023/10/01: Recap
-- Following [Retrosix's wiki](https://www.retrosix.wiki/capacitor-replacement-game-gear), the capacitors are replaced like this:
+Following [Retrosix's wiki](https://www.retrosix.wiki/capacitor-replacement-game-gear), the capacitors are replaced like this:
 
 ### Power board
 - Capacitors are replaced with new electrolytic ones with the same rating
@@ -69,9 +71,9 @@ If a leg is stubbornly stuck, use some desoldering wick with new solder and a lo
 ![Audio board - Fully recapped](../../../images/repairs/SEGA/Game%20Gear/VA0/B0126683/20231001_audio_board_recap.jpg)
 
 ### Main board
-- All capacitors rated lower than 1uF are replaced with 1uF/50V ceramic capacitors
-- All capacitors rated lower between 1uF and 10uF are replaced with 10uF/50V ceramic capacitors
-- All capacitors rated higher than 10uF are replaced with 100uF/10V ceramic capacitors
+- All original capacitors rated lower than 1uF are replaced with 1uF/50V ceramic capacitors
+- All original capacitors rated lower between 1uF and 10uF are replaced with 10uF/50V ceramic capacitors
+- All original capacitors rated higher than 10uF are replaced with 100uF/10V ceramic capacitors
 
 ![Main board - Fully recapped](../../../images/repairs/SEGA/Game%20Gear/VA0/B0126683/20231001_main_board_recap.jpg)
 
@@ -103,11 +105,13 @@ If everything else is fine, this console could be a good candidate for a screen 
 :::
 
 ### Additional issues detected
-- It seems that the zone where the voltage dividers are (full resistor network as RetroSix calls it) gets quite hot after a few seconds with the power o
+- It seems that the zone where the voltage dividers are (full resistor network as RetroSix calls it) gets quite hot after a few seconds with the power on
+
+## 2023/10/08
+### 34V rail
+- Repaired full rail. Now cartridge pin 1 receives 34V, but no improvements overall.
 
 # Next steps
-## 34V rail
-- Try to troubleshoot where the broken path is and repair it
 ## T1 voltages
 - Check T1 voltages, see if it is faulty
 ## L2 inductor

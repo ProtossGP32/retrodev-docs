@@ -1,0 +1,150 @@
+---
+title: "Game Gear VA0 - 2"
+author: ProtossGP32
+date: 2023/10/08
+description: "Game Gear bought on Japan 2023"
+categories: ["Game Gear", "SEGA", "Repair"]
+---
+
+# Console details
+
+- Japanese Game Gear bought during my trip to Japan on August 2023
+- The screen protector was already replaced but the console seemed unmodified (screws were tight and capacitors were the stock ones)
+
+![Game Gear - Front view](../../../images/repairs/SEGA/Game%20Gear/VA0/B0160205/20231008_game_gear_front.jpg)
+
+![Game Gear - Rear view](../../../images/repairs/SEGA/Game%20Gear/VA0/B0160205/20231008_game_gear_rear.jpg)
+
+## Specs
+- Model Number: HGG-3210
+- Serial Number: B0160205
+- Main board: 837-7398-01 (Twin ASIC)
+- Power board: 837-7399-01
+- Audio board: 837-7400-01 (Initial release Japanese Game Gear with square-body surface mount caps similar to GG main boards)
+
+# Overview
+## Visual inspection
+- Outside: The outside has visible scratches from usage but no cracks
+- Main board: capacitor leaks are visible on its legs, extreme precautions when removing and cleaning the pads
+
+![Main board - original capacitors](../../../images/repairs/SEGA/Game%20Gear/VA0/B0160205/20231008_main_board_original_caps.jpg)
+
+![Main board - left side original caps. Visible caps leakage](../../../images/repairs/SEGA/Game%20Gear/VA0/B0160205/20231008_main_board_original_caps_detail_left.jpg)
+
+![Main board - left side original caps 2. Visible caps leakage](../../../images/repairs/SEGA/Game%20Gear/VA0/B0160205/20231008_main_board_original_caps_detail_left_2.jpg)
+
+![Main board - right side original caps 2. Leakage has reached the fluorescent light contact and nearby components](../../../images/repairs/SEGA/Game%20Gear/VA0/B0160205/20231008_main_board_original_caps_detail_right.jpg)
+
+- Power board: no visible leaks
+
+![Power board - original capacitors](../../../images/repairs/SEGA/Game%20Gear/VA0/B0160205/20231008_power_board_original_caps.jpg)
+
+- Audio board:
+
+![Audio board - original capacitors. Visible leakage on all of them, and affecting IC1 leg 4](../../../images/repairs/SEGA/Game%20Gear/VA0/B0160205/20231008_audio_board_original_caps.jpg)
+
+    
+![Audio board - connector detail badly soldered](../../../images/repairs/SEGA/Game%20Gear/VA0/B0160205/20231008_audio_board_connector_detail.jpg)
+
+![Audio board - rear view. Rear side has some residues](../../../images/repairs/SEGA/Game%20Gear/VA0/B0160205/20231008_audio_board_rear_view.jpg)
+
+- Battery contacts: no corrosion in springs nor pads
+
+## First boot
+- Power LED turns on a few seconds and then it turns off
+- The screen doesn't turn on and there's no sound either
+
+# Maintenance
+## 2023/10/08: Recap
+Following [Retrosix's wiki](https://www.retrosix.wiki/capacitor-replacement-game-gear), the capacitors are replaced like this:
+
+### Power board
+- Capacitors are replaced with new electrolytic ones with the same rating
+- The only exception is the 820uF/6.3V one that has been replaced with a **solid electrolytic capacitor of the same rating** (does it make any difference compared to the standard electrolytic ones?)
+    - According to the data sheet, solid electrolytic capacitors have a low ESR and high ripple current
+
+![Power board - Fully recapped](../../../images/repairs/SEGA/Game%20Gear/VA0/B0160205/20231008_power_board_recap.jpg)
+
+:::callout-note
+## A kind advice on thru-hole capacitors removal!
+Removing some capacitors proved to be quite challenging, even with an electrical desoldering pump. The trick to keep the vias intact is to reapply new solder several times to mix old solder with new one. Flux is indispensable to help transfer heat on already old and dry solder as well!
+
+If a leg is stubbornly stuck, use some desoldering wick with new solder and a lot of flux to remove the excess inside the via by capilarity. Rinse and repeat until the leg is free!
+
+Also use the desoldering wick to free the hole from solder before putting the new capacitors.
+:::
+
+### Audio board
+- All capacitors are replaced with 100uF/10V ceramic capacitors
+- C1 positive pad has been literally destroyed by corrosion. The new capacitor is soldered directly to the trace by exposing it a little bit
+
+![Audio board - Fully recapped](../../../images/repairs/SEGA/Game%20Gear/VA0/B0160205/20231008_audio_board_recap.jpg)
+
+### Main board
+Before doing any heating work, and seeing the amount of corrosion in the zones near the capacitors, I decided to apply a generous amount of white vinegar to all of them and let it act during some minutes, while avoiding any leakage to the LCD.
+
+This time, and following [RetroSix Wiki advises](), all capacitors have been first removed and then checked if the console reaches the Red Light Boot (RLB) state:
+
+> **Components Needed for RLB**
+>
+>_It's worth noting that **audio ICs**, every **aluminium capacitor**, the **LCD, MPU, Work RAM** nor **Video RAM** or **main crystal** are involved or even needed to be soldered on the board to get to red light boot. **Don't waste your time on those** until you get red light._
+
+With the capacitors removed, both power board and audio board are re-connected and the console is powered up again:
+
+- Power LED turns on and keeps lighted up
+- Fluorescent tube also lights up but the screen doesn't show any image
+- Audio also works when putting a cartridge
+
+Once verified that the console reaches the RLB state, it's time to solder the new capacitors. As with the previous VA-0 [B0126683](VA0-B0126683.qmd), these are the ceramic capacitors characteristics:
+
+- All original capacitors rated lower than 1uF are replaced with 1uF/50V ceramic capacitors
+- All original capacitors rated lower between 1uF and 10uF are replaced with 10uF/50V ceramic capacitors
+- All original capacitors rated higher than 10uF are replaced with 100uF/10V ceramic capacitors
+
+![Main board - Fully recapped](../../../images/repairs/SEGA/Game%20Gear/VA0/B0160205/20231008_main_board_recap.jpg)
+
+- C31 capacitor is always hard to deal with. This time the left pad has been very damaged by corrosion and the capacitor is soldered directly to the trace by exposing it a little bit
+
+![Main board - Left side recap detail](../../../images/repairs/SEGA/Game%20Gear/VA0/B0160205/20231008_main_board_recap_detail_left.jpg)
+
+- The same applies to C3. Here a solution would have been to solder that side of the capacitor to the same side of C4, but then again I opted for exposing the underneath trace and solder it there
+- C1 also had damaged pads but with flux, the soldering iron, desoldering wick and patience, they have been pretty much recovered. However, during reparations, the underneath small traces have left exposed; to avoid any bridge, some kapton tape has been applied before soldering the new capacitor
+
+![Main board - Left side recap detail 2](../../../images/repairs/SEGA/Game%20Gear/VA0/B0160205/20231008_main_board_recap_detail_left_2.jpg)
+
+
+
+![Main board - Right side recap detail](../../../images/repairs/SEGA/Game%20Gear/VA0/B0160205/20231008_main_board_recap_detail_right.jpg)
+
+
+This time I didn't use soldering paste because in the previous repair the result wasn't cleaner enough for me and although there wasn't shorts it seemed like the paste might create a bridge under the cap. The results are cleaner caps and brighter soldering points.
+
+The soldering technique used this time consisted on the following steps:
+
+- Tin one of the pads
+- Pin one side of the capacitor to that pad
+- After that apply solder to the other side
+- Once done, rework the first pad by applying additional solder and adjusting the capacitor by applying heat to both pads if necessary
+- Use a pair of tweezers to secure the capacitor in place while applying heat
+
+# Console status
+## 2023/10/08
+### State on stable boot
+- Console enters the [Red Light Boot state](https://www.retrosix.wiki/getting-to-red-light-boot-game-gear), required for further troubleshooting and repairs
+    - All voltage levels are within the expected ranges
+- Audio board also works, both the speaker output and the output jack
+- LCD screen turns on and the fluorescent tube lights up. **There are visible static green pixels scattered around the screen**
+- Brightness can be correctly adjusted with the Bright wheel
+
+![Game Gear - Post-recap picture running Sonic the Hedgehog 2](../../../images/repairs/SEGA/Game%20Gear/VA0/B0160205/20231008_game_gear_working_1.jpg)
+
+![Game Gear - Post-recap picture running Sonic the Hedgehog 2](../../../images/repairs/SEGA/Game%20Gear/VA0/B0160205/20231008_game_gear_working_2.jpg)
+
+![Game Gear - Post-recap picture running Sonic the Hedgehog 2](../../../images/repairs/SEGA/Game%20Gear/VA0/B0160205/20231008_game_gear_working_3.jpg)
+
+### Continuity checks
+- Fluorescent tube fuses are OK
+
+# Next steps
+## Screen replacement
+- Due to the green pixels in the screen, if any of the pending Game Gears to repair has a better LCD, this console might be a good candidate to install a modern screen
