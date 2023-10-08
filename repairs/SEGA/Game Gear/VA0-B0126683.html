@@ -221,8 +221,13 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section">2023/10/01</a>
   <ul class="collapse">
   <li><a href="#state-on-stable-boot" id="toc-state-on-stable-boot" class="nav-link" data-scroll-target="#state-on-stable-boot">State on stable boot</a></li>
+  <li><a href="#continuity-checks" id="toc-continuity-checks" class="nav-link" data-scroll-target="#continuity-checks">Continuity checks</a></li>
   <li><a href="#additional-issues-detected" id="toc-additional-issues-detected" class="nav-link" data-scroll-target="#additional-issues-detected">Additional issues detected</a></li>
   </ul></li>
+  </ul></li>
+  <li><a href="#next-steps" id="toc-next-steps" class="nav-link" data-scroll-target="#next-steps">Next steps</a>
+  <ul class="collapse">
+  <li><a href="#v-rail" id="toc-v-rail" class="nav-link" data-scroll-target="#v-rail">34V rail</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/protossgp32/retrodev-docs/edit/main/docs/repairs/SEGA/Game Gear/VA0-B0126683.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/protossgp32/retrodev-docs/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
@@ -446,6 +451,14 @@ A kind advice on thru-hole capacitors removal!
 <ul>
 <li>I haven’t checked if there’s really no image on the LCD, pending to use some kind of light as replacement of the tube just to be sure</li>
 </ul></li>
+<li>There’s visible smoke and smell around transformer T1, L2 and C33</li>
+</ul>
+</section>
+<section id="continuity-checks" class="level3">
+<h3 class="anchored" data-anchor-id="continuity-checks">Continuity checks</h3>
+<ul>
+<li>Fluorescent tube fuses are OK</li>
+<li><strong>No continuity between cartridge pin 1 and the +34V rail</strong></li>
 </ul>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -464,16 +477,23 @@ Tip
 <section id="additional-issues-detected" class="level3">
 <h3 class="anchored" data-anchor-id="additional-issues-detected">Additional issues detected</h3>
 <ul>
-<li>It seems that the zone where the voltage dividers are (full resistor network as RetroSix calls it) gets quite hot after a few seconds with the power on</li>
-<li>When turning the brightness screen to its highest position, the power board starts doing cracking-like sounds and after some seconds the console might even shut down
+<li>It seems that the zone where the voltage dividers are (full resistor network as RetroSix calls it) gets quite hot after a few seconds with the power o</li>
+</ul>
+</section>
+</section>
+</section>
+<section id="next-steps" class="level1">
+<h1>Next steps</h1>
+<section id="v-rail" class="level2">
+<h2 class="anchored" data-anchor-id="v-rail">34V rail</h2>
 <ul>
-<li>This happens either connected to an AC adapter or using batteries</li>
-<li><strong>Could it be caused by the solid electrolytic capacitor?</strong></li>
-</ul></li>
+<li>Try to troubleshoot where the broken path is and repair it ## T1 voltages</li>
+<li>Check T1 voltages, see if it is faulty ## L2 inductor</li>
+<li>Check L2 inductor status ## C33 capacitor</li>
+<li>Check if C33 capacitor is faulty</li>
 </ul>
 
 
-</section>
 </section>
 </section>
 

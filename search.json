@@ -60,7 +60,14 @@
     "href": "repairs/SEGA/Game Gear/VA0-B0126683.html#section",
     "title": "Game Gear VA0 - 1",
     "section": "2023/10/01",
-    "text": "2023/10/01\n\nState on stable boot\n\nConsole enters the Red Light Boot state, required for further troubleshooting and repairs\n\nAll voltage levels are within the expected ranges\n\nAudio board also works, both the speaker output and the output jack\nLCD screen doesn’t turn on, neither the fluorescent tube\n\nI haven’t checked if there’s really no image on the LCD, pending to use some kind of light as replacement of the tube just to be sure\n\n\n\n\n\n\n\n\nTip\n\n\n\nIf everything else is fine, this console could be a good candidate for a screen replacement\n\n\n\n\nAdditional issues detected\n\nIt seems that the zone where the voltage dividers are (full resistor network as RetroSix calls it) gets quite hot after a few seconds with the power on\nWhen turning the brightness screen to its highest position, the power board starts doing cracking-like sounds and after some seconds the console might even shut down\n\nThis happens either connected to an AC adapter or using batteries\nCould it be caused by the solid electrolytic capacitor?"
+    "text": "2023/10/01\n\nState on stable boot\n\nConsole enters the Red Light Boot state, required for further troubleshooting and repairs\n\nAll voltage levels are within the expected ranges\n\nAudio board also works, both the speaker output and the output jack\nLCD screen doesn’t turn on, neither the fluorescent tube\n\nI haven’t checked if there’s really no image on the LCD, pending to use some kind of light as replacement of the tube just to be sure\n\nThere’s visible smoke and smell around transformer T1, L2 and C33\n\n\n\nContinuity checks\n\nFluorescent tube fuses are OK\nNo continuity between cartridge pin 1 and the +34V rail\n\n\n\n\n\n\n\nTip\n\n\n\nIf everything else is fine, this console could be a good candidate for a screen replacement\n\n\n\n\nAdditional issues detected\n\nIt seems that the zone where the voltage dividers are (full resistor network as RetroSix calls it) gets quite hot after a few seconds with the power o"
+  },
+  {
+    "objectID": "repairs/SEGA/Game Gear/VA0-B0126683.html#v-rail",
+    "href": "repairs/SEGA/Game Gear/VA0-B0126683.html#v-rail",
+    "title": "Game Gear VA0 - 1",
+    "section": "34V rail",
+    "text": "34V rail\n\nTry to troubleshoot where the broken path is and repair it ## T1 voltages\nCheck T1 voltages, see if it is faulty ## L2 inductor\nCheck L2 inductor status ## C33 capacitor\nCheck if C33 capacitor is faulty"
   },
   {
     "objectID": "index.html",
