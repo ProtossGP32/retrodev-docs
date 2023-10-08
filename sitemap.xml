@@ -2,22 +2,26 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://protossgp32.github.io/retrodev-docs/retro-sdks/nintendo/nes.html</loc>
-    <lastmod>2023-10-08T09:38:37.553Z</lastmod>
+    <lastmod>2023-10-08T23:09:49.555Z</lastmod>
   </url>
   <url>
     <loc>https://protossgp32.github.io/retrodev-docs/about.html</loc>
-    <lastmod>2023-10-08T09:38:36.525Z</lastmod>
+    <lastmod>2023-10-08T23:09:48.631Z</lastmod>
+  </url>
+  <url>
+    <loc>https://protossgp32.github.io/retrodev-docs/repairs/SEGA/Game Gear/VA0-B0160205.html</loc>
+    <lastmod>2023-10-08T23:09:45.223Z</lastmod>
   </url>
   <url>
     <loc>https://protossgp32.github.io/retrodev-docs/repairs/SEGA/Game Gear/VA0-B0126683.html</loc>
-    <lastmod>2023-10-08T09:38:34.693Z</lastmod>
+    <lastmod>2023-10-08T23:09:47.687Z</lastmod>
   </url>
   <url>
     <loc>https://protossgp32.github.io/retrodev-docs/index.html</loc>
-    <lastmod>2023-10-08T09:38:36.153Z</lastmod>
+    <lastmod>2023-10-08T23:09:48.319Z</lastmod>
   </url>
   <url>
     <loc>https://protossgp32.github.io/retrodev-docs/retro-sdks/sega/mega-drive.html</loc>
-    <lastmod>2023-10-08T09:38:37.145Z</lastmod>
+    <lastmod>2023-10-08T23:09:49.207Z</lastmod>
   </url>
 </urlset>
