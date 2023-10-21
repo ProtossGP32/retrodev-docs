@@ -1,0 +1,223 @@
+---
+title: "Game Gear VA0 - 3"
+author: ProtossGP32
+date: 2023/10/21
+description: "Game Gear bought on Japan 2023"
+categories: ["Game Gear", "SEGA", "Repair"]
+---
+
+# Console details
+
+- Japanese Game Gear bought during my trip to Japan on August 2023
+- The screen protector was already replaced but the console seemed unmodified (screws were tight and capacitors were the stock ones)
+
+![Game Gear - Front view](../../../images/repairs/SEGA/Game%20Gear/VA0/B0097296/20231021_game_gear_front.jpg)
+
+![Game Gear - Rear view](../../../images/repairs/SEGA/Game%20Gear/VA0/B0097296/20231021_game_gear_rear.jpg)
+
+## Specs
+- Model Number: HGG-3210
+- Serial Number: B0097296
+- Main board: 837-7398-01 (Twin ASIC)
+- Power board: 837-7399-01
+- Audio board: 837-7400-01 (Initial release Japanese Game Gear with square-body surface mount caps similar to GG main boards)
+
+# Overview
+## Visual inspection
+- Outside: the outside has visible scratches from usage but no cracks
+- Battery contacts: no signs of corrosion in the springs and plates
+- Main board: capacitor leaks are visible on its legs, extreme precautions when removing and cleaning the pads. Also a lot of traces have been corroded, it's possible that connectivity between layers is broken at some points
+
+![Main board - original capacitors](../../../images/repairs/SEGA/Game%20Gear/VA0/B0097296/20231021_main_board_original_caps.jpg)
+
+![Main board - left side original caps. Visible caps leakage](../../../images/repairs/SEGA/Game%20Gear/VA0/B0097296/20231021_main_board_original_caps_detail_left.jpg)
+
+![Main board - left side original caps 2. Visible caps leakage](../../../images/repairs/SEGA/Game%20Gear/VA0/B0097296/20231021_main_board_original_caps_detail_left_2.jpg)
+
+![Main board - right side original caps 2. Leakage has reached the fluorescent light contact and nearby components](../../../images/repairs/SEGA/Game%20Gear/VA0/B0097296/20231021_main_board_original_caps_detail_right.jpg)
+
+- Power board: no visible leaks
+
+![Power board - original capacitors](../../../images/repairs/SEGA/Game%20Gear/VA0/B0097296/20231021_power_board_original_caps.jpg)
+
+- Audio board:
+
+![Audio board - original capacitors. Visible leakage on all of them, and affecting IC1 leg 4](../../../images/repairs/SEGA/Game%20Gear/VA0/B0097296/20231021_audio_board_original_caps.jpg)
+
+    
+![Audio board - connector detail badly soldered](../../../images/repairs/SEGA/Game%20Gear/VA0/B0097296/20231021_audio_board_connector_detail.jpg)
+
+![Audio board - rear view. Rear side has some residues](../../../images/repairs/SEGA/Game%20Gear/VA0/B0097296/20231021_audio_board_rear_view.jpg)
+
+- Battery contacts: no corrosion in springs nor pads
+
+## First boot
+- Power LED turns on a few seconds and then it turns off
+- The screen doesn't turn on and there's no sound either
+
+# Maintenance
+## 2023/10/21: Recap
+Following [Retrosix's wiki](https://www.retrosix.wiki/capacitor-replacement-game-gear), the capacitors are replaced like this:
+
+### Power board
+- Capacitors are replaced with new electrolytic ones with the same rating
+- The only exception is the 820uF/6.3V one that has been replaced with a **solid electrolytic capacitor of the same rating** (does it make any difference compared to the standard electrolytic ones?)
+    - According to the data sheet, solid electrolytic capacitors have a low ESR and high ripple current
+
+![Power board - Fully recapped](../../../images/repairs/SEGA/Game%20Gear/VA0/B0097296/20231021_power_board_recap.jpg)
+
+:::callout-note
+## A kind advice on thru-hole capacitors removal!
+Removing some capacitors proved to be quite challenging, even with an electrical desoldering pump. The trick to keep the vias intact is to reapply new solder several times to mix old solder with new one. Flux is indispensable to help transfer heat on already old and dry solder as well!
+
+If a leg is stubbornly stuck, use some desoldering wick with new solder and a lot of flux to remove the excess inside the via by capilarity. Rinse and repeat until the leg is free!
+
+Also use the desoldering wick to free the hole from solder before putting the new capacitors.
+:::
+
+### Audio board
+- All capacitors are replaced with 100uF/10V ceramic capacitors
+- C1 positive pad has been literally destroyed by corrosion. The new capacitor is soldered directly to the trace by exposing it a little bit
+
+![Audio board - Fully recapped](../../../images/repairs/SEGA/Game%20Gear/VA0/B0097296/20231021_audio_board_recap.jpg)
+
+:::{.callout-warning}
+## Bad audio board!
+Audio board still not working after recap! Sound is very dim from both speaker and jack, almost imperceptible due to the static noise.
+Using a functional audio board for the tests
+:::
+
+### Main board
+Before doing any heating work, and seeing the amount of corrosion in the zones near the capacitors, I decided to apply a generous amount of white vinegar to all of them and let it act during some minutes, while avoiding any leakage to the LCD.
+
+This time, and following [RetroSix Wiki advises](), all capacitors have been first removed and then checked if the console reaches the Red Light Boot (RLB) state:
+
+> **Components Needed for RLB**
+>
+>_It's worth noting that **audio ICs**, every **aluminium capacitor**, the **LCD, MPU, Work RAM** nor **Video RAM** or **main crystal** are involved or even needed to be soldered on the board to get to red light boot. **Don't waste your time on those** until you get red light._
+
+With the capacitors removed, both power board and audio board are re-connected and the console is powered up again:
+
+- Power LED doesn't turn on
+- Fluorescent tube lights up for a few seconds and after that 
+- Audio doesn't work with a cartridge on
+
+**We haven't reached the RLB state, so further troubleshooting is required before soldering the new capacitors.**
+
+#### Continuity check:
+- Good ground: OK, both R52 right pad and ASIC ground pad are connected to the ground plane
+- Power board Supply voltages: All pins are correctly connected to the pins on the Main Board and also are within the acceptable voltage ranges
+- VRef Continuity: VRef continuity to ASIC is broken:
+    - 1st point of discontinuity: via just below D2, connecting both layers
+
+    ![Mother Board - Broken connectivity of VREF below D2](../../../images/repairs/SEGA/Game%20Gear/VA0/B0097296/20231021_main_board_vref_break.jpg)
+
+    ![EasyEDA - 2-ASIC schematic detail](../../../images/repairs/SEGA/Game%20Gear/VA0/B0097296/20231021_easyeda_schematic_vref_break.jpg)
+        
+    - Fixed by drilling a small hole in the via and soldering a capacitor leg through it
+
+    ![Mother Board - Fixed connectivity of VREF below D2](../../../images/repairs/SEGA/Game%20Gear/VA0/B0097296/20231021_main_board_vref_fixed.jpg)
+
+
+- VOnOff network: VOnOff continuity to ASIC is broken:
+    - 1st point of discontinuity: via just below D2, connecting both layers
+    
+    ![Mother Board - Broken connectivity of VOnOff below D2](../../../images/repairs/SEGA/Game%20Gear/VA0/B0097296/20231021_main_board_vonoff_break.jpg)
+    
+    ![EasyEDA - 2-ASIC schematic detail](../../../images/repairs/SEGA/Game%20Gear/VA0/B0097296/20231021_easyeda_schematic_vonoff_break.jpg)
+    
+    - Fixed by drilling a small hole in the via and soldering a capacitor leg through it
+
+    ![Mother Board - Fixed connectivity of VOnOff below D2](../../../images/repairs/SEGA/Game%20Gear/VA0/B0097296/20231021_main_board_vonoff_fixed.jpg)
+
+- V5 network:
+    - ASIC isn't receiving 5V, as well as other points
+    - R38, C1, C4, C5, R1, R2: according to EasyEDA schematics, they should receive 5V, but they don't seem to be connected to the 5V plane
+    - Fixed by soldering unpopulated ZD1 5V pad to R38 right pad
+
+    ![Mother Board - Fixed connectivity of V5](../../../images/repairs/SEGA/Game%20Gear/VA0/B0097296/20231021_main_board_v5_fixed.jpg)
+
+- Other broken paths
+    - Network R39_2 on EasyEDA: broken connection between C37 bottom pad and D2/C50 top pads --> Bottom layer trace isn't connected to top layer
+        - Fixed by drilling small holes in the vias and reconstructing the bridge with a capacitor leg
+
+        ![Mother Board - Fixed connectivity of R39_2](../../../images/repairs/SEGA/Game%20Gear/VA0/B0097296/20231021_main_board_R39_2_fixed.jpg)
+
+**At this point, when powering up the console it now lights up the Power LED for a second**
+
+- VReset network:
+    - Network R51_1 on EasyEDA: broken connection between R35 left pad and VReset pin on ASIC --> Via next to D4 doesn't connect both layers
+        - Fixed by drilling a small hole in the via and soldering a capacitor leg through it
+
+        ![Mother Board - Fixed connectivity of VReset next to D4](../../../images/repairs/SEGA/Game%20Gear/VA0/B0097296/20231021_main_board_vreset_fixed.jpg)
+
+**Here it seems that we reach the RLB state, even though sometimes it keeps turning down after a second**
+
+- Cartridge slot:
+    - Cartridge makes poor connection with the slot, being very difficult to reach a successful game boot
+
+:::{.callout-warning}
+## Bad cartridge slot
+Either check the contacts or replace it
+:::
+
+Testing the main board with a working audio board from another console we get sound from an inserted cartridge. At this point we can assure that the console works and we can proceed replacing the capacitors.
+
+Once verified that the console reaches the RLB state, it's time to solder the new capacitors. As with the previous VA-0 [B0126683](VA0-B0126683.qmd), these are the ceramic capacitors characteristics:
+
+- All original capacitors rated lower than 1uF are replaced with 1uF/50V ceramic capacitors
+- All original capacitors rated lower between 1uF and 10uF are replaced with 10uF/50V ceramic capacitors
+- All original capacitors rated higher than 10uF are replaced with 100uF/10V ceramic capacitors
+
+![Main board - Fully recapped](../../../images/repairs/SEGA/Game%20Gear/VA0/B0097296/20231021_main_board_recap.jpg)
+
+
+![Main board - Left side recap detail](../../../images/repairs/SEGA/Game%20Gear/VA0/B0097296/20231021_main_board_recap_detail_left.jpg)
+
+
+![Main board - Left side recap detail 2](../../../images/repairs/SEGA/Game%20Gear/VA0/B0097296/20231021_main_board_recap_detail_left_2.jpg)
+
+
+
+![Main board - Right side recap detail](../../../images/repairs/SEGA/Game%20Gear/VA0/B0097296/20231021_main_board_recap_detail_right.jpg)
+
+
+This time I didn't use soldering paste because in the previous repair the result wasn't cleaner enough for me and although there wasn't shorts it seemed like the paste might create a bridge under the cap. The results are cleaner caps and brighter soldering points.
+
+The soldering technique used this time consisted on the following steps:
+
+- Tin one of the pads
+- Pin one side of the capacitor to that pad
+- After that apply solder to the other side
+- Once done, rework the first pad by applying additional solder and adjusting the capacitor by applying heat to both pads if necessary
+- Use a pair of tweezers to secure the capacitor in place while applying heat
+
+# Console status
+## 2023/10/21
+### Repairing time
+- 11 hours 20 minutes
+
+### State on boot
+- Console enters the [Red Light Boot state](https://www.retrosix.wiki/getting-to-red-light-boot-game-gear), required for further troubleshooting and repairs
+    - Check of voltages is required
+    - Power board should be tested on other working units
+    - Audio board should be tested on other working units
+- LCD turns on but image is very dim
+- The fluorescent tube lights up but brightness wheel acts weird
+- When tested with other working audio boards, game sound works
+- Audio is very dim
+
+**It seems as if the recap didn't make any effect at all**
+
+
+# Next steps
+## Further checks on audio board
+- Maybe capacitors aren't correctly connected or there's a broken path
+
+## Further checks on mother board
+- Again, maybe some capacitor traces are broken or it's just a non-functional screen
+
+:::{.callout-warning}
+## For spare parts
+Even though the RLB state has been reached, the main board was very damaged due to corrosion and there might still be broken traces somewhere.
+:::
