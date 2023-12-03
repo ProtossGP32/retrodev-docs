@@ -1,40 +1,5 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "RetroDev docs",
-    "section": "",
-    "text": "Welcome to RetroDev docs. Here you’ll find guides and hints for retro-gaming development."
-  },
-  {
-    "objectID": "retro-sdks/sega/mega-drive.html",
-    "href": "retro-sdks/sega/mega-drive.html",
-    "title": "Mega Drive SDKs",
-    "section": "",
-    "text": "TODO: talk about SDK for Mega Drive"
-  },
-  {
-    "objectID": "retro-sdks/sega/mega-drive.html#installing-sgdk",
-    "href": "retro-sdks/sega/mega-drive.html#installing-sgdk",
-    "title": "Mega Drive SDKs",
-    "section": "Installing SGDK",
-    "text": "Installing SGDK\nWe’ll be deploying the excellent and mature SGDK by Stephane Dallongeville, that allows to develop Mega Drive games in C language.\n\nDeveloping on Linux\nSGDK works natively on Windows, but there are options to make it work on Linux:\n\nUsing Wine\nUsing Marsdev. Here we install the SDK locally instead of using a Docker image for building the project\n\nQuick installation steps: link\nCompile time is long, so let it do its thing\nSet the $MARSDEV environment variable in .bashrc like this: export MARSDEV=/home/$USER/mars\nCreate a softlink within the $MARSDEV path that points to the SGDK created on compile time within the Marsdev repository. This is required for later use in VS Code extensions\n\n\n\nInclude SGDK to Marsdev path\n\ncd $MARSDEV\nln -s /path/to/git/repository/marsdev/sgdk sgdk\n\n\n\n\nCompiling\nWe can use the following alternatives to compile our projects:\n\nLocally, previously compiling SGDK or Marsdev toolchains\nUsing a Docker image (Dockerfile provided in Stephane’s repository). Just follow these instructions to build your own SGDK docker image and use it to compile your code\n\nThis approach also uses Wine within the Docker container to launch SGDK\n\nUsing Doragasu, another Docker image. Again, just use these instructions to build your project\n\nThis approach uses native Linux compiler, much faster\n\n\nSome compile times comparison:\n\n\n\nApproach\nTime\n\n\n\n\nSGDK docker\n13.721s\n\n\nDoragasu docker\n6.952s\n\n\n\n\n\nDebugging\nWhen using Marsdev, the GDC for m64k (m68k-elf-gdb) isn’t compiled by default. Launch the following command from the git repository root path:\n\n\nCompiling m68k GDB\n\n# Install required dependencies\nsudo apt-get install libgmp-dev\n\nmake m68k-gdb\n\nTake note of the binary path as we’ll have to check it when configuring our text editor.\nWe also need an emulator to run the code and to properly attach when debugging. BlastEm is a relatively modern emulator with embedded debugger. Gens is another good option with very intuitive GUI for debugging purposes.\n\nBlastEm - Use nighly builds\n\nDownload the latest nightly build. At the moment of writing this article (2023/05/07), the available stable 0.6.2 version fails due to missing instructions\n\nVerified version: nightly build from 2023/04/03\n\nUncompress the file and add the resulting directory to your $PATH environment variable\n\nMake sure to update it in your .bashrc file"
-  },
-  {
-    "objectID": "retro-sdks/sega/mega-drive.html#text-editors",
-    "href": "retro-sdks/sega/mega-drive.html#text-editors",
-    "title": "Mega Drive SDKs",
-    "section": "Text editors",
-    "text": "Text editors\n\nVS Code\nWe’ll be using Genesis Code extension by Zerasul to help us with the programming side of things. This extension is compatible with all previously mentioned compiling options, both Docker images and Marsdev.\nConfiguration:\n\nCheck Doragasu Image if you plan on using Doragasu GitLab image for building purposes\nSet docker as the Toolchain Type if you plan on using Docker images on build stage\nSet the $MARSDEV env variable\n\nCreating a new Mega Drive project is as simple as launching Genesis Code: create project from the Command palette. Then check that the .vscode path has been created and make sure that both launch.json and settings.json point towards the right MARSDEV paths, else VS Code won’t include the SGDK headers to the project.\n\nDebug configuration\nIn order to properly debug using BlastEm, check the .vscode/launch.json file and make sure that everything points towards the correct paths:\n\nprogram: should be the ELF program created when compiling with the debug options enabled (Genesis Code: Compile for Debugging in the command palette).\n\nThis file must include the symbols\nWhen compiling with SGDK, the generated file is out/rom.out\n\nsourcefileMap: it must point to the SGDK src path, retrieved using the Marsdev make targets\nmiDebuggerPath: don’t touch it. Just make sure you compiled the m68k-elf-gdb as told in previous steps\nmiDebuggerArgs: make sure that the emulator name is correct and that it launches the out/rom.bin file\n\nOnce done, go to the Run and Debug option (CTRL + SHIFT + D), select the Debug with gdb remote profile and click on play. If a breakpoint has been set in your code, the Debug var should start to show some info:\n\n\n\nVS Code debugging a Hello World example\n\n\n\n\n\n\n\n\nTODO: create a VS Codium Docker image that already includes Marsdev installed"
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "About this site:\nRetroDev docs aims to ease the deployment of the required software development tools to start new retro-games’ projects."
-  },
-  {
     "objectID": "repairs/SEGA/Game Gear/VA0-B0126683.html",
     "href": "repairs/SEGA/Game Gear/VA0-B0126683.html",
     "title": "Game Gear VA0 - 1",
@@ -89,62 +54,6 @@
     "title": "Game Gear VA0 - 1",
     "section": "T1 voltages",
     "text": "T1 voltages\n\nCheck T1 voltages, see if it is faulty ## L2 inductor\nCheck L2 inductor status ## C33 capacitor\nCheck if C33 capacitor is faulty"
-  },
-  {
-    "objectID": "repairs/SEGA/Game Gear/VA0-B0097296.html",
-    "href": "repairs/SEGA/Game Gear/VA0-B0097296.html",
-    "title": "Game Gear VA0 - 3",
-    "section": "",
-    "text": "Japanese Game Gear bought during my trip to Japan on August 2023\nThe screen protector was already replaced but the console seemed unmodified (screws were tight and capacitors were the stock ones)\n\n\n\n\nGame Gear - Front view\n\n\n\n\n\nGame Gear - Rear view\n\n\n\n\n\nModel Number: HGG-3210\nSerial Number: B0097296\nMain board: 837-7398-01 (Twin ASIC)\nPower board: 837-7399-01\nAudio board: 837-7400-01 (Initial release Japanese Game Gear with square-body surface mount caps similar to GG main boards)"
-  },
-  {
-    "objectID": "repairs/SEGA/Game Gear/VA0-B0097296.html#specs",
-    "href": "repairs/SEGA/Game Gear/VA0-B0097296.html#specs",
-    "title": "Game Gear VA0 - 3",
-    "section": "",
-    "text": "Model Number: HGG-3210\nSerial Number: B0097296\nMain board: 837-7398-01 (Twin ASIC)\nPower board: 837-7399-01\nAudio board: 837-7400-01 (Initial release Japanese Game Gear with square-body surface mount caps similar to GG main boards)"
-  },
-  {
-    "objectID": "repairs/SEGA/Game Gear/VA0-B0097296.html#visual-inspection",
-    "href": "repairs/SEGA/Game Gear/VA0-B0097296.html#visual-inspection",
-    "title": "Game Gear VA0 - 3",
-    "section": "Visual inspection",
-    "text": "Visual inspection\n\nOutside: the outside has visible scratches from usage but no cracks\nBattery contacts: no signs of corrosion in the springs and plates\nMain board: capacitor leaks are visible on its legs, extreme precautions when removing and cleaning the pads. Also a lot of traces have been corroded, it’s possible that connectivity between layers is broken at some points\n\n\n\n\nMain board - original capacitors\n\n\n\n\n\nMain board - left side original caps. Visible caps leakage\n\n\n\n\n\nMain board - left side original caps 2. Visible caps leakage\n\n\n\n\n\nMain board - right side original caps 2. Leakage has reached the fluorescent light contact and nearby components\n\n\n\nPower board: no visible leaks\n\n\n\n\nPower board - original capacitors\n\n\n\nAudio board:\n\n\n\n\nAudio board - original capacitors. Visible leakage on all of them, and affecting IC1 leg 4\n\n\n\n\n\nAudio board - connector detail badly soldered\n\n\n\n\n\nAudio board - rear view. Rear side has some residues\n\n\n\nBattery contacts: no corrosion in springs nor pads"
-  },
-  {
-    "objectID": "repairs/SEGA/Game Gear/VA0-B0097296.html#first-boot",
-    "href": "repairs/SEGA/Game Gear/VA0-B0097296.html#first-boot",
-    "title": "Game Gear VA0 - 3",
-    "section": "First boot",
-    "text": "First boot\n\nPower LED turns on a few seconds and then it turns off\nThe screen doesn’t turn on and there’s no sound either"
-  },
-  {
-    "objectID": "repairs/SEGA/Game Gear/VA0-B0097296.html#recap",
-    "href": "repairs/SEGA/Game Gear/VA0-B0097296.html#recap",
-    "title": "Game Gear VA0 - 3",
-    "section": "2023/10/21: Recap",
-    "text": "2023/10/21: Recap\nFollowing Retrosix’s wiki, the capacitors are replaced like this:\n\nPower board\n\nCapacitors are replaced with new electrolytic ones with the same rating\nThe only exception is the 820uF/6.3V one that has been replaced with a solid electrolytic capacitor of the same rating (does it make any difference compared to the standard electrolytic ones?)\n\nAccording to the data sheet, solid electrolytic capacitors have a low ESR and high ripple current\n\n\n\n\n\nPower board - Fully recapped\n\n\n\n\n\n\n\n\nA kind advice on thru-hole capacitors removal!\n\n\n\nRemoving some capacitors proved to be quite challenging, even with an electrical desoldering pump. The trick to keep the vias intact is to reapply new solder several times to mix old solder with new one. Flux is indispensable to help transfer heat on already old and dry solder as well!\nIf a leg is stubbornly stuck, use some desoldering wick with new solder and a lot of flux to remove the excess inside the via by capilarity. Rinse and repeat until the leg is free!\nAlso use the desoldering wick to free the hole from solder before putting the new capacitors.\n\n\n\n\nAudio board\n\nAll capacitors are replaced with 100uF/10V ceramic capacitors\nC1 positive pad has been literally destroyed by corrosion. The new capacitor is soldered directly to the trace by exposing it a little bit\n\n\n\n\nAudio board - Fully recapped\n\n\n\n\n\n\n\n\nBad audio board!\n\n\n\nAudio board still not working after recap! Sound is very dim from both speaker and jack, almost imperceptible due to the static noise. Using a functional audio board for the tests\n\n\n\n\nMain board\nBefore doing any heating work, and seeing the amount of corrosion in the zones near the capacitors, I decided to apply a generous amount of white vinegar to all of them and let it act during some minutes, while avoiding any leakage to the LCD.\nThis time, and following RetroSix Wiki advises, all capacitors have been first removed and then checked if the console reaches the Red Light Boot (RLB) state:\n\nComponents Needed for RLB\nIt’s worth noting that audio ICs, every aluminium capacitor, the LCD, MPU, Work RAM nor Video RAM or main crystal are involved or even needed to be soldered on the board to get to red light boot. Don’t waste your time on those until you get red light.\n\nWith the capacitors removed, both power board and audio board are re-connected and the console is powered up again:\n\nPower LED doesn’t turn on\nFluorescent tube lights up for a few seconds and after that\nAudio doesn’t work with a cartridge on\n\nWe haven’t reached the RLB state, so further troubleshooting is required before soldering the new capacitors.\n\nContinuity check:\n\nGood ground: OK, both R52 right pad and ASIC ground pad are connected to the ground plane\nPower board Supply voltages: All pins are correctly connected to the pins on the Main Board and also are within the acceptable voltage ranges\nVRef Continuity: VRef continuity to ASIC is broken:\n\n1st point of discontinuity: via just below D2, connecting both layers\n\n\n\n\nMother Board - Broken connectivity of VREF below D2\n\n\n\n\n\nEasyEDA - 2-ASIC schematic detail\n\n\n\nFixed by drilling a small hole in the via and soldering a capacitor leg through it\n\n\n\n\nMother Board - Fixed connectivity of VREF below D2\n\n\nVOnOff network: VOnOff continuity to ASIC is broken:\n\n1st point of discontinuity: via just below D2, connecting both layers\n\n\n\n\nMother Board - Broken connectivity of VOnOff below D2\n\n\n\n\n\nEasyEDA - 2-ASIC schematic detail\n\n\n\nFixed by drilling a small hole in the via and soldering a capacitor leg through it\n\n\n\n\nMother Board - Fixed connectivity of VOnOff below D2\n\n\nV5 network:\n\nASIC isn’t receiving 5V, as well as other points\nR38, C1, C4, C5, R1, R2: according to EasyEDA schematics, they should receive 5V, but they don’t seem to be connected to the 5V plane\nFixed by soldering unpopulated ZD1 5V pad to R38 right pad\n\n\n\n\nMother Board - Fixed connectivity of V5\n\n\nOther broken paths\n\nNetwork R39_2 on EasyEDA: broken connection between C37 bottom pad and D2/C50 top pads –&gt; Bottom layer trace isn’t connected to top layer\n\nFixed by drilling small holes in the vias and reconstructing the bridge with a capacitor leg\n\n\n\n\nMother Board - Fixed connectivity of R39_2\n\n\n\n\nAt this point, when powering up the console it now lights up the Power LED for a second\n\nVReset network:\n\nNetwork R51_1 on EasyEDA: broken connection between R35 left pad and VReset pin on ASIC –&gt; Via next to D4 doesn’t connect both layers\n\nFixed by drilling a small hole in the via and soldering a capacitor leg through it\n\n\n\n\nMother Board - Fixed connectivity of VReset next to D4\n\n\n\n\nHere it seems that we reach the RLB state, even though sometimes it keeps turning down after a second\n\nCartridge slot:\n\nCartridge makes poor connection with the slot, being very difficult to reach a successful game boot\n\n\n\n\n\n\n\n\nBad cartridge slot\n\n\n\nEither check the contacts or replace it\n\n\nTesting the main board with a working audio board from another console we get sound from an inserted cartridge. At this point we can assure that the console works and we can proceed replacing the capacitors.\nOnce verified that the console reaches the RLB state, it’s time to solder the new capacitors. As with the previous VA-0 B0126683, these are the ceramic capacitors characteristics:\n\nAll original capacitors rated lower than 1uF are replaced with 1uF/50V ceramic capacitors\nAll original capacitors rated lower between 1uF and 10uF are replaced with 10uF/50V ceramic capacitors\nAll original capacitors rated higher than 10uF are replaced with 100uF/10V ceramic capacitors\n\n\n\n\nMain board - Fully recapped\n\n\n\n\n\nMain board - Left side recap detail\n\n\n\n\n\nMain board - Left side recap detail 2\n\n\n\n\n\nMain board - Right side recap detail\n\n\nThis time I didn’t use soldering paste because in the previous repair the result wasn’t cleaner enough for me and although there wasn’t shorts it seemed like the paste might create a bridge under the cap. The results are cleaner caps and brighter soldering points.\nThe soldering technique used this time consisted on the following steps:\n\nTin one of the pads\nPin one side of the capacitor to that pad\nAfter that apply solder to the other side\nOnce done, rework the first pad by applying additional solder and adjusting the capacitor by applying heat to both pads if necessary\nUse a pair of tweezers to secure the capacitor in place while applying heat"
-  },
-  {
-    "objectID": "repairs/SEGA/Game Gear/VA0-B0097296.html#section",
-    "href": "repairs/SEGA/Game Gear/VA0-B0097296.html#section",
-    "title": "Game Gear VA0 - 3",
-    "section": "2023/10/21",
-    "text": "2023/10/21\n\nRepairing time\n\n11 hours 20 minutes\n\n\n\nState on boot\n\nConsole enters the Red Light Boot state, required for further troubleshooting and repairs\n\nCheck of voltages is required\nPower board should be tested on other working units\nAudio board should be tested on other working units\n\nLCD turns on but image is very dim\nThe fluorescent tube lights up but brightness wheel acts weird\nWhen tested with other working audio boards, game sound works\nAudio is very dim\n\nIt seems as if the recap didn’t make any effect at all"
-  },
-  {
-    "objectID": "repairs/SEGA/Game Gear/VA0-B0097296.html#further-checks-on-audio-board",
-    "href": "repairs/SEGA/Game Gear/VA0-B0097296.html#further-checks-on-audio-board",
-    "title": "Game Gear VA0 - 3",
-    "section": "Further checks on audio board",
-    "text": "Further checks on audio board\n\nMaybe capacitors aren’t correctly connected or there’s a broken path"
-  },
-  {
-    "objectID": "repairs/SEGA/Game Gear/VA0-B0097296.html#further-checks-on-mother-board",
-    "href": "repairs/SEGA/Game Gear/VA0-B0097296.html#further-checks-on-mother-board",
-    "title": "Game Gear VA0 - 3",
-    "section": "Further checks on mother board",
-    "text": "Further checks on mother board\n\nAgain, maybe some capacitor traces are broken or it’s just a non-functional screen\n\n\n\n\n\n\n\nFor spare parts\n\n\n\nEven though the RLB state has been reached, the main board was very damaged due to corrosion and there might still be broken traces somewhere."
   },
   {
     "objectID": "repairs/SEGA/Game Gear/VA0-B0160205.html",
@@ -208,5 +117,96 @@
     "title": "NES SDKs",
     "section": "Text editors",
     "text": "Text editors"
+  },
+  {
+    "objectID": "retro-sdks/sega/mega-drive.html",
+    "href": "retro-sdks/sega/mega-drive.html",
+    "title": "Mega Drive SDKs",
+    "section": "",
+    "text": "TODO: talk about SDK for Mega Drive"
+  },
+  {
+    "objectID": "retro-sdks/sega/mega-drive.html#installing-sgdk",
+    "href": "retro-sdks/sega/mega-drive.html#installing-sgdk",
+    "title": "Mega Drive SDKs",
+    "section": "Installing SGDK",
+    "text": "Installing SGDK\nWe’ll be deploying the excellent and mature SGDK by Stephane Dallongeville, that allows to develop Mega Drive games in C language.\n\nDeveloping on Linux\nSGDK works natively on Windows, but there are options to make it work on Linux:\n\nUsing Wine\nUsing Marsdev. Here we install the SDK locally instead of using a Docker image for building the project\n\nQuick installation steps: link\nCompile time is long, so let it do its thing\nSet the $MARSDEV environment variable in .bashrc like this: export MARSDEV=/home/$USER/mars\nCreate a softlink within the $MARSDEV path that points to the SGDK created on compile time within the Marsdev repository. This is required for later use in VS Code extensions\n\n\n\nInclude SGDK to Marsdev path\n\ncd $MARSDEV\nln -s /path/to/git/repository/marsdev/sgdk sgdk\n\n\n\n\nCompiling\nWe can use the following alternatives to compile our projects:\n\nLocally, previously compiling SGDK or Marsdev toolchains\nUsing a Docker image (Dockerfile provided in Stephane’s repository). Just follow these instructions to build your own SGDK docker image and use it to compile your code\n\nThis approach also uses Wine within the Docker container to launch SGDK\n\nUsing Doragasu, another Docker image. Again, just use these instructions to build your project\n\nThis approach uses native Linux compiler, much faster\n\n\nSome compile times comparison:\n\n\n\nApproach\nTime\n\n\n\n\nSGDK docker\n13.721s\n\n\nDoragasu docker\n6.952s\n\n\n\n\n\nDebugging\nWhen using Marsdev, the GDC for m64k (m68k-elf-gdb) isn’t compiled by default. Launch the following command from the git repository root path:\n\n\nCompiling m68k GDB\n\n# Install required dependencies\nsudo apt-get install libgmp-dev\n\nmake m68k-gdb\n\nTake note of the binary path as we’ll have to check it when configuring our text editor.\nWe also need an emulator to run the code and to properly attach when debugging. BlastEm is a relatively modern emulator with embedded debugger. Gens is another good option with very intuitive GUI for debugging purposes.\n\nBlastEm - Use nighly builds\n\nDownload the latest nightly build. At the moment of writing this article (2023/05/07), the available stable 0.6.2 version fails due to missing instructions\n\nVerified version: nightly build from 2023/04/03\n\nUncompress the file and add the resulting directory to your $PATH environment variable\n\nMake sure to update it in your .bashrc file"
+  },
+  {
+    "objectID": "retro-sdks/sega/mega-drive.html#text-editors",
+    "href": "retro-sdks/sega/mega-drive.html#text-editors",
+    "title": "Mega Drive SDKs",
+    "section": "Text editors",
+    "text": "Text editors\n\nVS Code\nWe’ll be using Genesis Code extension by Zerasul to help us with the programming side of things. This extension is compatible with all previously mentioned compiling options, both Docker images and Marsdev.\nConfiguration:\n\nCheck Doragasu Image if you plan on using Doragasu GitLab image for building purposes\nSet docker as the Toolchain Type if you plan on using Docker images on build stage\nSet the $MARSDEV env variable\n\nCreating a new Mega Drive project is as simple as launching Genesis Code: create project from the Command palette. Then check that the .vscode path has been created and make sure that both launch.json and settings.json point towards the right MARSDEV paths, else VS Code won’t include the SGDK headers to the project.\n\nDebug configuration\nIn order to properly debug using BlastEm, check the .vscode/launch.json file and make sure that everything points towards the correct paths:\n\nprogram: should be the ELF program created when compiling with the debug options enabled (Genesis Code: Compile for Debugging in the command palette).\n\nThis file must include the symbols\nWhen compiling with SGDK, the generated file is out/rom.out\n\nsourcefileMap: it must point to the SGDK src path, retrieved using the Marsdev make targets\nmiDebuggerPath: don’t touch it. Just make sure you compiled the m68k-elf-gdb as told in previous steps\nmiDebuggerArgs: make sure that the emulator name is correct and that it launches the out/rom.bin file\n\nOnce done, go to the Run and Debug option (CTRL + SHIFT + D), select the Debug with gdb remote profile and click on play. If a breakpoint has been set in your code, the Debug var should start to show some info:\n\n\n\nVS Code debugging a Hello World example\n\n\n\n\n\n\n\n\nTODO: create a VS Codium Docker image that already includes Marsdev installed"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "RetroDev docs",
+    "section": "",
+    "text": "Welcome to RetroDev docs. Here you’ll find guides and hints for retro-gaming development."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site:\nRetroDev docs aims to ease the deployment of the required software development tools to start new retro-games’ projects."
+  },
+  {
+    "objectID": "repairs/SEGA/Game Gear/VA0-B0097296.html",
+    "href": "repairs/SEGA/Game Gear/VA0-B0097296.html",
+    "title": "Game Gear VA0 - 3",
+    "section": "",
+    "text": "Japanese Game Gear bought during my trip to Japan on August 2023\nThe screen protector was already replaced but the console seemed unmodified (screws were tight and capacitors were the stock ones)\n\n\n\n\nGame Gear - Front view\n\n\n\n\n\nGame Gear - Rear view\n\n\n\n\n\nModel Number: HGG-3210\nSerial Number: B0097296\nMain board: 837-7398-01 (Twin ASIC)\nPower board: 837-7399-01\nAudio board: 837-7400-01 (Initial release Japanese Game Gear with square-body surface mount caps similar to GG main boards)"
+  },
+  {
+    "objectID": "repairs/SEGA/Game Gear/VA0-B0097296.html#specs",
+    "href": "repairs/SEGA/Game Gear/VA0-B0097296.html#specs",
+    "title": "Game Gear VA0 - 3",
+    "section": "",
+    "text": "Model Number: HGG-3210\nSerial Number: B0097296\nMain board: 837-7398-01 (Twin ASIC)\nPower board: 837-7399-01\nAudio board: 837-7400-01 (Initial release Japanese Game Gear with square-body surface mount caps similar to GG main boards)"
+  },
+  {
+    "objectID": "repairs/SEGA/Game Gear/VA0-B0097296.html#visual-inspection",
+    "href": "repairs/SEGA/Game Gear/VA0-B0097296.html#visual-inspection",
+    "title": "Game Gear VA0 - 3",
+    "section": "Visual inspection",
+    "text": "Visual inspection\n\nOutside: the outside has visible scratches from usage but no cracks\nBattery contacts: no signs of corrosion in the springs and plates\n\n\n\n\nMain board - Left battery contacts\n\n\n\n\n\nMain board - Right battery contacts\n\n\n\nMain board: capacitor leaks are visible on its legs, extreme precautions when removing and cleaning the pads. Also a lot of traces have been corroded, it’s possible that connectivity between layers is broken at some points\n\n\n\n\nMain board - rear view, original capacitors\n\n\n\n\n\nMain board - rear view, left side original caps. Leakage has reached the fluorescent light contact and nearby components\n\n\n\n\n\nMain board - rear view, left side. Close view of corrosion near the LCD\n\n\n\n\n\nMain board - rear view, left side. Opposite angle\n\n\n\n\n\nMain board - rear view, right side original caps\n\n\n\n\n\nMain board - rear view, right side original caps. Leakage on C6\n\n\n\n\n\nMain board - front view. Signs of corrosion on test pads and vias\n\n\n\n\n\nMain board - front view, left side. Probably corroded vias around R25\n\n\n\n\n\nMain board - front view, right side. Signs of corrosion on test pads and vias\n\n\n\nPower board: no visible leaks\n\n\n\n\nPower board - original capacitors\n\n\n\n\n\nPower board - original capacitors rear view\n\n\n\nAudio board:\n\n\n\n\nAudio board - original capacitors. Visible leakage on all of them, and affecting IC1 leg 4\n\n\n\n\n\nAudio board - Soaked in vinegar to help release screws\n\n\n\n\n\nAudio board - front view. A lot of acid leakage everywhere\n\n\n\n\n\nAudio board - rear view. Rear side has some residues"
+  },
+  {
+    "objectID": "repairs/SEGA/Game Gear/VA0-B0097296.html#first-boot",
+    "href": "repairs/SEGA/Game Gear/VA0-B0097296.html#first-boot",
+    "title": "Game Gear VA0 - 3",
+    "section": "First boot",
+    "text": "First boot\n\nPower LED turns on a few seconds and then it turns off\nThe screen doesn’t turn on and there’s no sound either"
+  },
+  {
+    "objectID": "repairs/SEGA/Game Gear/VA0-B0097296.html#recap",
+    "href": "repairs/SEGA/Game Gear/VA0-B0097296.html#recap",
+    "title": "Game Gear VA0 - 3",
+    "section": "2023/10/21: Recap",
+    "text": "2023/10/21: Recap\nFollowing Retrosix’s wiki, the capacitors are replaced like this:\n\nPower board\n\nCapacitors are replaced with new electrolytic ones with the same rating\nThe only exception is the 820uF/6.3V one that has been replaced with a solid electrolytic capacitor of the same rating (does it make any difference compared to the standard electrolytic ones?)\n\nAccording to the data sheet, solid electrolytic capacitors have a low ESR and high ripple current\n\n\n\n\n\nPower board - Fully recapped\n\n\n\n\n\n\n\n\nA kind advice on thru-hole capacitors removal!\n\n\n\nRemoving some capacitors proved to be quite challenging, even with an electrical desoldering pump. The trick to keep the vias intact is to reapply new solder several times to mix old solder with new one. Flux is indispensable to help transfer heat on already old and dry solder as well!\nIf a leg is stubbornly stuck, use some desoldering wick with new solder and a lot of flux to remove the excess inside the via by capilarity. Rinse and repeat until the leg is free!\nAlso use the desoldering wick to free the hole from solder before putting the new capacitors.\n\n\n\n\nAudio board\n\nAll capacitors are replaced with 100uF/10V ceramic capacitors\nC1 positive pad has been literally destroyed by corrosion. The new capacitor is soldered directly to the trace by exposing it a little bit\n\n\n\n\nAudio board - Fully recapped\n\n\n\n\n\n\n\n\nBad audio board!\n\n\n\nAudio board still not working after recap! Sound is very dim from both speaker and jack, almost imperceptible due to the static noise. Using a functional audio board for the tests\n\n\n\n\nMain board\nBefore doing any heating work, and seeing the amount of corrosion in the zones near the capacitors, I decided to apply a generous amount of white vinegar to all of them and let it act during some minutes, while avoiding any leakage to the LCD.\nThis time, and following RetroSix Wiki advises, all capacitors have been first removed and then checked if the console reaches the Red Light Boot (RLB) state:\n\nComponents Needed for RLB\nIt’s worth noting that audio ICs, every aluminium capacitor, the LCD, MPU, Work RAM nor Video RAM or main crystal are involved or even needed to be soldered on the board to get to red light boot. Don’t waste your time on those until you get red light.\n\nWith the capacitors removed, both power board and audio board are re-connected and the console is powered up again:\n\nPower LED doesn’t turn on\nFluorescent tube lights up for a few seconds and after that\nAudio doesn’t work with a cartridge on\n\nWe haven’t reached the RLB state, so further troubleshooting is required before soldering the new capacitors.\n\nContinuity check:\n\nGood ground: OK, both R52 right pad and ASIC ground pad are connected to the ground plane\nPower board supply voltages: All pins are correctly connected to the pins on the Main Board and also are within the acceptable voltage ranges\nVRef Continuity: VRef continuity to ASIC is broken:\n\n1st point of discontinuity: via just below D2, connecting both layers\n\n\n\n\nMother Board - Broken connectivity of VREF below D2\n\n\n\n\n\nEasyEDA - 2-ASIC schematic detail\n\n\n\nFixed by drilling a small hole in the via and soldering a capacitor leg through it\n\n\n\n\nMother Board - rear view. Fixed connectivity of VREF below D2\n\n\n\n\n\nMother Board - front view. Fixed connectivity of VREF below D2\n\n\nVOnOff network: VOnOff continuity to ASIC is broken:\n\n1st point of discontinuity: via just below D2, connecting both layers\n\n\n\n\nMother Board - Broken connectivity of VOnOff below D2\n\n\n\n\n\nEasyEDA - 2-ASIC schematic detail\n\n\n\nFixed by drilling a small hole in the via and soldering a capacitor leg through it\n\n\n\n\nMother Board - rear view. Fixed connectivity of VOnOff below D2\n\n\n\n\n\nMother Board - front view. Fixed connectivity of VOnOff below D2\n\n\nV5 network:\n\nASIC isn’t receiving 5V, as well as other points\nR38, C1, C4, C5, R1, R2: according to EasyEDA schematics, they should receive 5V, but they don’t seem to be connected to the 5V plane\n\n\n\n\nMother Board - Broken connectivity of V5\n\n\n\nFixed by soldering unpopulated ZD1 5V pad to R38 right pad\n\n\n\n\nMother Board - Fixed connectivity of V5\n\n\nOther broken paths\n\nNetwork R39_2 on EasyEDA: broken connection between C37 bottom pad and D2/C50 top pads –&gt; Bottom layer trace isn’t connected to top layer\n\nFixed by drilling small holes in the vias and reconstructing the bridge with a capacitor leg\n\n\n\n\nMother Board - rear view. Fixed connectivity of R39_2\n\n\n\n\n\nMother Board - front view. Fixed connectivity of R39_2\n\n\n\n\nAt this point, when powering up the console it now lights up the Power LED for a second\n\nVReset network:\n\nNetwork R51_1 on EasyEDA: broken connection between R35 left pad and VReset pin on ASIC –&gt; Via next to D4 doesn’t connect both layers\n\nFixed by drilling a small hole in the via and soldering a capacitor leg through it\n\n\n\n\nMother Board - rear view. Fixed connectivity of VReset next to D4\n\n\n\n\n\nMother Board - front view. Fixed connectivity of VReset next to D4\n\n\n\n\nHere it seems that we reach the RLB state, even though sometimes it keeps turning down after a second\n\nCartridge slot:\n\nCartridge makes poor connection with the slot, being very difficult to reach a successful game boot\n\n\n\n\n\n\n\n\nBad cartridge slot\n\n\n\nEither check the contacts or replace it\n\n\nTesting the main board with a working audio board from another console we get sound from an inserted cartridge. At this point we can assure that the console works and we can proceed replacing the capacitors.\nOnce verified that the console reaches the RLB state, it’s time to solder the new capacitors. As with the previous VA-0 B0126683, these are the ceramic capacitors characteristics:\n\nAll original capacitors rated lower than 1uF are replaced with 1uF/50V ceramic capacitors\nAll original capacitors rated lower between 1uF and 10uF are replaced with 10uF/50V ceramic capacitors\nAll original capacitors rated higher than 10uF are replaced with 100uF/10V ceramic capacitors\n\n\n\n\nMain board - Fully recapped\n\n\n\n\n\nMain board - Left side recap detail\n\n\n\n\n\nMain board - Left side recap detail 2\n\n\n\n\n\nMain board - Right side recap detail\n\n\nThis time I didn’t use soldering paste because in the previous repair the result wasn’t cleaner enough for me and although there wasn’t shorts it seemed like the paste might create a bridge under the cap. The results are cleaner caps and brighter soldering points.\nThe soldering technique used this time consisted on the following steps:\n\nTin one of the pads\nPin one side of the capacitor to that pad\nAfter that apply solder to the other side\nOnce done, rework the first pad by applying additional solder and adjusting the capacitor by applying heat to both pads if necessary\nUse a pair of tweezers to secure the capacitor in place while applying heat"
+  },
+  {
+    "objectID": "repairs/SEGA/Game Gear/VA0-B0097296.html#section",
+    "href": "repairs/SEGA/Game Gear/VA0-B0097296.html#section",
+    "title": "Game Gear VA0 - 3",
+    "section": "2023/10/21",
+    "text": "2023/10/21\n\nRepairing time\n\n11 hours 20 minutes\n\n\n\nState on boot\n\nConsole enters the Red Light Boot state, required for further troubleshooting and repairs\n\nCheck of voltages is required\nPower board should be tested on other working units\nAudio board should be tested on other working units\n\nLCD turns on but image is very dim\nThe fluorescent tube lights up but brightness wheel acts weird\nWhen tested with other working audio boards, game sound works\nAudio is very dim\n\nIt seems as if the recap didn’t make any effect at all"
+  },
+  {
+    "objectID": "repairs/SEGA/Game Gear/VA0-B0097296.html#further-checks-on-audio-board",
+    "href": "repairs/SEGA/Game Gear/VA0-B0097296.html#further-checks-on-audio-board",
+    "title": "Game Gear VA0 - 3",
+    "section": "Further checks on audio board",
+    "text": "Further checks on audio board\n\nMaybe capacitors aren’t correctly connected or there’s a broken path"
+  },
+  {
+    "objectID": "repairs/SEGA/Game Gear/VA0-B0097296.html#further-checks-on-mother-board",
+    "href": "repairs/SEGA/Game Gear/VA0-B0097296.html#further-checks-on-mother-board",
+    "title": "Game Gear VA0 - 3",
+    "section": "Further checks on mother board",
+    "text": "Further checks on mother board\n\nAgain, maybe some capacitor traces are broken or it’s just a non-functional screen\n\n\n\n\n\n\n\nFor spare parts\n\n\n\nEven though the RLB state has been reached, the main board was very damaged due to corrosion and there might still be broken traces somewhere."
   }
 ]
