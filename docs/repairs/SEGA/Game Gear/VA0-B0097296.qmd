@@ -26,30 +26,50 @@ categories: ["Game Gear", "SEGA", "Repair"]
 ## Visual inspection
 - Outside: the outside has visible scratches from usage but no cracks
 - Battery contacts: no signs of corrosion in the springs and plates
+
+![Main board - Left battery contacts](../../../images/repairs/SEGA/Game%20Gear/VA0/B0097296/20231021_battery_contacts_left.jpg)
+
+![Main board - Right battery contacts](../../../images/repairs/SEGA/Game%20Gear/VA0/B0097296/20231021_battery_contacts_right.jpg)
+
 - Main board: capacitor leaks are visible on its legs, extreme precautions when removing and cleaning the pads. Also a lot of traces have been corroded, it's possible that connectivity between layers is broken at some points
 
-![Main board - original capacitors](../../../images/repairs/SEGA/Game%20Gear/VA0/B0097296/20231021_main_board_original_caps.jpg)
+![Main board - rear view, original capacitors](../../../images/repairs/SEGA/Game%20Gear/VA0/B0097296/20231021_main_board_original_caps.jpg)
 
-![Main board - left side original caps. Visible caps leakage](../../../images/repairs/SEGA/Game%20Gear/VA0/B0097296/20231021_main_board_original_caps_detail_left.jpg)
+![Main board - rear view, left side original caps. Leakage has reached the fluorescent light contact and nearby components](../../../images/repairs/SEGA/Game%20Gear/VA0/B0097296/20231021_main_board_original_caps_detail_left.jpg)
 
-![Main board - left side original caps 2. Visible caps leakage](../../../images/repairs/SEGA/Game%20Gear/VA0/B0097296/20231021_main_board_original_caps_detail_left_2.jpg)
+![Main board - rear view, left side. Close view of corrosion near the LCD](../../../images/repairs/SEGA/Game%20Gear/VA0/B0097296/20231021_main_board_original_caps_rear_view_detail_left_2.jpg)
 
-![Main board - right side original caps 2. Leakage has reached the fluorescent light contact and nearby components](../../../images/repairs/SEGA/Game%20Gear/VA0/B0097296/20231021_main_board_original_caps_detail_right.jpg)
+![Main board - rear view, left side. Opposite angle](../../../images/repairs/SEGA/Game%20Gear/VA0/B0097296/20231021_main_board_original_caps_rear_view_detail_left_3.jpg)
+
+![Main board - rear view, right side original caps](../../../images/repairs/SEGA/Game%20Gear/VA0/B0097296/20231021_main_board_original_caps_detail_right.jpg)
+
+![Main board - rear view, right side original caps. Leakage on C6](../../../images/repairs/SEGA/Game%20Gear/VA0/B0097296/20231021_main_board_original_caps_detail_right_2.jpg)
+
+![Main board - front view. Signs of corrosion on test pads and vias](../../../images/repairs/SEGA/Game%20Gear/VA0/B0097296/20231021_main_board_original_caps_front_view.jpg)
+
+![Main board - front view, left side. Probably corroded vias around R25](../../../images/repairs/SEGA/Game%20Gear/VA0/B0097296/20231021_main_board_original_caps_front_view_detail_left.jpg)
+
+
+![Main board - front view, right side. Signs of corrosion on test pads and vias](../../../images/repairs/SEGA/Game%20Gear/VA0/B0097296/20231021_main_board_original_caps_front_view_detail_right.jpg)
+
+
 
 - Power board: no visible leaks
 
-![Power board - original capacitors](../../../images/repairs/SEGA/Game%20Gear/VA0/B0097296/20231021_power_board_original_caps.jpg)
+![Power board - original capacitors](../../../images/repairs/SEGA/Game%20Gear/VA0/B0097296/20231021_power_board_original_caps_front.jpg)
+
+![Power board - original capacitors rear view](../../../images/repairs/SEGA/Game%20Gear/VA0/B0097296/20231021_power_board_original_caps_rear.jpg)
 
 - Audio board:
 
 ![Audio board - original capacitors. Visible leakage on all of them, and affecting IC1 leg 4](../../../images/repairs/SEGA/Game%20Gear/VA0/B0097296/20231021_audio_board_original_caps.jpg)
 
-    
-![Audio board - connector detail badly soldered](../../../images/repairs/SEGA/Game%20Gear/VA0/B0097296/20231021_audio_board_connector_detail.jpg)
+![Audio board - Soaked in vinegar to help release screws](../../../images/repairs/SEGA/Game%20Gear/VA0/B0097296/20231021_audio_board_original_caps_vinegar.jpg)
+
+![Audio board - front view. A lot of acid leakage everywhere](../../../images/repairs/SEGA/Game%20Gear/VA0/B0097296/20231021_audio_board_original_caps_front.jpg)
 
 ![Audio board - rear view. Rear side has some residues](../../../images/repairs/SEGA/Game%20Gear/VA0/B0097296/20231021_audio_board_rear_view.jpg)
 
-- Battery contacts: no corrosion in springs nor pads
 
 ## First boot
 - Power LED turns on a few seconds and then it turns off
@@ -106,7 +126,7 @@ With the capacitors removed, both power board and audio board are re-connected a
 
 #### Continuity check:
 - Good ground: OK, both R52 right pad and ASIC ground pad are connected to the ground plane
-- Power board Supply voltages: All pins are correctly connected to the pins on the Main Board and also are within the acceptable voltage ranges
+- Power board supply voltages: All pins are correctly connected to the pins on the Main Board and also are within the acceptable voltage ranges
 - VRef Continuity: VRef continuity to ASIC is broken:
     - 1st point of discontinuity: via just below D2, connecting both layers
 
@@ -116,7 +136,11 @@ With the capacitors removed, both power board and audio board are re-connected a
         
     - Fixed by drilling a small hole in the via and soldering a capacitor leg through it
 
-    ![Mother Board - Fixed connectivity of VREF below D2](../../../images/repairs/SEGA/Game%20Gear/VA0/B0097296/20231021_main_board_vref_fixed.jpg)
+
+    ![Mother Board - rear view. Fixed connectivity of VREF below D2](../../../images/repairs/SEGA/Game%20Gear/VA0/B0097296/20231021_main_board_vref_fixed.jpg)
+
+
+    ![Mother Board - front view. Fixed connectivity of VREF below D2](../../../images/repairs/SEGA/Game%20Gear/VA0/B0097296/20231021_main_board_vref_fixed_front_view.jpg)
 
 
 - VOnOff network: VOnOff continuity to ASIC is broken:
@@ -128,11 +152,16 @@ With the capacitors removed, both power board and audio board are re-connected a
     
     - Fixed by drilling a small hole in the via and soldering a capacitor leg through it
 
-    ![Mother Board - Fixed connectivity of VOnOff below D2](../../../images/repairs/SEGA/Game%20Gear/VA0/B0097296/20231021_main_board_vonoff_fixed.jpg)
+    ![Mother Board - rear view. Fixed connectivity of VOnOff below D2](../../../images/repairs/SEGA/Game%20Gear/VA0/B0097296/20231021_main_board_vonoff_fixed.jpg)
+
+    ![Mother Board - front view. Fixed connectivity of VOnOff below D2](../../../images/repairs/SEGA/Game%20Gear/VA0/B0097296/20231021_main_board_vonoff_fixed_front_view.jpg)
 
 - V5 network:
     - ASIC isn't receiving 5V, as well as other points
     - R38, C1, C4, C5, R1, R2: according to EasyEDA schematics, they should receive 5V, but they don't seem to be connected to the 5V plane
+
+    ![Mother Board - Broken connectivity of V5](../../../images/repairs/SEGA/Game%20Gear/VA0/B0097296/20231021_main_board_v5_break.jpg)
+
     - Fixed by soldering unpopulated ZD1 5V pad to R38 right pad
 
     ![Mother Board - Fixed connectivity of V5](../../../images/repairs/SEGA/Game%20Gear/VA0/B0097296/20231021_main_board_v5_fixed.jpg)
@@ -141,7 +170,9 @@ With the capacitors removed, both power board and audio board are re-connected a
     - Network R39_2 on EasyEDA: broken connection between C37 bottom pad and D2/C50 top pads --> Bottom layer trace isn't connected to top layer
         - Fixed by drilling small holes in the vias and reconstructing the bridge with a capacitor leg
 
-        ![Mother Board - Fixed connectivity of R39_2](../../../images/repairs/SEGA/Game%20Gear/VA0/B0097296/20231021_main_board_R39_2_fixed.jpg)
+        ![Mother Board - rear view. Fixed connectivity of R39_2](../../../images/repairs/SEGA/Game%20Gear/VA0/B0097296/20231021_main_board_R39_2_fixed.jpg)
+
+        ![Mother Board - front view. Fixed connectivity of R39_2](../../../images/repairs/SEGA/Game%20Gear/VA0/B0097296/20231021_main_board_R39_2_fixed_front_view.jpg)
 
 **At this point, when powering up the console it now lights up the Power LED for a second**
 
@@ -149,7 +180,9 @@ With the capacitors removed, both power board and audio board are re-connected a
     - Network R51_1 on EasyEDA: broken connection between R35 left pad and VReset pin on ASIC --> Via next to D4 doesn't connect both layers
         - Fixed by drilling a small hole in the via and soldering a capacitor leg through it
 
-        ![Mother Board - Fixed connectivity of VReset next to D4](../../../images/repairs/SEGA/Game%20Gear/VA0/B0097296/20231021_main_board_vreset_fixed.jpg)
+        ![Mother Board - rear view. Fixed connectivity of VReset next to D4](../../../images/repairs/SEGA/Game%20Gear/VA0/B0097296/20231021_main_board_vreset_fixed.jpg)
+
+        ![Mother Board - front view. Fixed connectivity of VReset next to D4](../../../images/repairs/SEGA/Game%20Gear/VA0/B0097296/20231021_main_board_vreset_fixed_front_view.jpg)
 
 **Here it seems that we reach the RLB state, even though sometimes it keeps turning down after a second**
 
