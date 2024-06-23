@@ -235,6 +235,8 @@ All verifications except battery ones are done with a SEGA Mega Drive power supp
 
 ![Game Gear - Post-recap picture running Sonic the Hedgehog 2](../../../images/repairs/SEGA/Game%20Gear/VA0/B0153410/20240622_game_gear_working_3.jpg)
 
+![Game Gear - Post-recap picture running Sonic the Hedgehog 2 on batteries](../../../images/repairs/SEGA/Game%20Gear/VA0/B0153410/20240622_game_gear_working_4.jpg)
+
 # Next steps
 ## Brightness wheel
 - Resolder it as flat as possible to the boart to avoid friction with the shell
