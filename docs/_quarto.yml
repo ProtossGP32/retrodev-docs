@@ -31,6 +31,9 @@ website:
       - icon: github
         href: https://github.com/protossgp32
         aria-label: GitHub
+      - icon: rss
+        href: index.xml
+        aria-label: RSS feed
 
   # Sidebars
   sidebar:
@@ -58,6 +61,23 @@ website:
   # Look and feel options
   reader-mode: true
   page-navigation: true
+
+listing:
+  - id: website-listing
+    contents: 
+      - "retro-sdks/**/*.qmd"
+      - "dev-guides/**/*.qmd"
+      - "repairs/**/*.qmd"
+    filter-ui:
+      - title
+      - category
+    sort-ui: true
+    sort:
+      - "date desc"
+      - "title desc"
+    categories: true
+    feed:
+      type: metadata
 
 format:
   html:
