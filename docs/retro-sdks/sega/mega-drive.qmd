@@ -3,6 +3,7 @@ title: "Mega Drive SDKs"
 author: ProtossGP32
 date: 2023/05/07
 description: "Learn how to configure your development environment"
+categories: ["Mega Drive", "SEGA", "SDK"]
 ---
 # Introduction
 
