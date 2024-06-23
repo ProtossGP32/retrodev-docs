@@ -1,6 +1,24 @@
 ---
 title: "RetroDev docs"
 sidebar: false
+description: "A place for anything related to retro-gaming"
+listing:
+  - id: website-listing
+    filter-ui: [title, date, category]
+    sort-ui: true
+    categories: true
+    contents:
+      - repairs
+      - retro-sdks
+      - dev-guides
+    fields: [image, date, title, description, author, reading-time]
+    sort:
+      - "date desc"
+      - "title desc"
+    page-size: 5
+    date-format: medium
+    feed:
+      type: metadata
 ---
 
 Welcome to RetroDev docs. Here you'll find guides and hints for retro-gaming development.
