@@ -6,6 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="description" content="A place for anything related to retro-gaming">
 
 <title>RetroDev docs</title>
 <style>
@@ -30,6 +31,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-listing/list.min.js"></script>
+<script src="site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -67,10 +70,69 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script>
 
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-website-listing .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-image','listing-date','listing-title','listing-description','listing-author','listing-reading-time',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      page: 5,
+    pagination: { item: "<li class='page-item'><a class='page page-link' href='#'></a></li>" },
+      searchColumns: ["listing-title","listing-date","listing-category"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-website-listing'] = new List('listing-website-listing', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  </script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
-</head>
+<link rel="alternate" type="application/rss+xml" title="RetroDev docs" href="index.xml" data-external="1"></head>
 
 <body class="nav-fixed">
 
@@ -134,6 +196,11 @@ ul.task-list li input[type="checkbox"] {
 </i> 
 <span class="menu-text"></span></a>
   </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="./index.xml"> <i class="bi bi-rss" role="img" aria-label="RSS feed">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
 </ul>
           </div> <!-- /navcollapse -->
           <div class="quarto-navbar-tools">
@@ -153,7 +220,7 @@ ul.task-list li input[type="checkbox"] {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
-    </div>
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(6)</span></div><div class="category" data-category="Game Gear">Game Gear <span class="quarto-category-count">(4)</span></div><div class="category" data-category="Mega Drive">Mega Drive <span class="quarto-category-count">(1)</span></div><div class="category" data-category="NES">NES <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Nintendo">Nintendo <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Repair">Repair <span class="quarto-category-count">(4)</span></div><div class="category" data-category="SDK">SDK <span class="quarto-category-count">(2)</span></div><div class="category" data-category="SEGA">SEGA <span class="quarto-category-count">(5)</span></div></div></div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -162,6 +229,11 @@ ul.task-list li input[type="checkbox"] {
 <h1 class="title">RetroDev docs</h1>
 </div>
 
+<div>
+  <div class="description">
+    A place for anything related to retro-gaming
+  </div>
+</div>
 
 
 <div class="quarto-title-meta">
@@ -180,7 +252,228 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-</main> <!-- /main -->
+
+<div class="quarto-listing quarto-listing-container-default" id="listing-website-listing">
+<div class="listing-actions-group">
+   <div class="input-group input-group-sm quarto-listing-sort">
+     <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
+     <select id="listing-website-listing-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-website-listing'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
+       <option value="" disabled="" selected="" hidden="">Order By</option>
+       <option value="index" data-direction="asc">Default</option>
+         <option value="listing-title" data-direction="asc">
+          Title
+        </option>
+         <option value="listing-date-sort" data-direction="asc">
+          Date - Oldest
+        </option>
+         <option value="listing-date-sort" data-direction="desc">
+          Date - Newest
+        </option>
+         <option value="listing-author" data-direction="asc">
+          Author
+        </option>
+     </select>
+  </div>
+    <div class="input-group input-group-sm quarto-listing-filter">
+      <span class="input-group-text"><i class="bi bi-search"></i></span>
+      <input type="text" class="search form-control" placeholder="Filter">
+    </div>
+</div>
+<div class="list quarto-listing-default">
+<div class="quarto-post image-right" data-index="0" data-categories="Game Gear,SEGA,Repair" data-listing-date-sort="1719014400000" data-listing-file-modified-sort="1719177720671" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1680">
+<div class="thumbnail">
+<p><a href="./repairs/SEGA/Game Gear/VA0-B0153410.html" class="no-external"></a></p><a href="./repairs/SEGA/Game Gear/VA0-B0153410.html" class="no-external">
+<p class="card-img-top"><img src="images/repairs/SEGA/Game Gear/VA0/B0153410/20240622_game_gear_front.jpg"  class="thumbnail-image card-img"/></p>
+</a><p><a href="./repairs/SEGA/Game Gear/VA0-B0153410.html" class="no-external"></a></p>
+</div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./repairs/SEGA/Game Gear/VA0-B0153410.html" class="no-external">Game Gear VA0 - 4</a>
+</h3>
+<div class="listing-subtitle">
+<a href="./repairs/SEGA/Game Gear/VA0-B0153410.html" class="no-external"></a>
+</div>
+<div class="listing-description">
+<a href="./repairs/SEGA/Game Gear/VA0-B0153410.html" class="no-external">Game Gear bought on Japan 2023</a>
+</div>
+</div>
+<div class="metadata">
+<a href="./repairs/SEGA/Game Gear/VA0-B0153410.html" class="no-external">
+<div class="listing-date">
+Jun 22, 2024
+</div>
+<div class="listing-author">
+ProtossGP32
+</div>
+<div class="listing-reading-time">
+9 min
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="1" data-categories="Game Gear,SEGA,Repair" data-listing-date-sort="1697846400000" data-listing-file-modified-sort="1719177720671" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1775">
+<div class="thumbnail">
+<p><a href="./repairs/SEGA/Game Gear/VA0-B0097296.html" class="no-external"></a></p><a href="./repairs/SEGA/Game Gear/VA0-B0097296.html" class="no-external">
+<p class="card-img-top"><img src="images/repairs/SEGA/Game Gear/VA0/B0097296/20231021_game_gear_front.jpg"  class="thumbnail-image card-img"/></p>
+</a><p><a href="./repairs/SEGA/Game Gear/VA0-B0097296.html" class="no-external"></a></p>
+</div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./repairs/SEGA/Game Gear/VA0-B0097296.html" class="no-external">Game Gear VA0 - 3</a>
+</h3>
+<div class="listing-subtitle">
+<a href="./repairs/SEGA/Game Gear/VA0-B0097296.html" class="no-external"></a>
+</div>
+<div class="listing-description">
+<a href="./repairs/SEGA/Game Gear/VA0-B0097296.html" class="no-external">Game Gear bought on Japan 2023</a>
+</div>
+</div>
+<div class="metadata">
+<a href="./repairs/SEGA/Game Gear/VA0-B0097296.html" class="no-external">
+<div class="listing-date">
+Oct 21, 2023
+</div>
+<div class="listing-author">
+ProtossGP32
+</div>
+<div class="listing-reading-time">
+9 min
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="2" data-categories="Game Gear,SEGA,Repair" data-listing-date-sort="1696723200000" data-listing-file-modified-sort="1719177720671" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1107">
+<div class="thumbnail">
+<p><a href="./repairs/SEGA/Game Gear/VA0-B0160205.html" class="no-external"></a></p><a href="./repairs/SEGA/Game Gear/VA0-B0160205.html" class="no-external">
+<p class="card-img-top"><img src="images/repairs/SEGA/Game Gear/VA0/B0160205/20231008_game_gear_front.jpg"  class="thumbnail-image card-img"/></p>
+</a><p><a href="./repairs/SEGA/Game Gear/VA0-B0160205.html" class="no-external"></a></p>
+</div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./repairs/SEGA/Game Gear/VA0-B0160205.html" class="no-external">Game Gear VA0 - 2</a>
+</h3>
+<div class="listing-subtitle">
+<a href="./repairs/SEGA/Game Gear/VA0-B0160205.html" class="no-external"></a>
+</div>
+<div class="listing-description">
+<a href="./repairs/SEGA/Game Gear/VA0-B0160205.html" class="no-external">Game Gear bought on Japan 2023</a>
+</div>
+</div>
+<div class="metadata">
+<a href="./repairs/SEGA/Game Gear/VA0-B0160205.html" class="no-external">
+<div class="listing-date">
+Oct 8, 2023
+</div>
+<div class="listing-author">
+ProtossGP32
+</div>
+<div class="listing-reading-time">
+6 min
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="3" data-categories="Game Gear,SEGA,Repair" data-listing-date-sort="1696204800000" data-listing-file-modified-sort="1719177720671" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="758">
+<div class="thumbnail">
+<p><a href="./repairs/SEGA/Game Gear/VA0-B0126683.html" class="no-external"></a></p><a href="./repairs/SEGA/Game Gear/VA0-B0126683.html" class="no-external">
+<p class="card-img-top"><img src="images/repairs/SEGA/Game Gear/VA0/B0126683/20231001_power_board_original_caps.jpg"  class="thumbnail-image card-img"/></p>
+</a><p><a href="./repairs/SEGA/Game Gear/VA0-B0126683.html" class="no-external"></a></p>
+</div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./repairs/SEGA/Game Gear/VA0-B0126683.html" class="no-external">Game Gear VA0 - 1</a>
+</h3>
+<div class="listing-subtitle">
+<a href="./repairs/SEGA/Game Gear/VA0-B0126683.html" class="no-external"></a>
+</div>
+<div class="listing-description">
+<a href="./repairs/SEGA/Game Gear/VA0-B0126683.html" class="no-external">Game Gear bought on Japan 2023</a>
+</div>
+</div>
+<div class="metadata">
+<a href="./repairs/SEGA/Game Gear/VA0-B0126683.html" class="no-external">
+<div class="listing-date">
+Oct 2, 2023
+</div>
+<div class="listing-author">
+ProtossGP32
+</div>
+<div class="listing-reading-time">
+4 min
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="4" data-categories="NES,Nintendo,SDK" data-listing-date-sort="1683417600000" data-listing-file-modified-sort="1719177720671" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="7">
+<div class="thumbnail">
+<p><a href="./retro-sdks/nintendo/nes.html" class="no-external"></a></p><a href="./retro-sdks/nintendo/nes.html" class="no-external">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a><p><a href="./retro-sdks/nintendo/nes.html" class="no-external"></a></p>
+</div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./retro-sdks/nintendo/nes.html" class="no-external">NES SDKs</a>
+</h3>
+<div class="listing-subtitle">
+<a href="./retro-sdks/nintendo/nes.html" class="no-external"></a>
+</div>
+<div class="listing-description">
+<a href="./retro-sdks/nintendo/nes.html" class="no-external">Learn how to configure your development environment</a>
+</div>
+</div>
+<div class="metadata">
+<a href="./retro-sdks/nintendo/nes.html" class="no-external">
+<div class="listing-date">
+May 7, 2023
+</div>
+<div class="listing-author">
+ProtossGP32
+</div>
+<div class="listing-reading-time">
+1 min
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="5" data-categories="Mega Drive,SEGA,SDK" data-listing-date-sort="1683417600000" data-listing-file-modified-sort="1719177720671" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="741">
+<div class="thumbnail">
+<p><a href="./retro-sdks/sega/mega-drive.html" class="no-external"></a></p><a href="./retro-sdks/sega/mega-drive.html" class="no-external">
+<p class="card-img-top"><img data-src="images/retro-sdks/sega/megadrive-vs-code-debugging.png"  class="thumbnail-image card-img"/></p>
+</a><p><a href="./retro-sdks/sega/mega-drive.html" class="no-external"></a></p>
+</div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./retro-sdks/sega/mega-drive.html" class="no-external">Mega Drive SDKs</a>
+</h3>
+<div class="listing-subtitle">
+<a href="./retro-sdks/sega/mega-drive.html" class="no-external"></a>
+</div>
+<div class="listing-description">
+<a href="./retro-sdks/sega/mega-drive.html" class="no-external">Learn how to configure your development environment</a>
+</div>
+</div>
+<div class="metadata">
+<a href="./retro-sdks/sega/mega-drive.html" class="no-external">
+<div class="listing-date">
+May 7, 2023
+</div>
+<div class="listing-author">
+ProtossGP32
+</div>
+<div class="listing-reading-time">
+4 min
+</div>
+</a>
+</div>
+</div>
+</div>
+<div class="listing-no-matching d-none">
+No matching items
+</div>
+<nav id="website-listing-pagination" class="listing-pagination" aria-label="Page Navigation">
+  <ul class="pagination"></ul>
+</nav>
+</div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

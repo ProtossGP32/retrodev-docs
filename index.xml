@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss  xmlns:atom="http://www.w3.org/2005/Atom" 
+      xmlns:media="http://search.yahoo.com/mrss/" 
+      xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+      xmlns:dc="http://purl.org/dc/elements/1.1/" 
+      version="2.0">
+<channel>
+<title>RetroDev docs</title>
+<link>https://protossgp32.github.io/retrodev-docs/</link>
+<atom:link href="https://protossgp32.github.io/retrodev-docs/index.xml" rel="self" type="application/rss+xml"/>
+<description>A place for anything related to retro-gaming</description>
+<generator>quarto-1.4.555</generator>
+<lastBuildDate>Sat, 22 Jun 2024 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>Game Gear VA0 - 4</title>
+  <dc:creator>ProtossGP32 </dc:creator>
+  <link>https://protossgp32.github.io/retrodev-docs/repairs/SEGA/Game Gear/VA0-B0153410.html</link>
+  <description><![CDATA[ Game Gear bought on Japan 2023 ]]></description>
+  <category>Game Gear</category>
+  <category>SEGA</category>
+  <category>Repair</category>
+  <guid>https://protossgp32.github.io/retrodev-docs/repairs/SEGA/Game Gear/VA0-B0153410.html</guid>
+  <pubDate>Sat, 22 Jun 2024 00:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Game Gear VA0 - 3</title>
+  <dc:creator>ProtossGP32 </dc:creator>
+  <link>https://protossgp32.github.io/retrodev-docs/repairs/SEGA/Game Gear/VA0-B0097296.html</link>
+  <description><![CDATA[ Game Gear bought on Japan 2023 ]]></description>
+  <category>Game Gear</category>
+  <category>SEGA</category>
+  <category>Repair</category>
+  <guid>https://protossgp32.github.io/retrodev-docs/repairs/SEGA/Game Gear/VA0-B0097296.html</guid>
+  <pubDate>Sat, 21 Oct 2023 00:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Game Gear VA0 - 2</title>
+  <dc:creator>ProtossGP32 </dc:creator>
+  <link>https://protossgp32.github.io/retrodev-docs/repairs/SEGA/Game Gear/VA0-B0160205.html</link>
+  <description><![CDATA[ Game Gear bought on Japan 2023 ]]></description>
+  <category>Game Gear</category>
+  <category>SEGA</category>
+  <category>Repair</category>
+  <guid>https://protossgp32.github.io/retrodev-docs/repairs/SEGA/Game Gear/VA0-B0160205.html</guid>
+  <pubDate>Sun, 08 Oct 2023 00:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Game Gear VA0 - 1</title>
+  <dc:creator>ProtossGP32 </dc:creator>
+  <link>https://protossgp32.github.io/retrodev-docs/repairs/SEGA/Game Gear/VA0-B0126683.html</link>
+  <description><![CDATA[ Game Gear bought on Japan 2023 ]]></description>
+  <category>Game Gear</category>
+  <category>SEGA</category>
+  <category>Repair</category>
+  <guid>https://protossgp32.github.io/retrodev-docs/repairs/SEGA/Game Gear/VA0-B0126683.html</guid>
+  <pubDate>Mon, 02 Oct 2023 00:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>NES SDKs</title>
+  <dc:creator>ProtossGP32 </dc:creator>
+  <link>https://protossgp32.github.io/retrodev-docs/retro-sdks/nintendo/nes.html</link>
+  <description><![CDATA[ Learn how to configure your development environment ]]></description>
+  <category>NES</category>
+  <category>Nintendo</category>
+  <category>SDK</category>
+  <guid>https://protossgp32.github.io/retrodev-docs/retro-sdks/nintendo/nes.html</guid>
+  <pubDate>Sun, 07 May 2023 00:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Mega Drive SDKs</title>
+  <dc:creator>ProtossGP32 </dc:creator>
+  <link>https://protossgp32.github.io/retrodev-docs/retro-sdks/sega/mega-drive.html</link>
+  <description><![CDATA[ Learn how to configure your development environment ]]></description>
+  <category>Mega Drive</category>
+  <category>SEGA</category>
+  <category>SDK</category>
+  <guid>https://protossgp32.github.io/retrodev-docs/retro-sdks/sega/mega-drive.html</guid>
+  <pubDate>Sun, 07 May 2023 00:00:00 GMT</pubDate>
+</item>
+</channel>
+</rss>
