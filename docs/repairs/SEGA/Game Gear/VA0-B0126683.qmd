@@ -87,6 +87,11 @@ If a leg is stubbornly stuck, use some desoldering wick with new solder and a lo
 Some capacitor pads presented a huge amount of corrosion, making it a little bit difficult to reheat and clean them. Before applying any heat to the corroded pads, **I applied some vinegar in order to neutralize as much as possible the leaked acids**. Using soldering paste proved to be quite useful in areas where the soldering iron could potentially melt plastic connectors, as its low-temp melting point made for quicker joins.
 
 # Console status
+
+| Date | Power | Sound | Game operation | Screen |
+| --- | :---: | :---: | :---: | :---: |
+| 2023/10/01 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | ❌ |
+
 ## 2023/10/01
 ### State on stable boot
 - Console enters the [Red Light Boot state](https://www.retrosix.wiki/getting-to-red-light-boot-game-gear), required for further troubleshooting and repairs

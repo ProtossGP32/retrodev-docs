@@ -226,6 +226,11 @@ The soldering technique used this time consisted on the following steps:
 - Use a pair of tweezers to secure the capacitor in place while applying heat
 
 # Console status
+
+| Date | Power | Sound | Game operation | Screen |
+| --- | :---: | :---: | :---: | :---: |
+| 2023/10/21 | :heavy_check_mark: | ❌ | :heavy_check_mark: | :warning: |
+
 ## 2023/10/21
 ### Repairing time
 - 11 hours 20 minutes
@@ -238,10 +243,13 @@ The soldering technique used this time consisted on the following steps:
 - LCD turns on but image is very dim
 - The fluorescent tube lights up but brightness wheel acts weird
 - When tested with other working audio boards, game sound works
-- Audio is very dim
+  - Audio is very dim
 
 **It seems as if the recap didn't make any effect at all**
 
+## 2024/06/22
+### Contrast wheel removed
+- Donor piece for [B0153410](VA0-B0153410.qmd)
 
 # Next steps
 ## Further checks on audio board

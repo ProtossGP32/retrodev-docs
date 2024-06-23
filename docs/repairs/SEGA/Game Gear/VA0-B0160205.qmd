@@ -128,6 +128,11 @@ The soldering technique used this time consisted on the following steps:
 - Use a pair of tweezers to secure the capacitor in place while applying heat
 
 # Console status
+
+| Date | Power | Sound | Game operation | Screen |
+| --- | :---: | :---: | :---: | :---: |
+| 2023/10/08 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :warning: |
+
 ## 2023/10/08
 ### State on stable boot
 - Console enters the [Red Light Boot state](https://www.retrosix.wiki/getting-to-red-light-boot-game-gear), required for further troubleshooting and repairs

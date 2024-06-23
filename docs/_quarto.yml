@@ -73,6 +73,7 @@ format:
     code-line-numbers: true
     code-overflow: scroll
     highlight-style: ayu
+    from: markdown+emoji
 
 
 
