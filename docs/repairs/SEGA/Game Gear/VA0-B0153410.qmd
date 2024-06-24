@@ -42,7 +42,7 @@ Some flux residues from factory and visible corrosion in brightness wheel contac
 
 ### Rear side
 
-There are no visible leaks on capacitors but vias seem corroded, but extreme precautions when removing and cleaning the pads.
+There are no visible leaks on capacitors but vias seem corroded, so extreme precautions when removing and cleaning the pads.
 
 ![Main board - original capacitors](../../../images/repairs/SEGA/Game%20Gear/VA0/B0153410/20240622_main_board_original_caps.jpg)
 
@@ -130,9 +130,7 @@ Prior to dettach the capacitor from the board, use the desoldering wick to remov
 :::
 
 ### Main board
-Before doing any heating work, and seeing the amount of corrosion in the zones near the capacitors, I decided to apply a generous amount of white vinegar to all of them and let it act during some minutes, while avoiding any leakage to the LCD.
-
-This time, and following [RetroSix Wiki advises](), all capacitors have been first removed and then checked if the console reaches the Red Light Boot (RLB) state:
+Following [RetroSix Wiki advises](https://www.retrosix.wiki/getting-to-red-light-boot-game-gear#V6Rgn), all capacitors have been first removed and then checked if the console reaches the Red Light Boot (RLB) state:
 
 > **Components Needed for RLB**
 >
@@ -217,6 +215,7 @@ All verifications except battery ones are done with a SEGA Mega Drive power supp
 | Date | Power | Sound | Game operation | Screen |
 | --- | :---: | :---: | :---: | :---: |
 | 2024/06/22 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :warning: |
+| 2024/06/24 | :warning: | :heavy_check_mark: | :heavy_check_mark: | :warning: |
 
 ## 2024/06/22
 ### Repairing time
@@ -236,6 +235,12 @@ All verifications except battery ones are done with a SEGA Mega Drive power supp
 ![Game Gear - Post-recap picture running Sonic the Hedgehog 2](../../../images/repairs/SEGA/Game%20Gear/VA0/B0153410/20240622_game_gear_working_3.jpg)
 
 ![Game Gear - Post-recap picture running Sonic the Hedgehog 2 on batteries](../../../images/repairs/SEGA/Game%20Gear/VA0/B0153410/20240622_game_gear_working_4.jpg)
+
+- After a three-hour session, the console operation is stable
+
+## 2024/06/24
+### Power LED always blinking
+- After opening the console to use its power and audio boards for tests with [B0097296](VA0-B0097296.qmd), now it always shows a blinking power LED, either with a power supply or batteries. According to Retrosix, this hould only happen when the console runs on low batteries. **A new check on voltage values is required.**
 
 # Next steps
 ## Brightness wheel
