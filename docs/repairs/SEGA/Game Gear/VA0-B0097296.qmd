@@ -86,6 +86,11 @@ Following [Retrosix's wiki](https://www.retrosix.wiki/capacitor-replacement-game
 
 ![Power board - Fully recapped](../../../images/repairs/SEGA/Game%20Gear/VA0/B0097296/20231021_power_board_recap.jpg)
 
+:::{.callout-warning}
+## Bad power board!
+Power board doesn't properly provide 34V even after recapping. Using a functional audio board for the tests
+:::
+
 :::callout-note
 ## A kind advice on thru-hole capacitors removal!
 Removing some capacitors proved to be quite challenging, even with an electrical desoldering pump. The trick to keep the vias intact is to reapply new solder several times to mix old solder with new one. Flux is indispensable to help transfer heat on already old and dry solder as well!
@@ -110,7 +115,7 @@ Using a functional audio board for the tests
 ### Main board
 Before doing any heating work, and seeing the amount of corrosion in the zones near the capacitors, I decided to apply a generous amount of white vinegar to all of them and let it act during some minutes, while avoiding any leakage to the LCD.
 
-This time, and following [RetroSix Wiki advises](), all capacitors have been first removed and then checked if the console reaches the Red Light Boot (RLB) state:
+This time, and following [RetroSix Wiki advises](https://www.retrosix.wiki/getting-to-red-light-boot-game-gear#V6Rgn), all capacitors have been first removed and then checked if the console reaches the Red Light Boot (RLB) state:
 
 > **Components Needed for RLB**
 >
@@ -130,12 +135,9 @@ With the capacitors removed, both power board and audio board are re-connected a
 - VRef Continuity: VRef continuity to ASIC is broken:
     - 1st point of discontinuity: via just below D2, connecting both layers
 
-    ![Mother Board - Broken connectivity of VREF below D2](../../../images/repairs/SEGA/Game%20Gear/VA0/B0097296/20231021_main_board_vref_break.jpg)
-
-    ![EasyEDA - 2-ASIC schematic detail](../../../images/repairs/SEGA/Game%20Gear/VA0/B0097296/20231021_easyeda_schematic_vref_break.jpg)
+    ![EasyEDA - 2-ASIC schematic detail. Broken VRef continuity](../../../images/repairs/SEGA/Game%20Gear/VA0/B0097296/20231021_easyeda_schematic_vref_break.jpg)
         
     - Fixed by drilling a small hole in the via and soldering a capacitor leg through it
-
 
     ![Mother Board - rear view. Fixed connectivity of VREF below D2](../../../images/repairs/SEGA/Game%20Gear/VA0/B0097296/20231021_main_board_vref_fixed.jpg)
 
@@ -148,7 +150,7 @@ With the capacitors removed, both power board and audio board are re-connected a
     
     ![Mother Board - Broken connectivity of VOnOff below D2](../../../images/repairs/SEGA/Game%20Gear/VA0/B0097296/20231021_main_board_vonoff_break.jpg)
     
-    ![EasyEDA - 2-ASIC schematic detail](../../../images/repairs/SEGA/Game%20Gear/VA0/B0097296/20231021_easyeda_schematic_vonoff_break.jpg)
+    ![EasyEDA - 2-ASIC schematic detail. Broken Vonoff continuity](../../../images/repairs/SEGA/Game%20Gear/VA0/B0097296/20231021_easyeda_schematic_vonoff_break.jpg)
     
     - Fixed by drilling a small hole in the via and soldering a capacitor leg through it
 
@@ -158,13 +160,20 @@ With the capacitors removed, both power board and audio board are re-connected a
 
 - V5 network:
     - ASIC isn't receiving 5V, as well as other points
-    - R38, C1, C4, C5, R1, R2: according to EasyEDA schematics, they should receive 5V, but they don't seem to be connected to the 5V plane
+    - R38, C1, C4, C5, R1, R2: according to EasyEDA schematics, they should receive 5V, but they don't seem to be connected to the 5V plane:
+    
+    ![EasyEDA - 2-ASIC schematic detail. Broken V5 continuity](../../../images/repairs/SEGA/Game%20Gear/VA0/B0097296/20231021_easyeda_schematic_v5_break.jpg)
 
     ![Mother Board - Broken connectivity of V5](../../../images/repairs/SEGA/Game%20Gear/VA0/B0097296/20231021_main_board_v5_break.jpg)
 
     - Fixed by soldering unpopulated ZD1 5V pad to R38 right pad
 
     ![Mother Board - Fixed connectivity of V5](../../../images/repairs/SEGA/Game%20Gear/VA0/B0097296/20231021_main_board_v5_fixed.jpg)
+
+:::{.callout-warning}
+## 5V network - Incorrect fix!
+This is properly detected and fixed later on as explained [here](#bad-fix-for-v5-network). The procedure is kept for maintenance actions' tracking.
+:::
 
 - Other broken paths
     - Network R39_2 on EasyEDA: broken connection between C37 bottom pad and D2/C50 top pads --> Bottom layer trace isn't connected to top layer
@@ -225,11 +234,70 @@ The soldering technique used this time consisted on the following steps:
 - Once done, rework the first pad by applying additional solder and adjusting the capacitor by applying heat to both pads if necessary
 - Use a pair of tweezers to secure the capacitor in place while applying heat
 
+## 2024/06/24: Fixes on previous repairs
+### Bad fix for V5 network
+On previous maintenance, a resistor leg between ZD1 and R38 right pad was soldered as shown [here](#continuity-check). This is incorrect as ZD1 is connected to the opposite side of the L2 inductor. In order to fix this:
+
+- After further inspection, the failure point is located in the 5V vias underneath the power supply connector:
+
+  ![EasyEDA - 2-ASIC schematic detail. Failed 5V vias](../../../images/repairs/SEGA/Game%20Gear/VA0/B0097296/20240624_easyeda_schematic_faulty_5V_vias.jpg)
+
+  ![Mother Board - Power connector. 5V vias corroded](../../../images/repairs/SEGA/Game%20Gear/VA0/B0097296/20240624_main_board_v5_vias corroded.jpg)
+
+- Current connection between ZD1 and R38 is removed:
+
+  ![Mother Board - Remove previous V5 fix](../../../images/repairs/SEGA/Game%20Gear/VA0/B0097296/20240624_main_board_v5_fix_removed.jpg)
+
+- V5 network properly fixed by connecting C31 upper pad and L3 upper pad: 
+  
+  ![Mother Board - Proper V5 network fix](../../../images/repairs/SEGA/Game%20Gear/VA0/B0097296/20240624_main_board_v5_proper_fix.jpg)
+
+### 5V and ground fix for capacitor C3 and C4 
+Reviewing the 5V layer integrity, other components are found not being connected to it:
+
+- C3 and C4 are connected to 5V and GND through small vias:
+
+  ![EasyEDA - 2-ASIC schematic detail. C3 and C4 vias](../../../images/repairs/SEGA/Game%20Gear/VA0/B0097296/20240624_easyeda_schematic_c4_corroded_vias.jpg)
+
+- Proper testing shows that the vias are corroded and thus don't connect neither to 5V nor GND:
+  
+  ![Mother Board - C3 and C4 faulty connection to 5V and GND](../../../images/repairs/SEGA/Game%20Gear/VA0/B0097296/20240624_main_board_c3_and_c4_faulty_vias.jpg)
+
+- Fixing the vias is not an option, so pads are connected to C1 5V and GND:
+  
+  ![Mother Board - C3 and C4 connected to C1](../../../images/repairs/SEGA/Game%20Gear/VA0/B0097296/20240624_main_board_c3_and_c4_fixed.jpg)
+
+### Analog 5V issues
+The sound output on this board had too much noise even with properly repaired audio boards. A quick search Retrosix Discord channels mentioned that the issue might be with the Analog +5V and +2.5V paths.
+
+- According to the schematics, a trace in the 5V layer connects R48 and C19 ANALOG+5V pads:
+  
+  ![EasyEDA - 2-ASIC schematic detail. ANALOG+5V network](../../../images/repairs/SEGA/Game%20Gear/VA0/B0097296/20240624_easyeda_schematic_c4_corroded_vias.jpg)
+
+- Further testing shows that the vias are corroded and this connection is lost:
+  
+  ![Mother Board - C19 faulty connection to ANALOG+5V](../../../images/repairs/SEGA/Game%20Gear/VA0/B0097296/20240624_main_board_c19_faulty_via.jpg)
+
+- Once again, fixing the via is not an option, so R48 and C19 pads are connected with a small wire:
+ 
+  ![Mother Board - C19 connection to ANALOG+5V fixed](../../../images/repairs/SEGA/Game%20Gear/VA0/B0097296/20240624_main_board_c19_analog_5V_fixed.jpg)
+
+### Cartridge slot contacts
+Due to inconsistency when booting games, the cartridge pins have been resoldered to ensure proper contact. Now games boot at first try:
+
+![Mother Board - Cartride slot resoldered](../../../images/repairs/SEGA/Game%20Gear/VA0/B0097296/20240624_main_board_cartridge_slot_resoldered.jpg)
+
+### Screen swap
+Original screen showed a dim image only when brightess wheel was set to a very specific position. Without an oscilloscope there's no way to check if the video signals are correct. A screen swap with a spare one from unit 030011013 (not documented) where a BennVenn IPS screen mod was installed hasn't solved anything, so the issue might still be in the main board.
+
+The original screen is kept but not yet reinstalled.
+
 # Console status
 
 | Date | Power | Sound | Game operation | Screen |
 | --- | :---: | :---: | :---: | :---: |
-| 2023/10/21 | :heavy_check_mark: | ❌ | :heavy_check_mark: | :warning: |
+| 2023/10/21 | ❌ | ❌ | :heavy_check_mark: | :warning: |
+| 2024/06/24 | ❌ | ❌ | :heavy_check_mark: | :warning: |
 
 ## 2023/10/21
 ### Repairing time
@@ -250,6 +318,20 @@ The soldering technique used this time consisted on the following steps:
 ## 2024/06/22
 ### Contrast wheel removed
 - Donor piece for [B0153410](VA0-B0153410.qmd)
+
+## 2024/06/24
+### Repairing time
+- 10 hours
+
+### Additional fixes
+- [Read from here](#bad-fix-for-v5-network) for further details
+
+### Game operation at first boot
+- Cartridge slot connection resoldered
+
+### Screen swap
+- Current screen is from IPS-modded unit (030011013)
+- Still not working
 
 # Next steps
 ## Further checks on audio board
