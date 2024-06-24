@@ -240,7 +240,7 @@ All verifications except battery ones are done with a SEGA Mega Drive power supp
 
 ## 2024/06/24
 ### Power LED always blinking
-- After opening the console to use its power and audio boards for tests with [B0097296](VA0-B0097296.qmd), now it always shows a blinking power LED, either with a power supply or batteries. According to Retrosix, this hould only happen when the console runs on low batteries. **A new check on voltage values is required.**
+- After opening the console to use its power and audio boards for tests with [B0097296](VA0-B0097296.qmd), now it always shows a blinking power LED, either with a power supply or batteries. According to Retrosix, this should only happen when the console runs on low batteries. **A new check on voltage values is required.**
 
 # Next steps
 ## Brightness wheel
