@@ -152,7 +152,7 @@
     "href": "repairs/SEGA/Game Gear/VA0-B0153410.html#section-1",
     "title": "Game Gear VA0 - 4",
     "section": "2024/06/24",
-    "text": "2024/06/24\n\nPower LED always blinking\n\nAfter opening the console to use its power and audio boards for tests with B0097296, now it always shows a blinking power LED, either with a power supply or batteries. According to Retrosix, this hould only happen when the console runs on low batteries. A new check on voltage values is required.",
+    "text": "2024/06/24\n\nPower LED always blinking\n\nAfter opening the console to use its power and audio boards for tests with B0097296, now it always shows a blinking power LED, either with a power supply or batteries. According to Retrosix, this should only happen when the console runs on low batteries. A new check on voltage values is required.",
     "crumbs": [
       "SEGA",
       "Game Gear",
