@@ -269,6 +269,10 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#repairing-time" id="toc-repairing-time" class="nav-link" data-scroll-target="#repairing-time">Repairing time</a></li>
   <li><a href="#state-on-stable-boot" id="toc-state-on-stable-boot" class="nav-link" data-scroll-target="#state-on-stable-boot">State on stable boot</a></li>
   </ul></li>
+  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1">2024/06/24</a>
+  <ul class="collapse">
+  <li><a href="#power-led-always-blinking" id="toc-power-led-always-blinking" class="nav-link" data-scroll-target="#power-led-always-blinking">Power LED always blinking</a></li>
+  </ul></li>
   </ul></li>
   <li><a href="#next-steps" id="toc-next-steps" class="nav-link" data-scroll-target="#next-steps">Next steps</a>
   <ul class="collapse">
@@ -387,7 +391,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="rear-side" class="level3">
 <h3 class="anchored" data-anchor-id="rear-side">Rear side</h3>
-<p>There are no visible leaks on capacitors but vias seem corroded, but extreme precautions when removing and cleaning the pads.</p>
+<p>There are no visible leaks on capacitors but vias seem corroded, so extreme precautions when removing and cleaning the pads.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../../../images/repairs/SEGA/Game Gear/VA0/B0153410/20240622_main_board_original_caps.jpg" class="img-fluid figure-img"></p>
@@ -577,8 +581,7 @@ A kind advice on surface-mount capacitors removal!
 </section>
 <section id="main-board-1" class="level3">
 <h3 class="anchored" data-anchor-id="main-board-1">Main board</h3>
-<p>Before doing any heating work, and seeing the amount of corrosion in the zones near the capacitors, I decided to apply a generous amount of white vinegar to all of them and let it act during some minutes, while avoiding any leakage to the LCD.</p>
-<p>This time, and following <a href="">RetroSix Wiki advises</a>, all capacitors have been first removed and then checked if the console reaches the Red Light Boot (RLB) state:</p>
+<p>Following <a href="https://www.retrosix.wiki/getting-to-red-light-boot-game-gear#V6Rgn">RetroSix Wiki advises</a>, all capacitors have been first removed and then checked if the console reaches the Red Light Boot (RLB) state:</p>
 <blockquote class="blockquote">
 <p><strong>Components Needed for RLB</strong></p>
 <p><em>It’s worth noting that <strong>audio ICs</strong>, every <strong>aluminium capacitor</strong>, the <strong>LCD, MPU, Work RAM</strong> nor <strong>Video RAM</strong> or <strong>main crystal</strong> are involved or even needed to be soldered on the board to get to red light boot. <strong>Don’t waste your time on those</strong> until you get red light.</em></p>
@@ -742,6 +745,13 @@ Remember this trick for surface-mount capacitors removal!
 <td style="text-align: center;"><span class="emoji" data-emoji="heavy_check_mark">✔️</span></td>
 <td style="text-align: center;"><span class="emoji" data-emoji="warning">⚠️</span></td>
 </tr>
+<tr class="even">
+<td>2024/06/24</td>
+<td style="text-align: center;"><span class="emoji" data-emoji="warning">⚠️</span></td>
+<td style="text-align: center;"><span class="emoji" data-emoji="heavy_check_mark">✔️</span></td>
+<td style="text-align: center;"><span class="emoji" data-emoji="heavy_check_mark">✔️</span></td>
+<td style="text-align: center;"><span class="emoji" data-emoji="warning">⚠️</span></td>
+</tr>
 </tbody>
 </table>
 <section id="section" class="level2">
@@ -787,6 +797,18 @@ Remember this trick for surface-mount capacitors removal!
 <figcaption>Game Gear - Post-recap picture running Sonic the Hedgehog 2 on batteries</figcaption>
 </figure>
 </div>
+<ul>
+<li>After a three-hour session, the console operation is stable</li>
+</ul>
+</section>
+</section>
+<section id="section-1" class="level2">
+<h2 class="anchored" data-anchor-id="section-1">2024/06/24</h2>
+<section id="power-led-always-blinking" class="level3">
+<h3 class="anchored" data-anchor-id="power-led-always-blinking">Power LED always blinking</h3>
+<ul>
+<li>After opening the console to use its power and audio boards for tests with <a href="../../../repairs/SEGA/Game Gear/VA0-B0097296.html">B0097296</a>, now it always shows a blinking power LED, either with a power supply or batteries. According to Retrosix, this hould only happen when the console runs on low batteries. <strong>A new check on voltage values is required.</strong></li>
+</ul>
 </section>
 </section>
 </section>

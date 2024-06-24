@@ -245,6 +245,14 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#audio-board" id="toc-audio-board" class="nav-link" data-scroll-target="#audio-board">Audio board</a></li>
   <li><a href="#main-board" id="toc-main-board" class="nav-link" data-scroll-target="#main-board">Main board</a></li>
   </ul></li>
+  <li><a href="#fixes-on-previous-repairs" id="toc-fixes-on-previous-repairs" class="nav-link" data-scroll-target="#fixes-on-previous-repairs">2024/06/24: Fixes on previous repairs</a>
+  <ul class="collapse">
+  <li><a href="#bad-fix-for-v5-network" id="toc-bad-fix-for-v5-network" class="nav-link" data-scroll-target="#bad-fix-for-v5-network">Bad fix for V5 network</a></li>
+  <li><a href="#v-and-ground-fix-for-capacitor-c3-and-c4" id="toc-v-and-ground-fix-for-capacitor-c3-and-c4" class="nav-link" data-scroll-target="#v-and-ground-fix-for-capacitor-c3-and-c4">5V and ground fix for capacitor C3 and C4</a></li>
+  <li><a href="#analog-5v-issues" id="toc-analog-5v-issues" class="nav-link" data-scroll-target="#analog-5v-issues">Analog 5V issues</a></li>
+  <li><a href="#cartridge-slot-contacts" id="toc-cartridge-slot-contacts" class="nav-link" data-scroll-target="#cartridge-slot-contacts">Cartridge slot contacts</a></li>
+  <li><a href="#screen-swap" id="toc-screen-swap" class="nav-link" data-scroll-target="#screen-swap">Screen swap</a></li>
+  </ul></li>
   </ul></li>
   <li><a href="#console-status" id="toc-console-status" class="nav-link" data-scroll-target="#console-status">Console status</a>
   <ul class="collapse">
@@ -256,6 +264,13 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1">2024/06/22</a>
   <ul class="collapse">
   <li><a href="#contrast-wheel-removed" id="toc-contrast-wheel-removed" class="nav-link" data-scroll-target="#contrast-wheel-removed">Contrast wheel removed</a></li>
+  </ul></li>
+  <li><a href="#section-2" id="toc-section-2" class="nav-link" data-scroll-target="#section-2">2024/06/24</a>
+  <ul class="collapse">
+  <li><a href="#repairing-time-1" id="toc-repairing-time-1" class="nav-link" data-scroll-target="#repairing-time-1">Repairing time</a></li>
+  <li><a href="#additional-fixes" id="toc-additional-fixes" class="nav-link" data-scroll-target="#additional-fixes">Additional fixes</a></li>
+  <li><a href="#game-operation-at-first-boot" id="toc-game-operation-at-first-boot" class="nav-link" data-scroll-target="#game-operation-at-first-boot">Game operation at first boot</a></li>
+  <li><a href="#screen-swap-1" id="toc-screen-swap-1" class="nav-link" data-scroll-target="#screen-swap-1">Screen swap</a></li>
   </ul></li>
   </ul></li>
   <li><a href="#next-steps" id="toc-next-steps" class="nav-link" data-scroll-target="#next-steps">Next steps</a>
@@ -487,6 +502,19 @@ ul.task-list li input[type="checkbox"] {
 <figcaption>Power board - Fully recapped</figcaption>
 </figure>
 </div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Bad power board!
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Power board doesn’t properly provide 34V even after recapping. Using a functional audio board for the tests</p>
+</div>
+</div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -532,7 +560,7 @@ Bad audio board!
 <section id="main-board" class="level3">
 <h3 class="anchored" data-anchor-id="main-board">Main board</h3>
 <p>Before doing any heating work, and seeing the amount of corrosion in the zones near the capacitors, I decided to apply a generous amount of white vinegar to all of them and let it act during some minutes, while avoiding any leakage to the LCD.</p>
-<p>This time, and following <a href="">RetroSix Wiki advises</a>, all capacitors have been first removed and then checked if the console reaches the Red Light Boot (RLB) state:</p>
+<p>This time, and following <a href="https://www.retrosix.wiki/getting-to-red-light-boot-game-gear#V6Rgn">RetroSix Wiki advises</a>, all capacitors have been first removed and then checked if the console reaches the Red Light Boot (RLB) state:</p>
 <blockquote class="blockquote">
 <p><strong>Components Needed for RLB</strong></p>
 <p><em>It’s worth noting that <strong>audio ICs</strong>, every <strong>aluminium capacitor</strong>, the <strong>LCD, MPU, Work RAM</strong> nor <strong>Video RAM</strong> or <strong>main crystal</strong> are involved or even needed to be soldered on the board to get to red light boot. <strong>Don’t waste your time on those</strong> until you get red light.</em></p>
@@ -555,14 +583,8 @@ Bad audio board!
 </ul>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../../../images/repairs/SEGA/Game Gear/VA0/B0097296/20231021_main_board_vref_break.jpg" class="img-fluid figure-img"></p>
-<figcaption>Mother Board - Broken connectivity of VREF below D2</figcaption>
-</figure>
-</div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
 <p><img src="../../../images/repairs/SEGA/Game Gear/VA0/B0097296/20231021_easyeda_schematic_vref_break.jpg" class="img-fluid figure-img"></p>
-<figcaption>EasyEDA - 2-ASIC schematic detail</figcaption>
+<figcaption>EasyEDA - 2-ASIC schematic detail. Broken VRef continuity</figcaption>
 </figure>
 </div>
 <ul>
@@ -593,7 +615,7 @@ Bad audio board!
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../../../images/repairs/SEGA/Game Gear/VA0/B0097296/20231021_easyeda_schematic_vonoff_break.jpg" class="img-fluid figure-img"></p>
-<figcaption>EasyEDA - 2-ASIC schematic detail</figcaption>
+<figcaption>EasyEDA - 2-ASIC schematic detail. Broken Vonoff continuity</figcaption>
 </figure>
 </div>
 <ul>
@@ -614,8 +636,14 @@ Bad audio board!
 <li>V5 network:
 <ul>
 <li>ASIC isn’t receiving 5V, as well as other points</li>
-<li>R38, C1, C4, C5, R1, R2: according to EasyEDA schematics, they should receive 5V, but they don’t seem to be connected to the 5V plane</li>
+<li>R38, C1, C4, C5, R1, R2: according to EasyEDA schematics, they should receive 5V, but they don’t seem to be connected to the 5V plane:</li>
 </ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../../images/repairs/SEGA/Game Gear/VA0/B0097296/20231021_easyeda_schematic_v5_break.jpg" class="img-fluid figure-img"></p>
+<figcaption>EasyEDA - 2-ASIC schematic detail. Broken V5 continuity</figcaption>
+</figure>
+</div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../../../images/repairs/SEGA/Game Gear/VA0/B0097296/20231021_main_board_v5_break.jpg" class="img-fluid figure-img"></p>
@@ -631,6 +659,21 @@ Bad audio board!
 <figcaption>Mother Board - Fixed connectivity of V5</figcaption>
 </figure>
 </div></li>
+</ul>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+5V network - Incorrect fix!
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This is properly detected and fixed later on as explained <a href="#bad-fix-for-v5-network">here</a>. The procedure is kept for maintenance actions’ tracking.</p>
+</div>
+</div>
+<ul>
 <li>Other broken paths
 <ul>
 <li>Network R39_2 on EasyEDA: broken connection between C37 bottom pad and D2/C50 top pads –&gt; Bottom layer trace isn’t connected to top layer
@@ -736,17 +779,115 @@ Bad cartridge slot
 </section>
 </section>
 </section>
+<section id="fixes-on-previous-repairs" class="level2">
+<h2 class="anchored" data-anchor-id="fixes-on-previous-repairs">2024/06/24: Fixes on previous repairs</h2>
+<section id="bad-fix-for-v5-network" class="level3">
+<h3 class="anchored" data-anchor-id="bad-fix-for-v5-network">Bad fix for V5 network</h3>
+<p>On previous maintenance, a resistor leg between ZD1 and R38 right pad was soldered as shown <a href="#continuity-check">here</a>. This is incorrect as ZD1 is connected to the opposite side of the L2 inductor. In order to fix this:</p>
+<ul>
+<li><p>After further inspection, the failure point is located in the 5V vias underneath the power supply connector:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../../images/repairs/SEGA/Game Gear/VA0/B0097296/20240624_easyeda_schematic_faulty_5V_vias.jpg" class="img-fluid figure-img"></p>
+<figcaption>EasyEDA - 2-ASIC schematic detail. Failed 5V vias</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../../images/repairs/SEGA/Game Gear/VA0/B0097296/20240624_main_board_v5_vias corroded.jpg" class="img-fluid figure-img"></p>
+<figcaption>Mother Board - Power connector. 5V vias corroded</figcaption>
+</figure>
+</div></li>
+<li><p>Current connection between ZD1 and R38 is removed:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../../images/repairs/SEGA/Game Gear/VA0/B0097296/20240624_main_board_v5_fix_removed.jpg" class="img-fluid figure-img"></p>
+<figcaption>Mother Board - Remove previous V5 fix</figcaption>
+</figure>
+</div></li>
+<li><p>V5 network properly fixed by connecting C31 upper pad and L3 upper pad:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../../images/repairs/SEGA/Game Gear/VA0/B0097296/20240624_main_board_v5_proper_fix.jpg" class="img-fluid figure-img"></p>
+<figcaption>Mother Board - Proper V5 network fix</figcaption>
+</figure>
+</div></li>
+</ul>
+</section>
+<section id="v-and-ground-fix-for-capacitor-c3-and-c4" class="level3">
+<h3 class="anchored" data-anchor-id="v-and-ground-fix-for-capacitor-c3-and-c4">5V and ground fix for capacitor C3 and C4</h3>
+<p>Reviewing the 5V layer integrity, other components are found not being connected to it:</p>
+<ul>
+<li><p>C3 and C4 are connected to 5V and GND through small vias:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../../images/repairs/SEGA/Game Gear/VA0/B0097296/20240624_easyeda_schematic_c4_corroded_vias.jpg" class="img-fluid figure-img"></p>
+<figcaption>EasyEDA - 2-ASIC schematic detail. C3 and C4 vias</figcaption>
+</figure>
+</div></li>
+<li><p>Proper testing shows that the vias are corroded and thus don’t connect neither to 5V nor GND:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../../images/repairs/SEGA/Game Gear/VA0/B0097296/20240624_main_board_c3_and_c4_faulty_vias.jpg" class="img-fluid figure-img"></p>
+<figcaption>Mother Board - C3 and C4 faulty connection to 5V and GND</figcaption>
+</figure>
+</div></li>
+<li><p>Fixing the vias is not an option, so pads are connected to C1 5V and GND:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../../images/repairs/SEGA/Game Gear/VA0/B0097296/20240624_main_board_c3_and_c4_fixed.jpg" class="img-fluid figure-img"></p>
+<figcaption>Mother Board - C3 and C4 connected to C1</figcaption>
+</figure>
+</div></li>
+</ul>
+</section>
+<section id="analog-5v-issues" class="level3">
+<h3 class="anchored" data-anchor-id="analog-5v-issues">Analog 5V issues</h3>
+<p>The sound output on this board had too much noise even with properly repaired audio boards. A quick search Retrosix Discord channels mentioned that the issue might be with the Analog +5V and +2.5V paths.</p>
+<ul>
+<li><p>According to the schematics, a trace in the 5V layer connects R48 and C19 ANALOG+5V pads:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../../images/repairs/SEGA/Game Gear/VA0/B0097296/20240624_easyeda_schematic_c4_corroded_vias.jpg" class="img-fluid figure-img"></p>
+<figcaption>EasyEDA - 2-ASIC schematic detail. ANALOG+5V network</figcaption>
+</figure>
+</div></li>
+<li><p>Further testing shows that the vias are corroded and this connection is lost:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../../images/repairs/SEGA/Game Gear/VA0/B0097296/20240624_main_board_c19_faulty_via.jpg" class="img-fluid figure-img"></p>
+<figcaption>Mother Board - C19 faulty connection to ANALOG+5V</figcaption>
+</figure>
+</div></li>
+<li><p>Once again, fixing the via is not an option, so R48 and C19 pads are connected with a small wire:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../../images/repairs/SEGA/Game Gear/VA0/B0097296/20240624_main_board_c19_analog_5V_fixed.jpg" class="img-fluid figure-img"></p>
+<figcaption>Mother Board - C19 connection to ANALOG+5V fixed</figcaption>
+</figure>
+</div></li>
+</ul>
+</section>
+<section id="cartridge-slot-contacts" class="level3">
+<h3 class="anchored" data-anchor-id="cartridge-slot-contacts">Cartridge slot contacts</h3>
+<p>Due to inconsistency when booting games, the cartridge pins have been resoldered to ensure proper contact. Now games boot at first try:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../../images/repairs/SEGA/Game Gear/VA0/B0097296/20240624_main_board_cartridge_slot_resoldered.jpg" class="img-fluid figure-img"></p>
+<figcaption>Mother Board - Cartride slot resoldered</figcaption>
+</figure>
+</div>
+</section>
+<section id="screen-swap" class="level3">
+<h3 class="anchored" data-anchor-id="screen-swap">Screen swap</h3>
+<p>Original screen showed a dim image only when brightess wheel was set to a very specific position. Without an oscilloscope there’s no way to check if the video signals are correct. A screen swap with a spare one from unit 030011013 (not documented) where a BennVenn IPS screen mod was installed hasn’t solved anything, so the issue might still be in the main board.</p>
+<p>The original screen is kept but not yet reinstalled.</p>
+</section>
+</section>
 </section>
 <section id="console-status" class="level1">
 <h1>Console status</h1>
 <table class="caption-top table">
-<colgroup>
-<col style="width: 13%">
-<col style="width: 21%">
-<col style="width: 21%">
-<col style="width: 21%">
-<col style="width: 21%">
-</colgroup>
 <thead>
 <tr class="header">
 <th>Date</th>
@@ -759,7 +900,14 @@ Bad cartridge slot
 <tbody>
 <tr class="odd">
 <td>2023/10/21</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">❌</td>
 <td style="text-align: center;"><span class="emoji" data-emoji="heavy_check_mark">✔️</span></td>
+<td style="text-align: center;"><span class="emoji" data-emoji="warning">⚠️</span></td>
+</tr>
+<tr class="even">
+<td>2024/06/24</td>
+<td style="text-align: center;">❌</td>
 <td style="text-align: center;">❌</td>
 <td style="text-align: center;"><span class="emoji" data-emoji="heavy_check_mark">✔️</span></td>
 <td style="text-align: center;"><span class="emoji" data-emoji="warning">⚠️</span></td>
@@ -799,6 +947,34 @@ Bad cartridge slot
 <h3 class="anchored" data-anchor-id="contrast-wheel-removed">Contrast wheel removed</h3>
 <ul>
 <li>Donor piece for <a href="../../../repairs/SEGA/Game Gear/VA0-B0153410.html">B0153410</a></li>
+</ul>
+</section>
+</section>
+<section id="section-2" class="level2">
+<h2 class="anchored" data-anchor-id="section-2">2024/06/24</h2>
+<section id="repairing-time-1" class="level3">
+<h3 class="anchored" data-anchor-id="repairing-time-1">Repairing time</h3>
+<ul>
+<li>10 hours</li>
+</ul>
+</section>
+<section id="additional-fixes" class="level3">
+<h3 class="anchored" data-anchor-id="additional-fixes">Additional fixes</h3>
+<ul>
+<li><a href="#bad-fix-for-v5-network">Read from here</a> for further details</li>
+</ul>
+</section>
+<section id="game-operation-at-first-boot" class="level3">
+<h3 class="anchored" data-anchor-id="game-operation-at-first-boot">Game operation at first boot</h3>
+<ul>
+<li>Cartridge slot connection resoldered</li>
+</ul>
+</section>
+<section id="screen-swap-1" class="level3">
+<h3 class="anchored" data-anchor-id="screen-swap-1">Screen swap</h3>
+<ul>
+<li>Current screen is from IPS-modded unit (030011013)</li>
+<li>Still not working</li>
 </ul>
 </section>
 </section>
