@@ -83,7 +83,7 @@ Also use the desoldering wick to free the hole from solder before putting the ne
 ### Main board
 Before doing any heating work, and seeing the amount of corrosion in the zones near the capacitors, I decided to apply a generous amount of white vinegar to all of them and let it act during some minutes, while avoiding any leakage to the LCD.
 
-This time, and following [RetroSix Wiki advises](), all capacitors have been first removed and then checked if the console reaches the Red Light Boot (RLB) state:
+This time, and following [RetroSix Wiki advises](https://www.retrosix.wiki/getting-to-red-light-boot-game-gear#V6Rgn), all capacitors have been first removed and then checked if the console reaches the Red Light Boot (RLB) state:
 
 > **Components Needed for RLB**
 >

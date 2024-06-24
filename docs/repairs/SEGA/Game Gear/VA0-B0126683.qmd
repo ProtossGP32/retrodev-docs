@@ -90,7 +90,7 @@ Some capacitor pads presented a huge amount of corrosion, making it a little bit
 
 | Date | Power | Sound | Game operation | Screen |
 | --- | :---: | :---: | :---: | :---: |
-| 2023/10/01 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | ❌ |
+| 2023/10/01 | :heavy_check_mark: | :heavy_check_mark: | :warning: | ❌ |
 
 ## 2023/10/01
 ### State on stable boot
@@ -119,7 +119,9 @@ If everything else is fine, this console could be a good candidate for a screen 
 # Next steps
 ## T1 voltages
 - Check T1 voltages, see if it is faulty
+
 ## L2 inductor
 - Check L2 inductor status
+ 
 ## C33 capacitor
 - Check if C33 capacitor is faulty
