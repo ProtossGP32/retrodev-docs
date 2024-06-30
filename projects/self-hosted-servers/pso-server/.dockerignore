@@ -1,0 +1,12 @@
+**/.github
+**/.gitignore
+**/.git
+# newserv non-required application files and folders
+newserv/notes
+newserv/static
+newserv/tests
+newserv/patch_flycast_memory.py
+newserv/TODO.md
+# phosg non-required application files and folders
+# resource_dasm non-required application files and folders
+resource_dasm/s-resource_dasm.png
