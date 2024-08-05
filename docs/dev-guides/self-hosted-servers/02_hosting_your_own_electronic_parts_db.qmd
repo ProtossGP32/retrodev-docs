@@ -1,0 +1,39 @@
+---
+title: "Hosting your own electronic parts data base with Part-DB"
+author: ProtossGP32
+date: 2024/08/05
+description: "Keep track of your parts inventory in your homelab!"
+categories: ["electronics", "database", "server", "Docker"]
+---
+
+# Introduction
+
+According to [_Part-DB docs_][part-db-docs]:
+
+> [Part-DB][github-part-db] is an Open-Source inventory management system for your electronic components. It is installed on a web server and so can be accessed with any browser without the need to install additional software.
+
+# Installation
+## Docker compose
+
+Follow the instructions in [this link][part-db-docker-compose] to deploy the required services for `part-db` to run. By default, Part-DB will use an internal SQLite database, but this can be changed to MariaDB, MongoDB or PostgreSQL.
+
+```{.yaml filename="Docker compose" include=../../../projects/self-hosted-servers/parts-db/docker-compose.yaml}
+
+```
+
+::: {.callout-warning}
+# TODO
+Create a Docker compose that uses PostgreSQL instead. Use the `docker-compose.yaml` example for MySQL database as a starting point.
+:::
+
+# Management
+
+::: {.callout-warning}
+# TODO
+Document how to manage parts, users, suppliers, etc...
+:::
+
+<!-- LINKS -->
+[part-db-docs]: https://docs.part-db.de
+[part-db-docker-compose]: https://docs.part-db.de/installation/installation_docker.html
+[github-part-db]: https://github.com/Part-DB/Part-DB-server
