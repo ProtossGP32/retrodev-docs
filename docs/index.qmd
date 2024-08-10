@@ -10,7 +10,7 @@ listing:
     contents:
       - repairs
       - retro-sdks
-      - dev-guides
+      - deploy-guides
     fields: [image, date, title, description, author, reading-time]
     sort:
       - "date desc"
