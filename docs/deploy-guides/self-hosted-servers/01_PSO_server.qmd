@@ -1,5 +1,5 @@
 ---
-title: "Hosting your own Phantasy Star Online server"
+title: "Phantasy Star Online server"
 author: ProtossGP32
 date: 2024/06/30
 description: "Bring the online glory of Pioneer 2 crew to your own homelab!"
