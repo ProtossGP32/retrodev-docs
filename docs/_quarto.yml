@@ -24,6 +24,7 @@ website:
         href: index.qmd
       - sidebar:retro-sdks
       - sidebar:repairs
+      - sidebar:deploy-guides
       - text: About
         file: about.qmd
 
@@ -46,6 +47,10 @@ website:
       title: Repairs
       style: docked
       contents: repairs/**
+    - id: deploy-guides
+      title: Deployment guides
+      style: docked
+      contents: deploy-guides/**
 
   # Page Footer
   page-footer:

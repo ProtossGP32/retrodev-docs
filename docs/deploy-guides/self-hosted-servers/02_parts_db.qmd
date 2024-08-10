@@ -1,8 +1,8 @@
 ---
-title: "Hosting your own electronic parts data base with Part-DB"
+title: "Part-DB"
 author: ProtossGP32
 date: 2024/08/05
-description: "Keep track of your parts inventory in your homelab!"
+description: "Hosting your own electronic parts data base in your homelab!"
 categories: ["electronics", "database", "server", "Docker"]
 ---
 
