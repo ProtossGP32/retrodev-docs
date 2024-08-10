@@ -10,7 +10,33 @@
 <atom:link href="https://protossgp32.github.io/retrodev-docs/index.xml" rel="self" type="application/rss+xml"/>
 <description>A place for anything related to retro-gaming</description>
 <generator>quarto-1.5.56</generator>
-<lastBuildDate>Sat, 22 Jun 2024 00:00:00 GMT</lastBuildDate>
+<lastBuildDate>Mon, 05 Aug 2024 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>Part-DB</title>
+  <dc:creator>ProtossGP32 </dc:creator>
+  <link>https://protossgp32.github.io/retrodev-docs/deploy-guides/self-hosted-servers/02_parts_db.html</link>
+  <description><![CDATA[ Hosting your own electronic parts data base in your homelab! ]]></description>
+  <category>electronics</category>
+  <category>database</category>
+  <category>server</category>
+  <category>Docker</category>
+  <guid>https://protossgp32.github.io/retrodev-docs/deploy-guides/self-hosted-servers/02_parts_db.html</guid>
+  <pubDate>Mon, 05 Aug 2024 00:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Phantasy Star Online server</title>
+  <dc:creator>ProtossGP32 </dc:creator>
+  <link>https://protossgp32.github.io/retrodev-docs/deploy-guides/self-hosted-servers/01_PSO_server.html</link>
+  <description><![CDATA[ Bring the online glory of Pioneer 2 crew to your own homelab! ]]></description>
+  <category>Dreamcast</category>
+  <category>SEGA</category>
+  <category>GameCube</category>
+  <category>PSO</category>
+  <category>server</category>
+  <category>Docker</category>
+  <guid>https://protossgp32.github.io/retrodev-docs/deploy-guides/self-hosted-servers/01_PSO_server.html</guid>
+  <pubDate>Sun, 30 Jun 2024 00:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Game Gear VA0 - 4</title>
   <dc:creator>ProtossGP32 </dc:creator>

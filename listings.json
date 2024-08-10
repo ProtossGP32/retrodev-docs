@@ -2,6 +2,8 @@
   {
     "listing": "/index.html",
     "items": [
+      "/deploy-guides/self-hosted-servers/02_parts_db.html",
+      "/deploy-guides/self-hosted-servers/01_PSO_server.html",
       "/repairs/SEGA/Game Gear/VA0-B0153410.html",
       "/repairs/SEGA/Game Gear/VA0-B0097296.html",
       "/repairs/SEGA/Game Gear/VA0-B0160205.html",
