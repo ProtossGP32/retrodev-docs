@@ -7,10 +7,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="ProtossGP32">
-<meta name="dcterms.date" content="2023-05-07">
-<meta name="description" content="Learn how to configure your development environment">
+<meta name="dcterms.date" content="2024-06-30">
+<meta name="description" content="Bring the online glory of Pioneer 2 crew to your own homelab!">
 
-<title>NES SDKs – RetroDev docs</title>
+<title>Phantasy Star Online server – RetroDev docs</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,6 +23,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -33,7 +67,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../retro-sdks/sega/mega-drive.html" rel="next">
+<link href="../../deploy-guides/self-hosted-servers/02_parts_db.html" rel="next">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -176,7 +210,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../retro-sdks/nintendo/nes.html">Nintendo</a></li><li class="breadcrumb-item"><a href="../../retro-sdks/nintendo/nes.html">NES SDKs</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../deploy-guides/self-hosted-servers/01_PSO_server.html">Self Hosted Servers</a></li><li class="breadcrumb-item"><a href="../../deploy-guides/self-hosted-servers/01_PSO_server.html">Phantasy Star Online server</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -191,7 +225,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text">Nintendo</span></a>
+ <span class="menu-text">Self Hosted Servers</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -199,25 +233,14 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../retro-sdks/nintendo/nes.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">NES SDKs</span></a>
+  <a href="../../deploy-guides/self-hosted-servers/01_PSO_server.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Phantasy Star Online server</span></a>
   </div>
 </li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
- <span class="menu-text">Sega</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../retro-sdks/sega/mega-drive.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Mega Drive SDKs</span></a>
+  <a href="../../deploy-guides/self-hosted-servers/02_parts_db.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Part-DB</span></a>
   </div>
 </li>
       </ul>
@@ -235,28 +258,45 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
   <li><a href="#getting-started" id="toc-getting-started" class="nav-link" data-scroll-target="#getting-started">Getting started</a>
   <ul class="collapse">
-  <li><a href="#installing-sdk" id="toc-installing-sdk" class="nav-link" data-scroll-target="#installing-sdk">Installing SDK</a></li>
-  <li><a href="#text-editors" id="toc-text-editors" class="nav-link" data-scroll-target="#text-editors">Text editors</a></li>
+  <li><a href="#tools-of-the-trade" id="toc-tools-of-the-trade" class="nav-link" data-scroll-target="#tools-of-the-trade">Tools of the trade</a></li>
+  <li><a href="#setting-our-own-repository" id="toc-setting-our-own-repository" class="nav-link" data-scroll-target="#setting-our-own-repository">Setting our own repository</a></li>
+  </ul></li>
+  <li><a href="#building-the-server" id="toc-building-the-server" class="nav-link" data-scroll-target="#building-the-server">Building the server</a>
+  <ul class="collapse">
+  <li><a href="#creating-the-docker-image" id="toc-creating-the-docker-image" class="nav-link" data-scroll-target="#creating-the-docker-image">Creating the Docker image</a></li>
+  </ul></li>
+  <li><a href="#running-the-server" id="toc-running-the-server" class="nav-link" data-scroll-target="#running-the-server">Running the server</a>
+  <ul class="collapse">
+  <li><a href="#preparing-a-server-configuration-file" id="toc-preparing-a-server-configuration-file" class="nav-link" data-scroll-target="#preparing-a-server-configuration-file">Preparing a server configuration file</a></li>
+  <li><a href="#executing-the-docker-container" id="toc-executing-the-docker-container" class="nav-link" data-scroll-target="#executing-the-docker-container">Executing the Docker container</a></li>
+  <li><a href="#maintaning-the-server" id="toc-maintaning-the-server" class="nav-link" data-scroll-target="#maintaning-the-server">Maintaning the server</a></li>
+  </ul></li>
+  <li><a href="#updating-the-server" id="toc-updating-the-server" class="nav-link" data-scroll-target="#updating-the-server">Updating the server</a>
+  <ul class="collapse">
+  <li><a href="#github-actions" id="toc-github-actions" class="nav-link" data-scroll-target="#github-actions">GitHub Actions</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/protossgp32/retrodev-docs/edit/main/docs/retro-sdks/nintendo/nes.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/protossgp32/retrodev-docs/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/protossgp32/retrodev-docs/edit/main/docs/deploy-guides/self-hosted-servers/01_PSO_server.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/protossgp32/retrodev-docs/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../retro-sdks/nintendo/nes.html">Nintendo</a></li><li class="breadcrumb-item"><a href="../../retro-sdks/nintendo/nes.html">NES SDKs</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../deploy-guides/self-hosted-servers/01_PSO_server.html">Self Hosted Servers</a></li><li class="breadcrumb-item"><a href="../../deploy-guides/self-hosted-servers/01_PSO_server.html">Phantasy Star Online server</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">NES SDKs</h1>
+<h1 class="title">Phantasy Star Online server</h1>
   <div class="quarto-categories">
-    <div class="quarto-category">NES</div>
-    <div class="quarto-category">Nintendo</div>
-    <div class="quarto-category">SDK</div>
+    <div class="quarto-category">Dreamcast</div>
+    <div class="quarto-category">SEGA</div>
+    <div class="quarto-category">GameCube</div>
+    <div class="quarto-category">PSO</div>
+    <div class="quarto-category">server</div>
+    <div class="quarto-category">Docker</div>
   </div>
   </div>
 
 <div>
   <div class="description">
-    Learn how to configure your development environment
+    Bring the online glory of Pioneer 2 crew to your own homelab!
   </div>
 </div>
 
@@ -273,7 +313,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">May 7, 2023</p>
+      <p class="date">June 30, 2024</p>
     </div>
   </div>
   
@@ -285,16 +325,195 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../images/dev-guides/self-hosted-servers/pso/pso-logo.png" class="img-fluid figure-img"></p>
+<figcaption>Phantasy Star Online logo</figcaption>
+</figure>
+</div>
 <section id="introduction" class="level1">
 <h1>Introduction</h1>
+<p><a href="https://en.wikipedia.org/wiki/Phantasy_Star_Online">Phantasy Star Online</a> is the first online RPG game made for consoles and was published by SEGA in 2000 for the Dreamcast. After its initial succses, the game was ported to several platforms like PC, XBOX and GameCube. Online gaming was hosted on private SEGA servers at that time and are long time unavailable, but the fan community brough them back as private servers and since some years ago there are public source code for deploying our own servers at home!</p>
 </section>
 <section id="getting-started" class="level1">
 <h1>Getting started</h1>
-<section id="installing-sdk" class="level2">
-<h2 class="anchored" data-anchor-id="installing-sdk">Installing SDK</h2>
+<p>We’re going to follow this excellent <a href="https://cdromrom.wordpress.com/2020/12/05/phantasy-star-online-gamecube-server-on-raspberry-pi/">blog entry</a> from the guys at <a href="https://cdromrom.wordpress.com">Super CD-ROM²</a> as an entrypoint to build our own Docker image so it is cleaner to build and maintain new versions. Later on, we’ll use docker-compose to deploy it in our server of choice (be it a VM or a SBC like a Raspberry Pi)</p>
+<section id="tools-of-the-trade" class="level2">
+<h2 class="anchored" data-anchor-id="tools-of-the-trade">Tools of the trade</h2>
+<ul>
+<li>Code repositories:
+<ul>
+<li><a href="https://github.com/fuzziqersoftware/phosg">phosg</a> from Martin Michelsen aka <a href="http://www.fuzziqersoftware.com/">fuzziqersoftware</a>: a tool required to build <a href="https://github.com/fuzziqersoftware/newserv">newserv</a>, the actual PSO server. Active development as of 2024/06/30</li>
+<li><a href="https://github.com/fuzziqersoftware/newserv">newserv</a>, again from Martin Michelsen aka <a href="http://www.fuzziqersoftware.com/">fuzziqersoftware</a>: a game server, proxy, and reverse-engineering tool for Phantasy Star Online (PSO). The README.md file contains very detailed information on how to deploy and troubleshoot it and the developers are still active as of today (2024/06/30), <a href="https://github.com/fuzziqersoftware/newserv/releases/latest">releasing</a> several versions a year</li>
+<li><a href="https://github.com/fuzziqersoftware/resource_dasm">resource_dasm</a>, again from Martin Michelsen aka <a href="http://www.fuzziqersoftware.com/">fuzziqersoftware</a>: an optional tool that enables newserv to send memory patches and load DOL files on PSO GC clients. PSO GC clients can play PSO normally on newserv without this</li>
+</ul></li>
+<li>Container runtime:
+<ul>
+<li><a href="https://www.docker.com/">Docker</a> or <a href="https://podman.io/">Podman</a>. Both are compatible with the container images we’ll build, but for convenience we’ll stick with <code>docker</code> and <code>docker compose</code> commands here. Feel free to swap them to <code>podman</code> and <code>podman compose</code> if you decide to use the latter</li>
+</ul></li>
+<li>Architecture:
+<ul>
+<li>We’ll be deploying the server in a [Proxmox] <a href="https://pve.proxmox.com/wiki/Linux_Container#pct_container_images">Alpine LXC</a> to make sure we use the least amount of resources for this and so we can respawn it easily if something goes wrong</li>
+</ul></li>
+</ul>
 </section>
-<section id="text-editors" class="level2">
-<h2 class="anchored" data-anchor-id="text-editors">Text editors</h2>
+<section id="setting-our-own-repository" class="level2">
+<h2 class="anchored" data-anchor-id="setting-our-own-repository">Setting our own repository</h2>
+<p>We’ll be hosting our own Docker images in <a href="https://github.com">GitHub</a> by using <a href="https://docs.github.com/en/actions">GitHub Actions</a> to ensure a proper CI workflow. For this, we’ll add the code repositories as submodules so we can update them easily if any new versions are released. Our folder structure is as follows:</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>PSO server file structure</strong></pre>
+</div>
+<div class="sourceCode" id="cb1" data-filename="PSO server file structure"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a><span class="ex">pso-server</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="ex">├──</span> Dockerfile</span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="ex">├──</span> newserv</span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="ex">├──</span> phosg</span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="ex">└──</span> resource_dasm</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Our Dockerfile should look like this:</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Dockerfile</strong></pre>
+</div>
+<div class="sourceCode" id="cb2" data-filename="Dockerfile"><pre class="sourceCode numberSource dockerfile number-lines code-with-copy"><code class="sourceCode dockerfile"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># 1st stage: prepare the base image for builds</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="kw">FROM</span> debian:bookworm-slim <span class="kw">AS</span> base</span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="co"># Install dependencies</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="kw">RUN</span> <span class="ex">apt</span> update <span class="kw">&amp;&amp;</span> <span class="ex">apt</span> install <span class="at">--no-install-recommends</span> <span class="at">-y</span> <span class="dt">\</span></span>
+<span id="cb2-5"><a href="#cb2-5"></a>    <span class="co"># Common build dependencies</span></span>
+<span id="cb2-6"><a href="#cb2-6"></a>    cmake make g++ gcc <span class="op">\</span></span>
+<span id="cb2-7"><a href="#cb2-7"></a>    <span class="co"># phosg build dependencies</span></span>
+<span id="cb2-8"><a href="#cb2-8"></a>    zlib1g-dev python3 <span class="op">\</span></span>
+<span id="cb2-9"><a href="#cb2-9"></a>    <span class="co"># newserv build dependencies</span></span>
+<span id="cb2-10"><a href="#cb2-10"></a>    libevent-dev <span class="op">\</span></span>
+<span id="cb2-11"><a href="#cb2-11"></a>    &amp;&amp; rm -rf /var/lib/apt/lists/*</span>
+<span id="cb2-12"><a href="#cb2-12"></a></span>
+<span id="cb2-13"><a href="#cb2-13"></a><span class="co"># Build target</span></span>
+<span id="cb2-14"><a href="#cb2-14"></a><span class="kw">FROM</span> base as build</span>
+<span id="cb2-15"><a href="#cb2-15"></a><span class="co"># Define some argument variables</span></span>
+<span id="cb2-16"><a href="#cb2-16"></a><span class="kw">ARG</span> BUILD_TYPE=Release</span>
+<span id="cb2-17"><a href="#cb2-17"></a><span class="co"># First build and install phosg</span></span>
+<span id="cb2-18"><a href="#cb2-18"></a><span class="kw">COPY</span> phosg /tmp/build/phosg</span>
+<span id="cb2-19"><a href="#cb2-19"></a><span class="kw">WORKDIR</span> /tmp/build/phosg</span>
+<span id="cb2-20"><a href="#cb2-20"></a><span class="kw">RUN</span> <span class="fu">cmake</span> . <span class="kw">&amp;&amp;</span> <span class="fu">make</span> <span class="kw">&amp;&amp;</span> <span class="fu">make</span> test <span class="kw">&amp;&amp;</span> <span class="fu">make</span> install</span>
+<span id="cb2-21"><a href="#cb2-21"></a><span class="co"># After that, build and install resource_dasm</span></span>
+<span id="cb2-22"><a href="#cb2-22"></a><span class="kw">COPY</span> resource_dasm /tmp/build/resource_dasm</span>
+<span id="cb2-23"><a href="#cb2-23"></a><span class="kw">WORKDIR</span> /tmp/build/resource_dasm</span>
+<span id="cb2-24"><a href="#cb2-24"></a><span class="kw">RUN</span> <span class="fu">cmake</span> . <span class="kw">&amp;&amp;</span> <span class="fu">make</span> <span class="kw">&amp;&amp;</span> <span class="fu">make</span> install</span>
+<span id="cb2-25"><a href="#cb2-25"></a><span class="co"># Then build newserv</span></span>
+<span id="cb2-26"><a href="#cb2-26"></a><span class="kw">COPY</span> newserv /tmp/build/newserv</span>
+<span id="cb2-27"><a href="#cb2-27"></a><span class="kw">WORKDIR</span> /tmp/build/newserv</span>
+<span id="cb2-28"><a href="#cb2-28"></a><span class="co"># - Configure CMake and build</span></span>
+<span id="cb2-29"><a href="#cb2-29"></a><span class="kw">RUN</span> <span class="fu">cmake</span> . <span class="kw">&amp;&amp;</span> <span class="fu">make</span></span>
+<span id="cb2-30"><a href="#cb2-30"></a></span>
+<span id="cb2-31"><a href="#cb2-31"></a><span class="co"># Release target</span></span>
+<span id="cb2-32"><a href="#cb2-32"></a><span class="kw">FROM</span> debian:bookworm-slim as release</span>
+<span id="cb2-33"><a href="#cb2-33"></a><span class="co"># Install runtime dependencies</span></span>
+<span id="cb2-34"><a href="#cb2-34"></a><span class="kw">RUN</span> <span class="ex">apt</span> update <span class="kw">&amp;&amp;</span> <span class="ex">apt</span> install <span class="at">--no-install-recommends</span> <span class="at">-y</span> <span class="dt">\</span></span>
+<span id="cb2-35"><a href="#cb2-35"></a>    <span class="co"># phosg runtime dependencies</span></span>
+<span id="cb2-36"><a href="#cb2-36"></a>    zlib1g <span class="op">\</span></span>
+<span id="cb2-37"><a href="#cb2-37"></a>    <span class="co"># newserv runtime dependencies</span></span>
+<span id="cb2-38"><a href="#cb2-38"></a>    libevent-dev <span class="op">\</span></span>
+<span id="cb2-39"><a href="#cb2-39"></a>    &amp;&amp; rm -rf /var/lib/apt/lists/*</span>
+<span id="cb2-40"><a href="#cb2-40"></a><span class="co"># Copy required libraries and objects</span></span>
+<span id="cb2-41"><a href="#cb2-41"></a><span class="co">#COPY --from=build /usr/local/lib/libphosg.a /usr/local/lib/</span></span>
+<span id="cb2-42"><a href="#cb2-42"></a><span class="co">#COPY --from=build /usr/local/lib/libresource_file.a /usr/local/lib/</span></span>
+<span id="cb2-43"><a href="#cb2-43"></a><span class="co">#COPY --from=build /usr/local/include/resource_file /usr/local/include/resource_file</span></span>
+<span id="cb2-44"><a href="#cb2-44"></a><span class="co">#COPY --from=build /usr/local/include/resource_file /usr/local/include/resource_file</span></span>
+<span id="cb2-45"><a href="#cb2-45"></a><span class="co"># Set the workdir for newserv</span></span>
+<span id="cb2-46"><a href="#cb2-46"></a><span class="kw">WORKDIR</span> /usr/newserv</span>
+<span id="cb2-47"><a href="#cb2-47"></a><span class="co"># Copy all binaries</span></span>
+<span id="cb2-48"><a href="#cb2-48"></a><span class="kw">COPY</span> <span class="op">--from=build</span> /usr/local/bin /usr/local/bin/</span>
+<span id="cb2-49"><a href="#cb2-49"></a><span class="kw">COPY</span> <span class="op">--from=build</span> /tmp/build/newserv/newserv /usr/local/bin/newserv</span>
+<span id="cb2-50"><a href="#cb2-50"></a><span class="co"># Copy newserv files</span></span>
+<span id="cb2-51"><a href="#cb2-51"></a><span class="kw">COPY</span> <span class="op">--from=build</span> /tmp/build/newserv/system /usr/newserv/system</span>
+<span id="cb2-52"><a href="#cb2-52"></a><span class="co"># Set a default config file within the image</span></span>
+<span id="cb2-53"><a href="#cb2-53"></a><span class="co">#RUN cp system/config.example.json system/config.json</span></span>
+<span id="cb2-54"><a href="#cb2-54"></a><span class="kw">ENTRYPOINT</span> [ <span class="st">"newserv"</span> ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Where:</p>
+<ul>
+<li><code>base</code>: is the base image with all the required dependencies for compiling the several parts of the project</li>
+<li><code>build</code>: is the image that compiles and installs each component</li>
+<li><code>release</code>: is the image that should only contain the bare minimum dependencies and binaries required to run the PSO server</li>
+</ul>
+<blockquote class="blockquote">
+<p><span class="emoji" data-emoji="warning">⚠️</span> TODO: Improve the Docker images layers and research whether it’s best to include the <code>system</code> folder inside the container image or externally mount it</p>
+</blockquote>
+</section>
+</section>
+<section id="building-the-server" class="level1">
+<h1>Building the server</h1>
+<section id="creating-the-docker-image" class="level2">
+<h2 class="anchored" data-anchor-id="creating-the-docker-image">Creating the Docker image</h2>
+<p>Run the following command from the same folder where the <code>Dockerfile</code> is:</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Build pso-server image</strong></pre>
+</div>
+<div class="sourceCode" id="cb3" data-filename="Build pso-server image"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1"></a><span class="ex">docker</span> build <span class="at">--target</span> release <span class="at">-t</span> pso-server:release .</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="running-the-server" class="level1">
+<h1>Running the server</h1>
+<section id="preparing-a-server-configuration-file" class="level2">
+<h2 class="anchored" data-anchor-id="preparing-a-server-configuration-file">Preparing a server configuration file</h2>
+<p>You must bind a <code>config.json</code> file to the Docker container so <code>newserv</code> finds it and configures the PSO server according to your needs. You can take <code>newserv/system/config.example.json</code> as an example and modify whatever parameter so it matches your network and server features.</p>
+<p>Once done, save it as <code>config.json</code>.</p>
+</section>
+<section id="executing-the-docker-container" class="level2">
+<h2 class="anchored" data-anchor-id="executing-the-docker-container">Executing the Docker container</h2>
+<p>Run the following command depending on your situation:</p>
+<ul>
+<li><p><code>network=host</code> mode is the most straightforward but the less secure:</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Run pso-server with host network mode</strong></pre>
+</div>
+<div class="sourceCode" id="cb4" data-filename="Run pso-server with host network mode"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1"></a><span class="ex">docker</span> run <span class="at">-d</span> <span class="at">--rm</span> <span class="at">--name</span> pso-server <span class="at">-v</span> /path/to/your/config.json:/usr/newserv/system/config.json <span class="at">--network</span><span class="op">=</span>host pso-server:release</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></li>
+<li><p>(WIP) Isolating the container and exposing the ports should be the way to go:</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Run pso-server in isolated mode</strong></pre>
+</div>
+<div class="sourceCode" id="cb5" data-filename="Run pso-server in isolated mode"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1"></a><span class="ex">docker</span> run <span class="at">-d</span> <span class="at">--rm</span> <span class="at">--name</span> pso-server <span class="at">-p</span> 53:53 <span class="at">-p</span> 9000:9000 <span class="at">-p</span> 9001:9001 <span class="at">-p</span> 9002:9002 <span class="at">-p</span> 9003:9003 <span class="at">-p</span> 9064:9064 <span class="at">-p</span> 9100:9100 <span class="at">-p</span> 9103:9103 <span class="at">-p</span> 9200:9200 <span class="at">-p</span> 9201:9201 <span class="at">-p</span> 9202:9202 <span class="at">-p</span> 9203:9203 <span class="at">-p</span> 9204:9204 <span class="at">-p</span> 9300:9300 <span class="at">-p</span> 5100:5100 <span class="at">-p</span> 5110:5110 <span class="at">-p</span> 5122:5122 <span class="at">-v</span> /path/to/your/config.json:/usr/newserv/system/config.json pso-server:release</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></li>
+</ul>
+<p>where:</p>
+<ul>
+<li><code>--name</code> is the container name of our server</li>
+<li><code>-p</code> is each exposed port from inside the container. Setting <code>--network=host</code> discards these as all ports are exposed to the host</li>
+<li><code>-d</code> means that the container execution is detached from the terminal and runs on background</li>
+<li><code>--rm</code> means that the container will be deleted once its main process ends. Any data generated inside the container and not stored in a bind volume will be lost</li>
+<li><code>-v</code> is for binding volumes inside the container, allowing persistence of data. In this case, we’re binding an external server config so <code>newserv</code> finds it when called</li>
+</ul>
+<blockquote class="blockquote">
+<p><span class="emoji" data-emoji="warning">⚠️</span> TODO: Don’t use <code>host</code> as the docker network type when running the container! Try to expose only the required ports and redirect the DNS requests towards it</p>
+</blockquote>
+<blockquote class="blockquote">
+<p><span class="emoji" data-emoji="warning">⚠️</span> TODO: Add screenshots of the server running and some clients connecting to it!</p>
+</blockquote>
+</section>
+<section id="maintaning-the-server" class="level2">
+<h2 class="anchored" data-anchor-id="maintaning-the-server">Maintaning the server</h2>
+<p>Currently all the server data is stored inside the Docker container (quests, players’ info, etc.), so if we want to add new quests or patches we have to recreate the image. <code>newserv</code> should be able to reload any new data stored in the <code>system</code> folder on runtime (pending to verify), so next steps would involve externally mounting the <code>system</code> folder or just bind new folders inside there.</p>
+<p>As of now, any information stored during runtime will be lost on server shutdown.</p>
+<blockquote class="blockquote">
+<p><span class="emoji" data-emoji="warning">⚠️</span> TODO: Learn where the quests and users are stored so we can persist their information</p>
+</blockquote>
+</section>
+</section>
+<section id="updating-the-server" class="level1">
+<h1>Updating the server</h1>
+<section id="github-actions" class="level2">
+<h2 class="anchored" data-anchor-id="github-actions">GitHub Actions</h2>
+<blockquote class="blockquote">
+<p><span class="emoji" data-emoji="warning">⚠️</span> TODO: build a CI workflow with GitHub Actions to automate the Docker image generation and publishing to the repository’s container registry!</p>
+</blockquote>
+<!-- LINKS -->
+<!-- REPOSITORIES -->
+<!-- IMAGES -->
 
 
 </section>
@@ -869,8 +1088,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   <div class="nav-page nav-page-previous">
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../retro-sdks/sega/mega-drive.html" class="pagination-link" aria-label="Mega Drive SDKs">
-        <span class="nav-page-text">Mega Drive SDKs</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../deploy-guides/self-hosted-servers/02_parts_db.html" class="pagination-link" aria-label="Part-DB">
+        <span class="nav-page-text">Part-DB</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -888,7 +1107,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </a>
   </li>  
 </ul>
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/protossgp32/retrodev-docs/edit/main/docs/retro-sdks/nintendo/nes.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/protossgp32/retrodev-docs/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/protossgp32/retrodev-docs/edit/main/docs/deploy-guides/self-hosted-servers/01_PSO_server.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/protossgp32/retrodev-docs/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>

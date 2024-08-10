@@ -293,6 +293,101 @@
     ]
   },
   {
+    "objectID": "deploy-guides/self-hosted-servers/01_PSO_server.html",
+    "href": "deploy-guides/self-hosted-servers/01_PSO_server.html",
+    "title": "Phantasy Star Online server",
+    "section": "",
+    "text": "Phantasy Star Online logo",
+    "crumbs": [
+      "Self Hosted Servers",
+      "Phantasy Star Online server"
+    ]
+  },
+  {
+    "objectID": "deploy-guides/self-hosted-servers/01_PSO_server.html#tools-of-the-trade",
+    "href": "deploy-guides/self-hosted-servers/01_PSO_server.html#tools-of-the-trade",
+    "title": "Phantasy Star Online server",
+    "section": "Tools of the trade",
+    "text": "Tools of the trade\n\nCode repositories:\n\nphosg from Martin Michelsen aka fuzziqersoftware: a tool required to build newserv, the actual PSO server. Active development as of 2024/06/30\nnewserv, again from Martin Michelsen aka fuzziqersoftware: a game server, proxy, and reverse-engineering tool for Phantasy Star Online (PSO). The README.md file contains very detailed information on how to deploy and troubleshoot it and the developers are still active as of today (2024/06/30), releasing several versions a year\nresource_dasm, again from Martin Michelsen aka fuzziqersoftware: an optional tool that enables newserv to send memory patches and load DOL files on PSO GC clients. PSO GC clients can play PSO normally on newserv without this\n\nContainer runtime:\n\nDocker or Podman. Both are compatible with the container images we’ll build, but for convenience we’ll stick with docker and docker compose commands here. Feel free to swap them to podman and podman compose if you decide to use the latter\n\nArchitecture:\n\nWe’ll be deploying the server in a [Proxmox] Alpine LXC to make sure we use the least amount of resources for this and so we can respawn it easily if something goes wrong",
+    "crumbs": [
+      "Self Hosted Servers",
+      "Phantasy Star Online server"
+    ]
+  },
+  {
+    "objectID": "deploy-guides/self-hosted-servers/01_PSO_server.html#setting-our-own-repository",
+    "href": "deploy-guides/self-hosted-servers/01_PSO_server.html#setting-our-own-repository",
+    "title": "Phantasy Star Online server",
+    "section": "Setting our own repository",
+    "text": "Setting our own repository\nWe’ll be hosting our own Docker images in GitHub by using GitHub Actions to ensure a proper CI workflow. For this, we’ll add the code repositories as submodules so we can update them easily if any new versions are released. Our folder structure is as follows:\n\n\nPSO server file structure\n\npso-server\n├── Dockerfile\n├── newserv\n├── phosg\n└── resource_dasm\n\nOur Dockerfile should look like this:\n\n\nDockerfile\n\n# 1st stage: prepare the base image for builds\nFROM debian:bookworm-slim AS base\n# Install dependencies\nRUN apt update && apt install --no-install-recommends -y \\\n    # Common build dependencies\n    cmake make g++ gcc \\\n    # phosg build dependencies\n    zlib1g-dev python3 \\\n    # newserv build dependencies\n    libevent-dev \\\n    && rm -rf /var/lib/apt/lists/*\n\n# Build target\nFROM base as build\n# Define some argument variables\nARG BUILD_TYPE=Release\n# First build and install phosg\nCOPY phosg /tmp/build/phosg\nWORKDIR /tmp/build/phosg\nRUN cmake . && make && make test && make install\n# After that, build and install resource_dasm\nCOPY resource_dasm /tmp/build/resource_dasm\nWORKDIR /tmp/build/resource_dasm\nRUN cmake . && make && make install\n# Then build newserv\nCOPY newserv /tmp/build/newserv\nWORKDIR /tmp/build/newserv\n# - Configure CMake and build\nRUN cmake . && make\n\n# Release target\nFROM debian:bookworm-slim as release\n# Install runtime dependencies\nRUN apt update && apt install --no-install-recommends -y \\\n    # phosg runtime dependencies\n    zlib1g \\\n    # newserv runtime dependencies\n    libevent-dev \\\n    && rm -rf /var/lib/apt/lists/*\n# Copy required libraries and objects\n#COPY --from=build /usr/local/lib/libphosg.a /usr/local/lib/\n#COPY --from=build /usr/local/lib/libresource_file.a /usr/local/lib/\n#COPY --from=build /usr/local/include/resource_file /usr/local/include/resource_file\n#COPY --from=build /usr/local/include/resource_file /usr/local/include/resource_file\n# Set the workdir for newserv\nWORKDIR /usr/newserv\n# Copy all binaries\nCOPY --from=build /usr/local/bin /usr/local/bin/\nCOPY --from=build /tmp/build/newserv/newserv /usr/local/bin/newserv\n# Copy newserv files\nCOPY --from=build /tmp/build/newserv/system /usr/newserv/system\n# Set a default config file within the image\n#RUN cp system/config.example.json system/config.json\nENTRYPOINT [ \"newserv\" ]\n\nWhere:\n\nbase: is the base image with all the required dependencies for compiling the several parts of the project\nbuild: is the image that compiles and installs each component\nrelease: is the image that should only contain the bare minimum dependencies and binaries required to run the PSO server\n\n\n⚠️ TODO: Improve the Docker images layers and research whether it’s best to include the system folder inside the container image or externally mount it",
+    "crumbs": [
+      "Self Hosted Servers",
+      "Phantasy Star Online server"
+    ]
+  },
+  {
+    "objectID": "deploy-guides/self-hosted-servers/01_PSO_server.html#creating-the-docker-image",
+    "href": "deploy-guides/self-hosted-servers/01_PSO_server.html#creating-the-docker-image",
+    "title": "Phantasy Star Online server",
+    "section": "Creating the Docker image",
+    "text": "Creating the Docker image\nRun the following command from the same folder where the Dockerfile is:\n\n\nBuild pso-server image\n\ndocker build --target release -t pso-server:release .",
+    "crumbs": [
+      "Self Hosted Servers",
+      "Phantasy Star Online server"
+    ]
+  },
+  {
+    "objectID": "deploy-guides/self-hosted-servers/01_PSO_server.html#preparing-a-server-configuration-file",
+    "href": "deploy-guides/self-hosted-servers/01_PSO_server.html#preparing-a-server-configuration-file",
+    "title": "Phantasy Star Online server",
+    "section": "Preparing a server configuration file",
+    "text": "Preparing a server configuration file\nYou must bind a config.json file to the Docker container so newserv finds it and configures the PSO server according to your needs. You can take newserv/system/config.example.json as an example and modify whatever parameter so it matches your network and server features.\nOnce done, save it as config.json.",
+    "crumbs": [
+      "Self Hosted Servers",
+      "Phantasy Star Online server"
+    ]
+  },
+  {
+    "objectID": "deploy-guides/self-hosted-servers/01_PSO_server.html#executing-the-docker-container",
+    "href": "deploy-guides/self-hosted-servers/01_PSO_server.html#executing-the-docker-container",
+    "title": "Phantasy Star Online server",
+    "section": "Executing the Docker container",
+    "text": "Executing the Docker container\nRun the following command depending on your situation:\n\nnetwork=host mode is the most straightforward but the less secure:\n\n\nRun pso-server with host network mode\n\ndocker run -d --rm --name pso-server -v /path/to/your/config.json:/usr/newserv/system/config.json --network=host pso-server:release\n\n(WIP) Isolating the container and exposing the ports should be the way to go:\n\n\nRun pso-server in isolated mode\n\ndocker run -d --rm --name pso-server -p 53:53 -p 9000:9000 -p 9001:9001 -p 9002:9002 -p 9003:9003 -p 9064:9064 -p 9100:9100 -p 9103:9103 -p 9200:9200 -p 9201:9201 -p 9202:9202 -p 9203:9203 -p 9204:9204 -p 9300:9300 -p 5100:5100 -p 5110:5110 -p 5122:5122 -v /path/to/your/config.json:/usr/newserv/system/config.json pso-server:release\n\n\nwhere:\n\n--name is the container name of our server\n-p is each exposed port from inside the container. Setting --network=host discards these as all ports are exposed to the host\n-d means that the container execution is detached from the terminal and runs on background\n--rm means that the container will be deleted once its main process ends. Any data generated inside the container and not stored in a bind volume will be lost\n-v is for binding volumes inside the container, allowing persistence of data. In this case, we’re binding an external server config so newserv finds it when called\n\n\n⚠️ TODO: Don’t use host as the docker network type when running the container! Try to expose only the required ports and redirect the DNS requests towards it\n\n\n⚠️ TODO: Add screenshots of the server running and some clients connecting to it!",
+    "crumbs": [
+      "Self Hosted Servers",
+      "Phantasy Star Online server"
+    ]
+  },
+  {
+    "objectID": "deploy-guides/self-hosted-servers/01_PSO_server.html#maintaning-the-server",
+    "href": "deploy-guides/self-hosted-servers/01_PSO_server.html#maintaning-the-server",
+    "title": "Phantasy Star Online server",
+    "section": "Maintaning the server",
+    "text": "Maintaning the server\nCurrently all the server data is stored inside the Docker container (quests, players’ info, etc.), so if we want to add new quests or patches we have to recreate the image. newserv should be able to reload any new data stored in the system folder on runtime (pending to verify), so next steps would involve externally mounting the system folder or just bind new folders inside there.\nAs of now, any information stored during runtime will be lost on server shutdown.\n\n⚠️ TODO: Learn where the quests and users are stored so we can persist their information",
+    "crumbs": [
+      "Self Hosted Servers",
+      "Phantasy Star Online server"
+    ]
+  },
+  {
+    "objectID": "deploy-guides/self-hosted-servers/01_PSO_server.html#github-actions",
+    "href": "deploy-guides/self-hosted-servers/01_PSO_server.html#github-actions",
+    "title": "Phantasy Star Online server",
+    "section": "GitHub Actions",
+    "text": "GitHub Actions\n\n⚠️ TODO: build a CI workflow with GitHub Actions to automate the Docker image generation and publishing to the repository’s container registry!",
+    "crumbs": [
+      "Self Hosted Servers",
+      "Phantasy Star Online server"
+    ]
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site:\nRetroDev docs aims to ease the deployment of the required software development tools to start new retro-games’ projects."
+  },
+  {
     "objectID": "deploy-guides/self-hosted-servers/02_parts_db.html",
     "href": "deploy-guides/self-hosted-servers/02_parts_db.html",
     "title": "Part-DB",
@@ -313,13 +408,6 @@
       "Self Hosted Servers",
       "Part-DB"
     ]
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "About this site:\nRetroDev docs aims to ease the deployment of the required software development tools to start new retro-games’ projects."
   },
   {
     "objectID": "retro-sdks/sega/mega-drive.html",
