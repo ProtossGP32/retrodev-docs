@@ -33,7 +33,39 @@ Create a Docker compose that uses PostgreSQL instead. Use the `docker-compose.ya
 Document how to manage parts, users, suppliers, etc...
 :::
 
+## Enabling Information Providers
+
+In order to use component information from providers, these must first be enabled through environment variables in your Docker Compose file.
+
+### LCSC
+
+- `PROVIDER_LCSC_ENABLED=1`: this allows Part-DB to use an unofficial API for searching components
+
+### MOUSER
+
+- `PROVIDER_MOUSER_KEY=<your-search-api-token>`: don't mistake this API token with the Purchase/Order API token available from your Mouser's User panel. In order to get the right token you must access [this page][mouser-api-search]:
+  
+  ![Mouser - User Panel: API search link][mouser-api-search-section]
+
+  Or you can directly go to the [Search API register page][mouser-api-search-register]:
+  
+  ![Mouser - API search register page][mouser-api-search-register-form]
+
+  Mouser will request you to fill a form and then it will send you a verification code; with this you'll receive an API token.
+  
+  Once configured the environment variable and the container is recreated (`docker compose up -d`), you should be able to search for Mouser's parts through keywords:
+
+  ![Part-DB - Mouser API search example][part-db-mouser-search-example]
+
+
+<!-- RESOURCES -->
+[mouser-api-search-section]: /images/deploy-guides/self-hosted-servers/part-db/part-db-mouser-search-api-link.png
+[mouser-api-search-register-form]: /images/deploy-guides/self-hosted-servers/part-db/part-db-mouser-search-register-form.png
+[part-db-mouser-search-example]: /images/deploy-guides/self-hosted-servers/part-db/part-db-mouser-search-example.png
+
 <!-- LINKS -->
 [part-db-docs]: https://docs.part-db.de
 [part-db-docker-compose]: https://docs.part-db.de/installation/installation_docker.html
 [github-part-db]: https://github.com/Part-DB/Part-DB-server
+[mouser-api-search]: https://www.mouser.es/api-search/#signup
+[mouser-api-search-register]: https://www.mouser.es/MyMouser/MouserSearchApplication.aspx
