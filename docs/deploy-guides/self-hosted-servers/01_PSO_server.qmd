@@ -123,4 +123,4 @@ As of now, any information stored during runtime will be lost on server shutdown
 [newserv-releases]: https://github.com/fuzziqersoftware/newserv/releases/latest
 [resource_dasm-repo]: https://github.com/fuzziqersoftware/resource_dasm
 <!-- IMAGES -->
-[pso-logo]: /images/dev-guides/self-hosted-servers/pso/pso-logo.png
+[pso-logo]: /images/deploy-guides/self-hosted-servers/pso/pso-logo.png
