@@ -378,7 +378,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-44"><a href="#cb1-44"></a><span class="co">      #- BANNER=This is a test banner&lt;br&gt;with a line break</span></span>
 <span id="cb1-45"><a href="#cb1-45"></a><span class="at">    </span></span>
 <span id="cb1-46"><a href="#cb1-46"></a><span class="co">      # If you use a reverse proxy in front of Part-DB, you must configure the trusted proxies IP addresses here (see reverse proxy documentation for more information):</span></span>
-<span id="cb1-47"><a href="#cb1-47"></a><span class="co">      # - TRUSTED_PROXIES=127.0.0.0/8,::1,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16 </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-47"><a href="#cb1-47"></a><span class="co">      # - TRUSTED_PROXIES=127.0.0.0/8,::1,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16</span></span>
+<span id="cb1-48"><a href="#cb1-48"></a></span>
+<span id="cb1-49"><a href="#cb1-49"></a><span class="co">      # Part information providers</span></span>
+<span id="cb1-50"><a href="#cb1-50"></a><span class="co">      ## LCSC: Unofficial API</span></span>
+<span id="cb1-51"><a href="#cb1-51"></a><span class="at">      </span><span class="kw">-</span><span class="at"> PROVIDER_LCSC_ENABLED=1</span></span>
+<span id="cb1-52"><a href="#cb1-52"></a><span class="co">      ## MOUSER: Request a Search API token here: https://www.mouser.es/MyMouser/MouserSearchApplication.aspx</span></span>
+<span id="cb1-53"><a href="#cb1-53"></a><span class="at">      </span><span class="kw">-</span><span class="at"> PROVIDER_MOUSER_KEY=&lt;your-search-api-token&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
