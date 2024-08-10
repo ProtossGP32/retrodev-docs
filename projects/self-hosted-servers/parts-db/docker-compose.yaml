@@ -44,4 +44,10 @@ services:
       #- BANNER=This is a test banner<br>with a line break
     
       # If you use a reverse proxy in front of Part-DB, you must configure the trusted proxies IP addresses here (see reverse proxy documentation for more information):
-      # - TRUSTED_PROXIES=127.0.0.0/8,::1,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16 
+      # - TRUSTED_PROXIES=127.0.0.0/8,::1,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16
+
+      # Part information providers
+      ## LCSC: Unofficial API
+      - PROVIDER_LCSC_ENABLED=1
+      ## MOUSER: Request a Search API token here: https://www.mouser.es/MyMouser/MouserSearchApplication.aspx
+      - PROVIDER_MOUSER_KEY=<your-search-api-token>
