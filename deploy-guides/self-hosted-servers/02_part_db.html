@@ -260,7 +260,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#docker-compose" id="toc-docker-compose" class="nav-link" data-scroll-target="#docker-compose">Docker compose</a></li>
   </ul></li>
-  <li><a href="#management" id="toc-management" class="nav-link" data-scroll-target="#management">Management</a></li>
+  <li><a href="#management" id="toc-management" class="nav-link" data-scroll-target="#management">Management</a>
+  <ul class="collapse">
+  <li><a href="#enabling-information-providers" id="toc-enabling-information-providers" class="nav-link" data-scroll-target="#enabling-information-providers">Enabling Information Providers</a>
+  <ul class="collapse">
+  <li><a href="#lcsc" id="toc-lcsc" class="nav-link" data-scroll-target="#lcsc">LCSC</a></li>
+  <li><a href="#mouser" id="toc-mouser" class="nav-link" data-scroll-target="#mouser">MOUSER</a></li>
+  </ul></li>
+  </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/protossgp32/retrodev-docs/edit/main/docs/deploy-guides/self-hosted-servers/02_part_db.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/protossgp32/retrodev-docs/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -403,9 +410,47 @@ TODO
 <p>Document how to manage parts, users, suppliers, etc…</p>
 </div>
 </div>
+<section id="enabling-information-providers" class="level2">
+<h2 class="anchored" data-anchor-id="enabling-information-providers">Enabling Information Providers</h2>
+<p>In order to use component information from providers, these must first be enabled through environment variables in your Docker Compose file.</p>
+<section id="lcsc" class="level3">
+<h3 class="anchored" data-anchor-id="lcsc">LCSC</h3>
+<ul>
+<li><code>PROVIDER_LCSC_ENABLED=1</code>: this allows Part-DB to use an unofficial API for searching components</li>
+</ul>
+</section>
+<section id="mouser" class="level3">
+<h3 class="anchored" data-anchor-id="mouser">MOUSER</h3>
+<ul>
+<li><p><code>PROVIDER_MOUSER_KEY=&lt;your-search-api-token&gt;</code>: don’t mistake this API token with the Purchase/Order API token available from your Mouser’s User panel. In order to get the right token you must access <a href="https://www.mouser.es/api-search/#signup">this page</a>:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../images/deploy-guides/self-hosted-servers/part-db/part-db-mouser-search-api-link.png" class="img-fluid figure-img"></p>
+<figcaption>Mouser - User Panel: API search link</figcaption>
+</figure>
+</div>
+<p>Or you can directly go to the <a href="https://www.mouser.es/MyMouser/MouserSearchApplication.aspx">Search API register page</a>:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../images/deploy-guides/self-hosted-servers/part-db/part-db-mouser-search-register-form.png" class="img-fluid figure-img"></p>
+<figcaption>Mouser - API search register page</figcaption>
+</figure>
+</div>
+<p>Mouser will request you to fill a form and then it will send you a verification code; with this you’ll receive an API token.</p>
+<p>Once configured the environment variable and the container is recreated (<code>docker compose up -d</code>), you should be able to search for Mouser’s parts through keywords:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../images/deploy-guides/self-hosted-servers/part-db/part-db-mouser-search-example.png" class="img-fluid figure-img"></p>
+<figcaption>Part-DB - Mouser API search example</figcaption>
+</figure>
+</div></li>
+</ul>
+<!-- RESOURCES -->
 <!-- LINKS -->
 
 
+</section>
+</section>
 </section>
 
 </main> <!-- /main -->
