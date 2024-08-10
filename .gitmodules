@@ -1,0 +1,9 @@
+[submodule "projects/self-hosted-servers/pso-server/phosg"]
+	path = projects/self-hosted-servers/pso-server/phosg
+	url = https://github.com/fuzziqersoftware/phosg.git
+[submodule "projects/self-hosted-servers/pso-server/newserv"]
+	path = projects/self-hosted-servers/pso-server/newserv
+	url = https://github.com/fuzziqersoftware/newserv.git
+[submodule "projects/self-hosted-servers/pso-server/resource_dasm"]
+	path = projects/self-hosted-servers/pso-server/resource_dasm
+	url = https://github.com/fuzziqersoftware/resource_dasm.git

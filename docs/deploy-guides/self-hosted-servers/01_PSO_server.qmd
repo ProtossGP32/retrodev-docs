@@ -1,0 +1,126 @@
+---
+title: "Phantasy Star Online server"
+author: ProtossGP32
+date: 2024/06/30
+description: "Bring the online glory of Pioneer 2 crew to your own homelab!"
+categories: ["Dreamcast", "SEGA", "GameCube", "PSO", "server", "Docker"]
+---
+
+![Phantasy Star Online logo][pso-logo]
+
+# Introduction
+
+[Phantasy Star Online][pso-wikipedia] is the first online RPG game made for consoles and was published by SEGA in 2000 for the Dreamcast. After its initial succses, the game was ported to several platforms like PC, XBOX and GameCube. Online gaming was hosted on private SEGA servers at that time and are long time unavailable, but the fan community brough them back as private servers and since some years ago there are public source code for deploying our own servers at home!
+
+# Getting started
+
+We're going to follow this excellent [blog entry][cdromrom-pso-server-guide] from the guys at [Super CD-ROM²][cdromrom-webpage] as an entrypoint to build our own Docker image so it is cleaner to build and maintain new versions. Later on, we'll use docker-compose to deploy it in our server of choice (be it a VM or a SBC like a Raspberry Pi)
+
+## Tools of the trade
+
+- Code repositories:
+  - [phosg][phosg-repo] from Martin Michelsen aka [fuzziqersoftware][fuzziqersoftware-website]: a tool required to build [newserv][newserv-repo], the actual PSO server. Active development as of 2024/06/30
+  - [newserv][newserv-repo], again from Martin Michelsen aka [fuzziqersoftware][fuzziqersoftware-website]: a game server, proxy, and reverse-engineering tool for Phantasy Star Online (PSO). The README.md file contains very detailed information on how to deploy and troubleshoot it and the developers are still active as of today (2024/06/30), [releasing][newserv-releases] several versions a year
+  - [resource_dasm][resource_dasm-repo], again from Martin Michelsen aka [fuzziqersoftware][fuzziqersoftware-website]: an optional tool that enables newserv to send memory patches and load DOL files on PSO GC clients. PSO GC clients can play PSO normally on newserv without this
+- Container runtime:
+  - [Docker][docker-website] or [Podman][podman-website]. Both are compatible with the container images we'll build, but for convenience we'll stick with `docker` and `docker compose` commands here. Feel free to swap them to `podman` and `podman compose` if you decide to use the latter
+- Architecture:
+  - We'll be deploying the server in a [Proxmox] [Alpine LXC][proxmox-lxc] to make sure we use the least amount of resources for this and so we can respawn it easily if something goes wrong
+
+## Setting our own repository
+We'll be hosting our own Docker images in [GitHub][github-webpage] by using [GitHub Actions][github-actions-docs] to ensure a proper CI workflow. For this, we'll add the code repositories as submodules so we can update them easily if any new versions are released. Our folder structure is as follows:
+
+```{.bash filename="PSO server file structure"}
+pso-server
+├── Dockerfile
+├── newserv
+├── phosg
+└── resource_dasm
+```
+Our Dockerfile should look like this:
+
+```{.dockerfile filename=Dockerfile include=../../../projects/self-hosted-servers/pso-server/Dockerfile}
+
+```
+
+Where:
+
+- `base`: is the base image with all the required dependencies for compiling the several parts of the project
+- `build`: is the image that compiles and installs each component
+- `release`: is the image that should only contain the bare minimum dependencies and binaries required to run the PSO server
+
+> :warning: TODO: Improve the Docker images layers and research whether it's best to include the `system` folder inside the container image or externally mount it
+
+# Building the server
+## Creating the Docker image
+Run the following command from the same folder where the `Dockerfile` is:
+
+```{.bash filename="Build pso-server image"}
+docker build --target release -t pso-server:release .
+```
+
+
+# Running the server
+## Preparing a server configuration file
+
+You must bind a `config.json` file to the Docker container so `newserv` finds it and configures the PSO server according to your needs. You can take `newserv/system/config.example.json` as an example and modify whatever parameter so it matches your network and server features.
+
+Once done, save it as `config.json`.
+
+## Executing the Docker container
+Run the following command depending on your situation:
+
+- `network=host` mode is the most straightforward but the less secure:
+
+  ```{.bash filename="Run pso-server with host network mode"}
+  docker run -d --rm --name pso-server -v /path/to/your/config.json:/usr/newserv/system/config.json --network=host pso-server:release
+  ```
+
+- (WIP) Isolating the container and exposing the ports should be the way to go:
+  
+  ```{.bash filename="Run pso-server in isolated mode"}
+  docker run -d --rm --name pso-server -p 53:53 -p 9000:9000 -p 9001:9001 -p 9002:9002 -p 9003:9003 -p 9064:9064 -p 9100:9100 -p 9103:9103 -p 9200:9200 -p 9201:9201 -p 9202:9202 -p 9203:9203 -p 9204:9204 -p 9300:9300 -p 5100:5100 -p 5110:5110 -p 5122:5122 -v /path/to/your/config.json:/usr/newserv/system/config.json pso-server:release
+  ```
+
+where:
+
+- `--name` is the container name of our server
+- `-p` is each exposed port from inside the container. Setting `--network=host` discards these as all ports are exposed to the host
+- `-d` means that the container execution is detached from the terminal and runs on background
+- `--rm` means that the container will be deleted once its main process ends. Any data generated inside the container and not stored in a bind volume will be lost
+- `-v` is for binding volumes inside the container, allowing persistence of data. In this case, we're binding an external server config so `newserv` finds it when called
+
+> :warning: TODO: Don't use `host` as the docker network type when running the container! Try to expose only the required ports and redirect the DNS requests towards it
+
+> :warning: TODO: Add screenshots of the server running and some clients connecting to it!
+
+## Maintaning the server
+Currently all the server data is stored inside the Docker container (quests, players' info, etc.), so if we want to add new quests or patches we have to recreate the image. `newserv` should be able to reload any new data stored in the `system` folder on runtime (pending to verify), so next steps would involve externally mounting the `system` folder or just bind new folders inside there.
+
+As of now, any information stored during runtime will be lost on server shutdown.
+
+> :warning: TODO: Learn where the quests and users are stored so we can persist their information
+
+# Updating the server
+## GitHub Actions
+
+> :warning: TODO: build a CI workflow with GitHub Actions to automate the Docker image generation and publishing to the repository's container registry!
+
+<!-- LINKS -->
+[pso-wikipedia]: https://en.wikipedia.org/wiki/Phantasy_Star_Online
+[cdromrom-webpage]: https://cdromrom.wordpress.com
+[cdromrom-pso-server-guide]: https://cdromrom.wordpress.com/2020/12/05/phantasy-star-online-gamecube-server-on-raspberry-pi/
+[fuzziqersoftware-website]: http://www.fuzziqersoftware.com/
+[docker-website]: https://www.docker.com/
+[podman-website]: https://podman.io/
+[proxmox-website]: https://www.proxmox.com/en/
+[proxmox-lxc]: https://pve.proxmox.com/wiki/Linux_Container#pct_container_images
+[github-webpage]: https://github.com
+[github-actions-docs]: https://docs.github.com/en/actions
+<!-- REPOSITORIES -->
+[phosg-repo]: https://github.com/fuzziqersoftware/phosg
+[newserv-repo]: https://github.com/fuzziqersoftware/newserv
+[newserv-releases]: https://github.com/fuzziqersoftware/newserv/releases/latest
+[resource_dasm-repo]: https://github.com/fuzziqersoftware/resource_dasm
+<!-- IMAGES -->
+[pso-logo]: /images/dev-guides/self-hosted-servers/pso/pso-logo.png
