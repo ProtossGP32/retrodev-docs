@@ -14,13 +14,13 @@
 <item>
   <title>Part-DB</title>
   <dc:creator>ProtossGP32 </dc:creator>
-  <link>https://protossgp32.github.io/retrodev-docs/deploy-guides/self-hosted-servers/02_parts_db.html</link>
+  <link>https://protossgp32.github.io/retrodev-docs/deploy-guides/self-hosted-servers/02_part_db.html</link>
   <description><![CDATA[ Hosting your own electronic parts data base in your homelab! ]]></description>
   <category>electronics</category>
   <category>database</category>
   <category>server</category>
   <category>Docker</category>
-  <guid>https://protossgp32.github.io/retrodev-docs/deploy-guides/self-hosted-servers/02_parts_db.html</guid>
+  <guid>https://protossgp32.github.io/retrodev-docs/deploy-guides/self-hosted-servers/02_part_db.html</guid>
   <pubDate>Mon, 05 Aug 2024 00:00:00 GMT</pubDate>
 </item>
 <item>
