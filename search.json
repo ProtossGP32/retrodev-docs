@@ -1,5 +1,140 @@
 [
   {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "RetroDev docs",
+    "section": "",
+    "text": "Welcome to RetroDev docs. Here you’ll find guides and hints for retro-gaming development.\n\n\n\n\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nGame Gear VA0 - 5\n\n\n\n\n\nGame Gear received from JamQue\n\n\n\n\n\nOct 27, 2024\n\n\nProtossGP32\n\n\n6 min\n\n\n\n\n\n\n\n\n\n\n\n\nPart-DB\n\n\n\n\n\nHosting your own electronic parts data base in your homelab!\n\n\n\n\n\nAug 5, 2024\n\n\nProtossGP32\n\n\n2 min\n\n\n\n\n\n\n\n\n\n\n\n\nPhantasy Star Online server\n\n\n\n\n\nBring the online glory of Pioneer 2 crew to your own homelab!\n\n\n\n\n\nJun 30, 2024\n\n\nProtossGP32\n\n\n5 min\n\n\n\n\n\n\n\n\n\n\n\n\nGame Gear VA0 - 4\n\n\n\n\n\nGame Gear bought on Japan 2023\n\n\n\n\n\nJun 22, 2024\n\n\nProtossGP32\n\n\n9 min\n\n\n\n\n\n\n\n\n\n\n\n\nGame Gear VA0 - 3\n\n\n\n\n\nGame Gear bought on Japan 2023\n\n\n\n\n\nOct 21, 2023\n\n\nProtossGP32\n\n\n12 min\n\n\n\n\n\n\n\n\n\n\n\n\nGame Gear VA0 - 2\n\n\n\n\n\nGame Gear bought on Japan 2023\n\n\n\n\n\nOct 8, 2023\n\n\nProtossGP32\n\n\n6 min\n\n\n\n\n\n\n\n\n\n\n\n\nGame Gear VA0 - 1\n\n\n\n\n\nGame Gear bought on Japan 2023\n\n\n\n\n\nOct 2, 2023\n\n\nProtossGP32\n\n\n4 min\n\n\n\n\n\n\n\n\n\n\n\n\nNES SDKs\n\n\n\n\n\nLearn how to configure your development environment\n\n\n\n\n\nMay 7, 2023\n\n\nProtossGP32\n\n\n1 min\n\n\n\n\n\n\n\n\n\n\n\n\nMega Drive SDKs\n\n\n\n\n\nLearn how to configure your development environment\n\n\n\n\n\nMay 7, 2023\n\n\nProtossGP32\n\n\n4 min\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "deploy-guides/self-hosted-servers/01_PSO_server.html",
+    "href": "deploy-guides/self-hosted-servers/01_PSO_server.html",
+    "title": "Phantasy Star Online server",
+    "section": "",
+    "text": "Phantasy Star Online logo",
+    "crumbs": [
+      "Self Hosted Servers",
+      "Phantasy Star Online server"
+    ]
+  },
+  {
+    "objectID": "deploy-guides/self-hosted-servers/01_PSO_server.html#tools-of-the-trade",
+    "href": "deploy-guides/self-hosted-servers/01_PSO_server.html#tools-of-the-trade",
+    "title": "Phantasy Star Online server",
+    "section": "Tools of the trade",
+    "text": "Tools of the trade\n\nCode repositories:\n\nphosg from Martin Michelsen aka fuzziqersoftware: a tool required to build newserv, the actual PSO server. Active development as of 2024/06/30\nnewserv, again from Martin Michelsen aka fuzziqersoftware: a game server, proxy, and reverse-engineering tool for Phantasy Star Online (PSO). The README.md file contains very detailed information on how to deploy and troubleshoot it and the developers are still active as of today (2024/06/30), releasing several versions a year\nresource_dasm, again from Martin Michelsen aka fuzziqersoftware: an optional tool that enables newserv to send memory patches and load DOL files on PSO GC clients. PSO GC clients can play PSO normally on newserv without this\n\nContainer runtime:\n\nDocker or Podman. Both are compatible with the container images we’ll build, but for convenience we’ll stick with docker and docker compose commands here. Feel free to swap them to podman and podman compose if you decide to use the latter\n\nArchitecture:\n\nWe’ll be deploying the server in a [Proxmox] Alpine LXC to make sure we use the least amount of resources for this and so we can respawn it easily if something goes wrong",
+    "crumbs": [
+      "Self Hosted Servers",
+      "Phantasy Star Online server"
+    ]
+  },
+  {
+    "objectID": "deploy-guides/self-hosted-servers/01_PSO_server.html#setting-our-own-repository",
+    "href": "deploy-guides/self-hosted-servers/01_PSO_server.html#setting-our-own-repository",
+    "title": "Phantasy Star Online server",
+    "section": "Setting our own repository",
+    "text": "Setting our own repository\nWe’ll be hosting our own Docker images in GitHub by using GitHub Actions to ensure a proper CI workflow. For this, we’ll add the code repositories as submodules so we can update them easily if any new versions are released. Our folder structure is as follows:\n\n\nPSO server file structure\n\npso-server\n├── Dockerfile\n├── newserv\n├── phosg\n└── resource_dasm\n\nOur Dockerfile should look like this:\n\n\nDockerfile\n\n# 1st stage: prepare the base image for builds\nFROM debian:bookworm-slim AS base\n# Install dependencies\nRUN apt update && apt install --no-install-recommends -y \\\n    # Common build dependencies\n    cmake make g++ gcc \\\n    # phosg build dependencies\n    zlib1g-dev python3 \\\n    # newserv build dependencies\n    libevent-dev \\\n    && rm -rf /var/lib/apt/lists/*\n\n# Build target\nFROM base as build\n# Define some argument variables\nARG BUILD_TYPE=Release\n# First build and install phosg\nCOPY phosg /tmp/build/phosg\nWORKDIR /tmp/build/phosg\nRUN cmake . && make && make test && make install\n# After that, build and install resource_dasm\nCOPY resource_dasm /tmp/build/resource_dasm\nWORKDIR /tmp/build/resource_dasm\nRUN cmake . && make && make install\n# Then build newserv\nCOPY newserv /tmp/build/newserv\nWORKDIR /tmp/build/newserv\n# - Configure CMake and build\nRUN cmake . && make\n\n# Release target\nFROM debian:bookworm-slim as release\n# Install runtime dependencies\nRUN apt update && apt install --no-install-recommends -y \\\n    # phosg runtime dependencies\n    zlib1g \\\n    # newserv runtime dependencies\n    libevent-dev \\\n    && rm -rf /var/lib/apt/lists/*\n# Copy required libraries and objects\n#COPY --from=build /usr/local/lib/libphosg.a /usr/local/lib/\n#COPY --from=build /usr/local/lib/libresource_file.a /usr/local/lib/\n#COPY --from=build /usr/local/include/resource_file /usr/local/include/resource_file\n#COPY --from=build /usr/local/include/resource_file /usr/local/include/resource_file\n# Set the workdir for newserv\nWORKDIR /usr/newserv\n# Copy all binaries\nCOPY --from=build /usr/local/bin /usr/local/bin/\nCOPY --from=build /tmp/build/newserv/newserv /usr/local/bin/newserv\n# Copy newserv files\nCOPY --from=build /tmp/build/newserv/system /usr/newserv/system\n# Set a default config file within the image\n#RUN cp system/config.example.json system/config.json\nENTRYPOINT [ \"newserv\" ]\n\nWhere:\n\nbase: is the base image with all the required dependencies for compiling the several parts of the project\nbuild: is the image that compiles and installs each component\nrelease: is the image that should only contain the bare minimum dependencies and binaries required to run the PSO server\n\n\n⚠️ TODO: Improve the Docker images layers and research whether it’s best to include the system folder inside the container image or externally mount it",
+    "crumbs": [
+      "Self Hosted Servers",
+      "Phantasy Star Online server"
+    ]
+  },
+  {
+    "objectID": "deploy-guides/self-hosted-servers/01_PSO_server.html#creating-the-docker-image",
+    "href": "deploy-guides/self-hosted-servers/01_PSO_server.html#creating-the-docker-image",
+    "title": "Phantasy Star Online server",
+    "section": "Creating the Docker image",
+    "text": "Creating the Docker image\nRun the following command from the same folder where the Dockerfile is:\n\n\nBuild pso-server image\n\ndocker build --target release -t pso-server:release .",
+    "crumbs": [
+      "Self Hosted Servers",
+      "Phantasy Star Online server"
+    ]
+  },
+  {
+    "objectID": "deploy-guides/self-hosted-servers/01_PSO_server.html#preparing-a-server-configuration-file",
+    "href": "deploy-guides/self-hosted-servers/01_PSO_server.html#preparing-a-server-configuration-file",
+    "title": "Phantasy Star Online server",
+    "section": "Preparing a server configuration file",
+    "text": "Preparing a server configuration file\nYou must bind a config.json file to the Docker container so newserv finds it and configures the PSO server according to your needs. You can take newserv/system/config.example.json as an example and modify whatever parameter so it matches your network and server features.\nOnce done, save it as config.json.",
+    "crumbs": [
+      "Self Hosted Servers",
+      "Phantasy Star Online server"
+    ]
+  },
+  {
+    "objectID": "deploy-guides/self-hosted-servers/01_PSO_server.html#executing-the-docker-container",
+    "href": "deploy-guides/self-hosted-servers/01_PSO_server.html#executing-the-docker-container",
+    "title": "Phantasy Star Online server",
+    "section": "Executing the Docker container",
+    "text": "Executing the Docker container\nRun the following command depending on your situation:\n\nnetwork=host mode is the most straightforward but the less secure:\n\n\nRun pso-server with host network mode\n\ndocker run -d --rm --name pso-server -v /path/to/your/config.json:/usr/newserv/system/config.json --network=host pso-server:release\n\n(WIP) Isolating the container and exposing the ports should be the way to go:\n\n\nRun pso-server in isolated mode\n\ndocker run -d --rm --name pso-server -p 53:53 -p 9000:9000 -p 9001:9001 -p 9002:9002 -p 9003:9003 -p 9064:9064 -p 9100:9100 -p 9103:9103 -p 9200:9200 -p 9201:9201 -p 9202:9202 -p 9203:9203 -p 9204:9204 -p 9300:9300 -p 5100:5100 -p 5110:5110 -p 5122:5122 -v /path/to/your/config.json:/usr/newserv/system/config.json pso-server:release\n\n\nwhere:\n\n--name is the container name of our server\n-p is each exposed port from inside the container. Setting --network=host discards these as all ports are exposed to the host\n-d means that the container execution is detached from the terminal and runs on background\n--rm means that the container will be deleted once its main process ends. Any data generated inside the container and not stored in a bind volume will be lost\n-v is for binding volumes inside the container, allowing persistence of data. In this case, we’re binding an external server config so newserv finds it when called\n\n\n⚠️ TODO: Don’t use host as the docker network type when running the container! Try to expose only the required ports and redirect the DNS requests towards it\n\n\n⚠️ TODO: Add screenshots of the server running and some clients connecting to it!",
+    "crumbs": [
+      "Self Hosted Servers",
+      "Phantasy Star Online server"
+    ]
+  },
+  {
+    "objectID": "deploy-guides/self-hosted-servers/01_PSO_server.html#maintaning-the-server",
+    "href": "deploy-guides/self-hosted-servers/01_PSO_server.html#maintaning-the-server",
+    "title": "Phantasy Star Online server",
+    "section": "Maintaning the server",
+    "text": "Maintaning the server\nCurrently all the server data is stored inside the Docker container (quests, players’ info, etc.), so if we want to add new quests or patches we have to recreate the image. newserv should be able to reload any new data stored in the system folder on runtime (pending to verify), so next steps would involve externally mounting the system folder or just bind new folders inside there.\nAs of now, any information stored during runtime will be lost on server shutdown.\n\n⚠️ TODO: Learn where the quests and users are stored so we can persist their information",
+    "crumbs": [
+      "Self Hosted Servers",
+      "Phantasy Star Online server"
+    ]
+  },
+  {
+    "objectID": "deploy-guides/self-hosted-servers/01_PSO_server.html#github-actions",
+    "href": "deploy-guides/self-hosted-servers/01_PSO_server.html#github-actions",
+    "title": "Phantasy Star Online server",
+    "section": "GitHub Actions",
+    "text": "GitHub Actions\n\n⚠️ TODO: build a CI workflow with GitHub Actions to automate the Docker image generation and publishing to the repository’s container registry!",
+    "crumbs": [
+      "Self Hosted Servers",
+      "Phantasy Star Online server"
+    ]
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site:\nRetroDev docs aims to ease the deployment of the required software development tools to start new retro-games’ projects."
+  },
+  {
+    "objectID": "retro-sdks/sega/mega-drive.html",
+    "href": "retro-sdks/sega/mega-drive.html",
+    "title": "Mega Drive SDKs",
+    "section": "",
+    "text": "TODO: talk about SDK for Mega Drive",
+    "crumbs": [
+      "Sega",
+      "Mega Drive SDKs"
+    ]
+  },
+  {
+    "objectID": "retro-sdks/sega/mega-drive.html#installing-sgdk",
+    "href": "retro-sdks/sega/mega-drive.html#installing-sgdk",
+    "title": "Mega Drive SDKs",
+    "section": "Installing SGDK",
+    "text": "Installing SGDK\nWe’ll be deploying the excellent and mature SGDK by Stephane Dallongeville, that allows to develop Mega Drive games in C language.\n\nDeveloping on Linux\nSGDK works natively on Windows, but there are options to make it work on Linux:\n\nUsing Wine\nUsing Marsdev. Here we install the SDK locally instead of using a Docker image for building the project\n\nQuick installation steps: link\nCompile time is long, so let it do its thing\nSet the $MARSDEV environment variable in .bashrc like this: export MARSDEV=/home/$USER/mars\nCreate a softlink within the $MARSDEV path that points to the SGDK created on compile time within the Marsdev repository. This is required for later use in VS Code extensions\n\n\n\nInclude SGDK to Marsdev path\n\ncd $MARSDEV\nln -s /path/to/git/repository/marsdev/sgdk sgdk\n\n\n\n\nCompiling\nWe can use the following alternatives to compile our projects:\n\nLocally, previously compiling SGDK or Marsdev toolchains\nUsing a Docker image (Dockerfile provided in Stephane’s repository). Just follow these instructions to build your own SGDK docker image and use it to compile your code\n\nThis approach also uses Wine within the Docker container to launch SGDK\n\nUsing Doragasu, another Docker image. Again, just use these instructions to build your project\n\nThis approach uses native Linux compiler, much faster\n\n\nSome compile times comparison:\n\n\n\nApproach\nTime\n\n\n\n\nSGDK docker\n13.721s\n\n\nDoragasu docker\n6.952s\n\n\n\n\n\nDebugging\nWhen using Marsdev, the GDC for m64k (m68k-elf-gdb) isn’t compiled by default. Launch the following command from the git repository root path:\n\n\nCompiling m68k GDB\n\n# Install required dependencies\nsudo apt-get install libgmp-dev\n\nmake m68k-gdb\n\nTake note of the binary path as we’ll have to check it when configuring our text editor.\nWe also need an emulator to run the code and to properly attach when debugging. BlastEm is a relatively modern emulator with embedded debugger. Gens is another good option with very intuitive GUI for debugging purposes.\n\nBlastEm - Use nighly builds\n\nDownload the latest nightly build. At the moment of writing this article (2023/05/07), the available stable 0.6.2 version fails due to missing instructions\n\nVerified version: nightly build from 2023/04/03\n\nUncompress the file and add the resulting directory to your $PATH environment variable\n\nMake sure to update it in your .bashrc file",
+    "crumbs": [
+      "Sega",
+      "Mega Drive SDKs"
+    ]
+  },
+  {
+    "objectID": "retro-sdks/sega/mega-drive.html#text-editors",
+    "href": "retro-sdks/sega/mega-drive.html#text-editors",
+    "title": "Mega Drive SDKs",
+    "section": "Text editors",
+    "text": "Text editors\n\nVS Code\nWe’ll be using Genesis Code extension by Zerasul to help us with the programming side of things. This extension is compatible with all previously mentioned compiling options, both Docker images and Marsdev.\nConfiguration:\n\nCheck Doragasu Image if you plan on using Doragasu GitLab image for building purposes\nSet docker as the Toolchain Type if you plan on using Docker images on build stage\nSet the $MARSDEV env variable\n\nCreating a new Mega Drive project is as simple as launching Genesis Code: create project from the Command palette. Then check that the .vscode path has been created and make sure that both launch.json and settings.json point towards the right MARSDEV paths, else VS Code won’t include the SGDK headers to the project.\n\nDebug configuration\nIn order to properly debug using BlastEm, check the .vscode/launch.json file and make sure that everything points towards the correct paths:\n\nprogram: should be the ELF program created when compiling with the debug options enabled (Genesis Code: Compile for Debugging in the command palette).\n\nThis file must include the symbols\nWhen compiling with SGDK, the generated file is out/rom.out\n\nsourcefileMap: it must point to the SGDK src path, retrieved using the Marsdev make targets\nmiDebuggerPath: don’t touch it. Just make sure you compiled the m68k-elf-gdb as told in previous steps\nmiDebuggerArgs: make sure that the emulator name is correct and that it launches the out/rom.bin file\n\nOnce done, go to the Run and Debug option (CTRL + SHIFT + D), select the Debug with gdb remote profile and click on play. If a breakpoint has been set in your code, the Debug var should start to show some info:\n\n\n\nVS Code debugging a Hello World example\n\n\n\n\n\n\n\n\nTODO: create a VS Codium Docker image that already includes Marsdev installed",
+    "crumbs": [
+      "Sega",
+      "Mega Drive SDKs"
+    ]
+  },
+  {
     "objectID": "repairs/SEGA/Game Gear/VA0-B0153410.html",
     "href": "repairs/SEGA/Game Gear/VA0-B0153410.html",
     "title": "Game Gear VA0 - 4",
@@ -264,196 +399,6 @@
     ]
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "RetroDev docs",
-    "section": "",
-    "text": "Welcome to RetroDev docs. Here you’ll find guides and hints for retro-gaming development.\n\n\n\n\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nPart-DB\n\n\n\n\n\nHosting your own electronic parts data base in your homelab!\n\n\n\n\n\nAug 5, 2024\n\n\nProtossGP32\n\n\n2 min\n\n\n\n\n\n\n\n\n\n\n\n\nPhantasy Star Online server\n\n\n\n\n\nBring the online glory of Pioneer 2 crew to your own homelab!\n\n\n\n\n\nJun 30, 2024\n\n\nProtossGP32\n\n\n5 min\n\n\n\n\n\n\n\n\n\n\n\n\nGame Gear VA0 - 4\n\n\n\n\n\nGame Gear bought on Japan 2023\n\n\n\n\n\nJun 22, 2024\n\n\nProtossGP32\n\n\n9 min\n\n\n\n\n\n\n\n\n\n\n\n\nGame Gear VA0 - 3\n\n\n\n\n\nGame Gear bought on Japan 2023\n\n\n\n\n\nOct 21, 2023\n\n\nProtossGP32\n\n\n12 min\n\n\n\n\n\n\n\n\n\n\n\n\nGame Gear VA0 - 2\n\n\n\n\n\nGame Gear bought on Japan 2023\n\n\n\n\n\nOct 8, 2023\n\n\nProtossGP32\n\n\n6 min\n\n\n\n\n\n\n\n\n\n\n\n\nGame Gear VA0 - 1\n\n\n\n\n\nGame Gear bought on Japan 2023\n\n\n\n\n\nOct 2, 2023\n\n\nProtossGP32\n\n\n4 min\n\n\n\n\n\n\n\n\n\n\n\n\nNES SDKs\n\n\n\n\n\nLearn how to configure your development environment\n\n\n\n\n\nMay 7, 2023\n\n\nProtossGP32\n\n\n1 min\n\n\n\n\n\n\n\n\n\n\n\n\nMega Drive SDKs\n\n\n\n\n\nLearn how to configure your development environment\n\n\n\n\n\nMay 7, 2023\n\n\nProtossGP32\n\n\n4 min\n\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "retro-sdks/nintendo/nes.html#installing-sdk",
-    "href": "retro-sdks/nintendo/nes.html#installing-sdk",
-    "title": "NES SDKs",
-    "section": "Installing SDK",
-    "text": "Installing SDK",
-    "crumbs": [
-      "Nintendo",
-      "NES SDKs"
-    ]
-  },
-  {
-    "objectID": "retro-sdks/nintendo/nes.html#text-editors",
-    "href": "retro-sdks/nintendo/nes.html#text-editors",
-    "title": "NES SDKs",
-    "section": "Text editors",
-    "text": "Text editors",
-    "crumbs": [
-      "Nintendo",
-      "NES SDKs"
-    ]
-  },
-  {
-    "objectID": "deploy-guides/self-hosted-servers/02_part_db.html",
-    "href": "deploy-guides/self-hosted-servers/02_part_db.html",
-    "title": "Part-DB",
-    "section": "",
-    "text": "According to Part-DB docs:\n\nPart-DB is an Open-Source inventory management system for your electronic components. It is installed on a web server and so can be accessed with any browser without the need to install additional software.",
-    "crumbs": [
-      "Self Hosted Servers",
-      "Part-DB"
-    ]
-  },
-  {
-    "objectID": "deploy-guides/self-hosted-servers/02_part_db.html#docker-compose",
-    "href": "deploy-guides/self-hosted-servers/02_part_db.html#docker-compose",
-    "title": "Part-DB",
-    "section": "Docker compose",
-    "text": "Docker compose\nFollow the instructions in this link to deploy the required services for part-db to run. By default, Part-DB will use an internal SQLite database, but this can be changed to MariaDB, MongoDB or PostgreSQL.\n\n\nDocker compose\n\nversion: '3.3'\nservices:\n  partdb:\n    container_name: partdb\n    # By default Part-DB will be running under Port 8080, you can change it here\n    ports:\n      - '8080:80'\n    volumes:\n      # By default\n      - ./uploads:/var/www/html/uploads\n      - ./public_media:/var/www/html/public/media\n      - ./db:/var/www/html/var/db\n    restart: unless-stopped\n    image: jbtronics/part-db1:latest\n    environment:\n      # Put SQLite database in our mapped folder. You can configure some other kind of database here too.\n      - DATABASE_URL=sqlite:///%kernel.project_dir%/var/db/app.db\n      # In docker env logs will be redirected to stderr\n      - APP_ENV=docker\n\n      # You can configure Part-DB using environment variables\n      # Below you can find the most essential ones predefined\n      # However you can add any other environment configuration you want here\n      # See .env file for all available options or https://docs.part-db.de/configuration.html\n      # !!! Do not use quotes around the values, as they will be interpreted as part of the value and this will lead to errors !!!\n\n      # The language to use serverwide as default (en, de, ru, etc.)\n      - DEFAULT_LANG=en\n      # The default timezone to use serverwide (e.g. Europe/Berlin)\n      - DEFAULT_TIMEZONE=Europe/Berlin\n      # The currency that is used inside the DB (and is assumed when no currency is set). This can not be changed later, so be sure to set it the currency used in your country\n      - BASE_CURRENCY=EUR\n      # The name of this installation. This will be shown as title in the browser and in the header of the website\n      - INSTANCE_NAME=Part-DB\n\n      # Allow users to download attachments to the server by providing an URL\n      # This could be a potential security issue, as the user can retrieve any file the server has access to (via internet)\n      - ALLOW_ATTACHMENT_DOWNLOADS=0\n      # Use gravatars for user avatars, when user has no own avatar defined\n      - USE_GRAVATAR=0\n\n      # Override value if you want to show a given text on homepage.\n      # When this is empty the content of config/banner.md is used as banner\n      #- BANNER=This is a test banner&lt;br&gt;with a line break\n    \n      # If you use a reverse proxy in front of Part-DB, you must configure the trusted proxies IP addresses here (see reverse proxy documentation for more information):\n      # - TRUSTED_PROXIES=127.0.0.0/8,::1,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16\n\n      # Part information providers\n      ## LCSC: Unofficial API\n      - PROVIDER_LCSC_ENABLED=1\n      ## MOUSER: Request a Search API token here: https://www.mouser.es/MyMouser/MouserSearchApplication.aspx\n      - PROVIDER_MOUSER_KEY=&lt;your-search-api-token&gt;\n\n\n\n\n\n\n\nTODO\n\n\n\nCreate a Docker compose that uses PostgreSQL instead. Use the docker-compose.yaml example for MySQL database as a starting point.",
-    "crumbs": [
-      "Self Hosted Servers",
-      "Part-DB"
-    ]
-  },
-  {
-    "objectID": "deploy-guides/self-hosted-servers/02_part_db.html#enabling-information-providers",
-    "href": "deploy-guides/self-hosted-servers/02_part_db.html#enabling-information-providers",
-    "title": "Part-DB",
-    "section": "Enabling Information Providers",
-    "text": "Enabling Information Providers\nIn order to use component information from providers, these must first be enabled through environment variables in your Docker Compose file.\n\nLCSC\n\nPROVIDER_LCSC_ENABLED=1: this allows Part-DB to use an unofficial API for searching components\n\n\n\nMOUSER\n\nPROVIDER_MOUSER_KEY=&lt;your-search-api-token&gt;: don’t mistake this API token with the Purchase/Order API token available from your Mouser’s User panel. In order to get the right token you must access this page:\n\n\n\nMouser - User Panel: API search link\n\n\nOr you can directly go to the Search API register page:\n\n\n\nMouser - API search register page\n\n\nMouser will request you to fill a form and then it will send you a verification code; with this you’ll receive an API token.\nOnce configured the environment variable and the container is recreated (docker compose up -d), you should be able to search for Mouser’s parts through keywords:\n\n\n\nPart-DB - Mouser API search example",
-    "crumbs": [
-      "Self Hosted Servers",
-      "Part-DB"
-    ]
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "About this site:\nRetroDev docs aims to ease the deployment of the required software development tools to start new retro-games’ projects."
-  },
-  {
-    "objectID": "deploy-guides/self-hosted-servers/01_PSO_server.html",
-    "href": "deploy-guides/self-hosted-servers/01_PSO_server.html",
-    "title": "Phantasy Star Online server",
-    "section": "",
-    "text": "Phantasy Star Online logo",
-    "crumbs": [
-      "Self Hosted Servers",
-      "Phantasy Star Online server"
-    ]
-  },
-  {
-    "objectID": "deploy-guides/self-hosted-servers/01_PSO_server.html#tools-of-the-trade",
-    "href": "deploy-guides/self-hosted-servers/01_PSO_server.html#tools-of-the-trade",
-    "title": "Phantasy Star Online server",
-    "section": "Tools of the trade",
-    "text": "Tools of the trade\n\nCode repositories:\n\nphosg from Martin Michelsen aka fuzziqersoftware: a tool required to build newserv, the actual PSO server. Active development as of 2024/06/30\nnewserv, again from Martin Michelsen aka fuzziqersoftware: a game server, proxy, and reverse-engineering tool for Phantasy Star Online (PSO). The README.md file contains very detailed information on how to deploy and troubleshoot it and the developers are still active as of today (2024/06/30), releasing several versions a year\nresource_dasm, again from Martin Michelsen aka fuzziqersoftware: an optional tool that enables newserv to send memory patches and load DOL files on PSO GC clients. PSO GC clients can play PSO normally on newserv without this\n\nContainer runtime:\n\nDocker or Podman. Both are compatible with the container images we’ll build, but for convenience we’ll stick with docker and docker compose commands here. Feel free to swap them to podman and podman compose if you decide to use the latter\n\nArchitecture:\n\nWe’ll be deploying the server in a [Proxmox] Alpine LXC to make sure we use the least amount of resources for this and so we can respawn it easily if something goes wrong",
-    "crumbs": [
-      "Self Hosted Servers",
-      "Phantasy Star Online server"
-    ]
-  },
-  {
-    "objectID": "deploy-guides/self-hosted-servers/01_PSO_server.html#setting-our-own-repository",
-    "href": "deploy-guides/self-hosted-servers/01_PSO_server.html#setting-our-own-repository",
-    "title": "Phantasy Star Online server",
-    "section": "Setting our own repository",
-    "text": "Setting our own repository\nWe’ll be hosting our own Docker images in GitHub by using GitHub Actions to ensure a proper CI workflow. For this, we’ll add the code repositories as submodules so we can update them easily if any new versions are released. Our folder structure is as follows:\n\n\nPSO server file structure\n\npso-server\n├── Dockerfile\n├── newserv\n├── phosg\n└── resource_dasm\n\nOur Dockerfile should look like this:\n\n\nDockerfile\n\n# 1st stage: prepare the base image for builds\nFROM debian:bookworm-slim AS base\n# Install dependencies\nRUN apt update && apt install --no-install-recommends -y \\\n    # Common build dependencies\n    cmake make g++ gcc \\\n    # phosg build dependencies\n    zlib1g-dev python3 \\\n    # newserv build dependencies\n    libevent-dev \\\n    && rm -rf /var/lib/apt/lists/*\n\n# Build target\nFROM base as build\n# Define some argument variables\nARG BUILD_TYPE=Release\n# First build and install phosg\nCOPY phosg /tmp/build/phosg\nWORKDIR /tmp/build/phosg\nRUN cmake . && make && make test && make install\n# After that, build and install resource_dasm\nCOPY resource_dasm /tmp/build/resource_dasm\nWORKDIR /tmp/build/resource_dasm\nRUN cmake . && make && make install\n# Then build newserv\nCOPY newserv /tmp/build/newserv\nWORKDIR /tmp/build/newserv\n# - Configure CMake and build\nRUN cmake . && make\n\n# Release target\nFROM debian:bookworm-slim as release\n# Install runtime dependencies\nRUN apt update && apt install --no-install-recommends -y \\\n    # phosg runtime dependencies\n    zlib1g \\\n    # newserv runtime dependencies\n    libevent-dev \\\n    && rm -rf /var/lib/apt/lists/*\n# Copy required libraries and objects\n#COPY --from=build /usr/local/lib/libphosg.a /usr/local/lib/\n#COPY --from=build /usr/local/lib/libresource_file.a /usr/local/lib/\n#COPY --from=build /usr/local/include/resource_file /usr/local/include/resource_file\n#COPY --from=build /usr/local/include/resource_file /usr/local/include/resource_file\n# Set the workdir for newserv\nWORKDIR /usr/newserv\n# Copy all binaries\nCOPY --from=build /usr/local/bin /usr/local/bin/\nCOPY --from=build /tmp/build/newserv/newserv /usr/local/bin/newserv\n# Copy newserv files\nCOPY --from=build /tmp/build/newserv/system /usr/newserv/system\n# Set a default config file within the image\n#RUN cp system/config.example.json system/config.json\nENTRYPOINT [ \"newserv\" ]\n\nWhere:\n\nbase: is the base image with all the required dependencies for compiling the several parts of the project\nbuild: is the image that compiles and installs each component\nrelease: is the image that should only contain the bare minimum dependencies and binaries required to run the PSO server\n\n\n⚠️ TODO: Improve the Docker images layers and research whether it’s best to include the system folder inside the container image or externally mount it",
-    "crumbs": [
-      "Self Hosted Servers",
-      "Phantasy Star Online server"
-    ]
-  },
-  {
-    "objectID": "deploy-guides/self-hosted-servers/01_PSO_server.html#creating-the-docker-image",
-    "href": "deploy-guides/self-hosted-servers/01_PSO_server.html#creating-the-docker-image",
-    "title": "Phantasy Star Online server",
-    "section": "Creating the Docker image",
-    "text": "Creating the Docker image\nRun the following command from the same folder where the Dockerfile is:\n\n\nBuild pso-server image\n\ndocker build --target release -t pso-server:release .",
-    "crumbs": [
-      "Self Hosted Servers",
-      "Phantasy Star Online server"
-    ]
-  },
-  {
-    "objectID": "deploy-guides/self-hosted-servers/01_PSO_server.html#preparing-a-server-configuration-file",
-    "href": "deploy-guides/self-hosted-servers/01_PSO_server.html#preparing-a-server-configuration-file",
-    "title": "Phantasy Star Online server",
-    "section": "Preparing a server configuration file",
-    "text": "Preparing a server configuration file\nYou must bind a config.json file to the Docker container so newserv finds it and configures the PSO server according to your needs. You can take newserv/system/config.example.json as an example and modify whatever parameter so it matches your network and server features.\nOnce done, save it as config.json.",
-    "crumbs": [
-      "Self Hosted Servers",
-      "Phantasy Star Online server"
-    ]
-  },
-  {
-    "objectID": "deploy-guides/self-hosted-servers/01_PSO_server.html#executing-the-docker-container",
-    "href": "deploy-guides/self-hosted-servers/01_PSO_server.html#executing-the-docker-container",
-    "title": "Phantasy Star Online server",
-    "section": "Executing the Docker container",
-    "text": "Executing the Docker container\nRun the following command depending on your situation:\n\nnetwork=host mode is the most straightforward but the less secure:\n\n\nRun pso-server with host network mode\n\ndocker run -d --rm --name pso-server -v /path/to/your/config.json:/usr/newserv/system/config.json --network=host pso-server:release\n\n(WIP) Isolating the container and exposing the ports should be the way to go:\n\n\nRun pso-server in isolated mode\n\ndocker run -d --rm --name pso-server -p 53:53 -p 9000:9000 -p 9001:9001 -p 9002:9002 -p 9003:9003 -p 9064:9064 -p 9100:9100 -p 9103:9103 -p 9200:9200 -p 9201:9201 -p 9202:9202 -p 9203:9203 -p 9204:9204 -p 9300:9300 -p 5100:5100 -p 5110:5110 -p 5122:5122 -v /path/to/your/config.json:/usr/newserv/system/config.json pso-server:release\n\n\nwhere:\n\n--name is the container name of our server\n-p is each exposed port from inside the container. Setting --network=host discards these as all ports are exposed to the host\n-d means that the container execution is detached from the terminal and runs on background\n--rm means that the container will be deleted once its main process ends. Any data generated inside the container and not stored in a bind volume will be lost\n-v is for binding volumes inside the container, allowing persistence of data. In this case, we’re binding an external server config so newserv finds it when called\n\n\n⚠️ TODO: Don’t use host as the docker network type when running the container! Try to expose only the required ports and redirect the DNS requests towards it\n\n\n⚠️ TODO: Add screenshots of the server running and some clients connecting to it!",
-    "crumbs": [
-      "Self Hosted Servers",
-      "Phantasy Star Online server"
-    ]
-  },
-  {
-    "objectID": "deploy-guides/self-hosted-servers/01_PSO_server.html#maintaning-the-server",
-    "href": "deploy-guides/self-hosted-servers/01_PSO_server.html#maintaning-the-server",
-    "title": "Phantasy Star Online server",
-    "section": "Maintaning the server",
-    "text": "Maintaning the server\nCurrently all the server data is stored inside the Docker container (quests, players’ info, etc.), so if we want to add new quests or patches we have to recreate the image. newserv should be able to reload any new data stored in the system folder on runtime (pending to verify), so next steps would involve externally mounting the system folder or just bind new folders inside there.\nAs of now, any information stored during runtime will be lost on server shutdown.\n\n⚠️ TODO: Learn where the quests and users are stored so we can persist their information",
-    "crumbs": [
-      "Self Hosted Servers",
-      "Phantasy Star Online server"
-    ]
-  },
-  {
-    "objectID": "deploy-guides/self-hosted-servers/01_PSO_server.html#github-actions",
-    "href": "deploy-guides/self-hosted-servers/01_PSO_server.html#github-actions",
-    "title": "Phantasy Star Online server",
-    "section": "GitHub Actions",
-    "text": "GitHub Actions\n\n⚠️ TODO: build a CI workflow with GitHub Actions to automate the Docker image generation and publishing to the repository’s container registry!",
-    "crumbs": [
-      "Self Hosted Servers",
-      "Phantasy Star Online server"
-    ]
-  },
-  {
-    "objectID": "retro-sdks/sega/mega-drive.html",
-    "href": "retro-sdks/sega/mega-drive.html",
-    "title": "Mega Drive SDKs",
-    "section": "",
-    "text": "TODO: talk about SDK for Mega Drive",
-    "crumbs": [
-      "Sega",
-      "Mega Drive SDKs"
-    ]
-  },
-  {
-    "objectID": "retro-sdks/sega/mega-drive.html#installing-sgdk",
-    "href": "retro-sdks/sega/mega-drive.html#installing-sgdk",
-    "title": "Mega Drive SDKs",
-    "section": "Installing SGDK",
-    "text": "Installing SGDK\nWe’ll be deploying the excellent and mature SGDK by Stephane Dallongeville, that allows to develop Mega Drive games in C language.\n\nDeveloping on Linux\nSGDK works natively on Windows, but there are options to make it work on Linux:\n\nUsing Wine\nUsing Marsdev. Here we install the SDK locally instead of using a Docker image for building the project\n\nQuick installation steps: link\nCompile time is long, so let it do its thing\nSet the $MARSDEV environment variable in .bashrc like this: export MARSDEV=/home/$USER/mars\nCreate a softlink within the $MARSDEV path that points to the SGDK created on compile time within the Marsdev repository. This is required for later use in VS Code extensions\n\n\n\nInclude SGDK to Marsdev path\n\ncd $MARSDEV\nln -s /path/to/git/repository/marsdev/sgdk sgdk\n\n\n\n\nCompiling\nWe can use the following alternatives to compile our projects:\n\nLocally, previously compiling SGDK or Marsdev toolchains\nUsing a Docker image (Dockerfile provided in Stephane’s repository). Just follow these instructions to build your own SGDK docker image and use it to compile your code\n\nThis approach also uses Wine within the Docker container to launch SGDK\n\nUsing Doragasu, another Docker image. Again, just use these instructions to build your project\n\nThis approach uses native Linux compiler, much faster\n\n\nSome compile times comparison:\n\n\n\nApproach\nTime\n\n\n\n\nSGDK docker\n13.721s\n\n\nDoragasu docker\n6.952s\n\n\n\n\n\nDebugging\nWhen using Marsdev, the GDC for m64k (m68k-elf-gdb) isn’t compiled by default. Launch the following command from the git repository root path:\n\n\nCompiling m68k GDB\n\n# Install required dependencies\nsudo apt-get install libgmp-dev\n\nmake m68k-gdb\n\nTake note of the binary path as we’ll have to check it when configuring our text editor.\nWe also need an emulator to run the code and to properly attach when debugging. BlastEm is a relatively modern emulator with embedded debugger. Gens is another good option with very intuitive GUI for debugging purposes.\n\nBlastEm - Use nighly builds\n\nDownload the latest nightly build. At the moment of writing this article (2023/05/07), the available stable 0.6.2 version fails due to missing instructions\n\nVerified version: nightly build from 2023/04/03\n\nUncompress the file and add the resulting directory to your $PATH environment variable\n\nMake sure to update it in your .bashrc file",
-    "crumbs": [
-      "Sega",
-      "Mega Drive SDKs"
-    ]
-  },
-  {
-    "objectID": "retro-sdks/sega/mega-drive.html#text-editors",
-    "href": "retro-sdks/sega/mega-drive.html#text-editors",
-    "title": "Mega Drive SDKs",
-    "section": "Text editors",
-    "text": "Text editors\n\nVS Code\nWe’ll be using Genesis Code extension by Zerasul to help us with the programming side of things. This extension is compatible with all previously mentioned compiling options, both Docker images and Marsdev.\nConfiguration:\n\nCheck Doragasu Image if you plan on using Doragasu GitLab image for building purposes\nSet docker as the Toolchain Type if you plan on using Docker images on build stage\nSet the $MARSDEV env variable\n\nCreating a new Mega Drive project is as simple as launching Genesis Code: create project from the Command palette. Then check that the .vscode path has been created and make sure that both launch.json and settings.json point towards the right MARSDEV paths, else VS Code won’t include the SGDK headers to the project.\n\nDebug configuration\nIn order to properly debug using BlastEm, check the .vscode/launch.json file and make sure that everything points towards the correct paths:\n\nprogram: should be the ELF program created when compiling with the debug options enabled (Genesis Code: Compile for Debugging in the command palette).\n\nThis file must include the symbols\nWhen compiling with SGDK, the generated file is out/rom.out\n\nsourcefileMap: it must point to the SGDK src path, retrieved using the Marsdev make targets\nmiDebuggerPath: don’t touch it. Just make sure you compiled the m68k-elf-gdb as told in previous steps\nmiDebuggerArgs: make sure that the emulator name is correct and that it launches the out/rom.bin file\n\nOnce done, go to the Run and Debug option (CTRL + SHIFT + D), select the Debug with gdb remote profile and click on play. If a breakpoint has been set in your code, the Debug var should start to show some info:\n\n\n\nVS Code debugging a Hello World example\n\n\n\n\n\n\n\n\nTODO: create a VS Codium Docker image that already includes Marsdev installed",
-    "crumbs": [
-      "Sega",
-      "Mega Drive SDKs"
-    ]
-  },
-  {
     "objectID": "repairs/SEGA/Game Gear/VA0-B0160205.html",
     "href": "repairs/SEGA/Game Gear/VA0-B0160205.html",
     "title": "Game Gear VA0 - 2",
@@ -667,6 +612,169 @@
       "SEGA",
       "Game Gear",
       "Game Gear VA0 - 3"
+    ]
+  },
+  {
+    "objectID": "repairs/SEGA/Game Gear/VA0-B20720239.html",
+    "href": "repairs/SEGA/Game Gear/VA0-B20720239.html",
+    "title": "Game Gear VA0 - 5",
+    "section": "",
+    "text": "European Game Gear received from JamQue\nIt came with replacement capacitors and gamebit screw was already unscrewed\nThe battery contacts sleeve was also removed from the console\n\n\n\n\nGame Gear - Front view\n\n\n\n\n\nGame Gear - Rear view\n\n\n\n\n\nModel Number: 2110-50\nSerial Number: B20720239\nMain board: 837-7996 (Twin ASIC)\nPower board: 837-7997\nAudio board: 837-7400-01",
+    "crumbs": [
+      "SEGA",
+      "Game Gear",
+      "Game Gear VA0 - 5"
+    ]
+  },
+  {
+    "objectID": "repairs/SEGA/Game Gear/VA0-B20720239.html#specs",
+    "href": "repairs/SEGA/Game Gear/VA0-B20720239.html#specs",
+    "title": "Game Gear VA0 - 5",
+    "section": "",
+    "text": "Model Number: 2110-50\nSerial Number: B20720239\nMain board: 837-7996 (Twin ASIC)\nPower board: 837-7997\nAudio board: 837-7400-01",
+    "crumbs": [
+      "SEGA",
+      "Game Gear",
+      "Game Gear VA0 - 5"
+    ]
+  },
+  {
+    "objectID": "repairs/SEGA/Game Gear/VA0-B20720239.html#visual-inspection",
+    "href": "repairs/SEGA/Game Gear/VA0-B20720239.html#visual-inspection",
+    "title": "Game Gear VA0 - 5",
+    "section": "Visual inspection",
+    "text": "Visual inspection\n\nOutside: the outside has visible scratches from usage but no cracks\nBattery contacts: no signs of corrosion in the springs and plates\n\n\n\n\nMain board - Left battery contacts\n\n\n\n\n\nMain board - Right battery contacts\n\n\n\nMain board: capacitor leaks are visible on its legs, extreme precautions when removing and cleaning the pads. Also a lot of traces have been corroded, it’s possible that connectivity between layers is broken at some points\n\n\n\n\nMain board - rear view, original capacitors\n\n\n\n\n\nMain board - rear view, left side original caps. Leakage has reached the fluorescent light contact and nearby components\n\n\n\n\n\nMain board - rear view, left side. Close view of corrosion near the LCD\n\n\n\n\n\nMain board - rear view, left side. Opposite angle\n\n\n\n\n\nMain board - rear view, right side original caps\n\n\n\n\n\nMain board - rear view, right side original caps. Leakage on C6\n\n\n\n\n\nMain board - front view. Signs of corrosion on test pads and vias\n\n\n\n\n\nMain board - front view, left side. Probably corroded vias around R25\n\n\n\n\n\nMain board - front view, right side. Signs of corrosion on test pads and vias\n\n\n\nPower board: capacitors already replaced, voltage regulator seems to have been resoldered\n\n\n\n\nPower board - original capacitors\n\n\n\n\n\nPower board - original capacitors rear view\n\n\n\nAudio board: capacitors already replaced\n\n\n\n\nAudio board - original capacitors. Visible leakage on all of them, and affecting IC1 leg 4\n\n\n\n\n\nAudio board - Soaked in vinegar to help release screws\n\n\n\n\n\nAudio board - front view. A lot of acid leakage everywhere\n\n\n\n\n\nAudio board - rear view. Rear side has some residues",
+    "crumbs": [
+      "SEGA",
+      "Game Gear",
+      "Game Gear VA0 - 5"
+    ]
+  },
+  {
+    "objectID": "repairs/SEGA/Game Gear/VA0-B20720239.html#first-boot",
+    "href": "repairs/SEGA/Game Gear/VA0-B20720239.html#first-boot",
+    "title": "Game Gear VA0 - 5",
+    "section": "First boot",
+    "text": "First boot\n\nPower LED turns on a few seconds and then it turns off\nThe screen doesn’t turn on and there’s no sound either",
+    "crumbs": [
+      "SEGA",
+      "Game Gear",
+      "Game Gear VA0 - 5"
+    ]
+  },
+  {
+    "objectID": "repairs/SEGA/Game Gear/VA0-B20720239.html#recap",
+    "href": "repairs/SEGA/Game Gear/VA0-B20720239.html#recap",
+    "title": "Game Gear VA0 - 5",
+    "section": "2024/10/27: Recap",
+    "text": "2024/10/27: Recap\nFollowing Retrosix’s wiki, the capacitors are replaced like this:\n\nPower board\n\nPower board with existing capacitors doesn’t provide the expected voltages:\n\n5V: 1.78V\nGND: GND\n1.28V: 1.26V\n9V (Battery input): 13.91V\n34V: 1.05V There might be an issue with the voltage regulator as there are signs of being resoldered &lt;!–\n\nCapacitors are replaced with new electrolytic ones with the same rating\nThe only exception is the 820uF/6.3V one that has been replaced with a solid electrolytic capacitor of the same rating (does it make any difference compared to the standard electrolytic ones?)\n\nAccording to the data sheet, solid electrolytic capacitors have a low ESR and high ripple current\n\n\n –&gt; :::{.callout-warning} ## Bad power board! Power board doesn’t properly provide 34V even after recapping. Using a functional power board for the tests :::\nUsing a functional power board the console reaches Red Boot Light without issues.\n\n\n\n\n\n\nA kind advice on thru-hole capacitors removal!\n\n\n\nRemoving some capacitors proved to be quite challenging, even with an electrical desoldering pump. The trick to keep the vias intact is to reapply new solder several times to mix old solder with new one. Flux is indispensable to help transfer heat on already old and dry solder as well!\nIf a leg is stubbornly stuck, use some desoldering wick with new solder and a lot of flux to remove the excess inside the via by capilarity. Rinse and repeat until the leg is free!\nAlso use the desoldering wick to free the hole from solder before putting the new capacitors.\n\n\n\n\nAudio board\n\nTesting already soldered capacitors, it doesn’t seem to provide audio\n\n\n\n\nMain board\nMain board loads games and plays audio when using working power and audio boards, and it reaches the Red Light Boot (RLB) state. Once verified that the console reaches the RLB state, it’s time to solder the new capacitors.\nBefore doing any heating work, and seeing the amount of corrosion in the zones near the capacitors, I decided to apply a generous amount of white vinegar to all of them and let it act during some minutes, while avoiding any leakage to the LCD.\nAs with the previous VA-0 B0126683, these are the ceramic capacitors characteristics:\n\nAll original capacitors rated lower than 1uF are replaced with 1uF/50V ceramic capacitors\nAll original capacitors rated lower between 1uF and 10uF are replaced with 10uF/50V ceramic capacitors\nAll original capacitors rated higher than 10uF are replaced with 100uF/10V ceramic capacitors\n\n\n\n\nMain board - Fully recapped\n\n\n\n\n\nMain board - Left side recap detail\n\n\n\n\n\nMain board - Left side recap detail 2\n\n\n\n\n\nMain board - Right side recap detail\n\n\nThe soldering technique used this time consisted on the following steps:\n\nTin one of the pads\nPin one side of the capacitor to that pad\nAfter that apply solder to the other side\nOnce done, rework the first pad by applying additional solder and adjusting the capacitor by applying heat to both pads if necessary\nUse a pair of tweezers to secure the capacitor in place while applying heat\n\nOnce recapped, test with working power and audio boards still don’t show image on the screen.",
+    "crumbs": [
+      "SEGA",
+      "Game Gear",
+      "Game Gear VA0 - 5"
+    ]
+  },
+  {
+    "objectID": "repairs/SEGA/Game Gear/VA0-B20720239.html#section",
+    "href": "repairs/SEGA/Game Gear/VA0-B20720239.html#section",
+    "title": "Game Gear VA0 - 5",
+    "section": "2024/10/27",
+    "text": "2024/10/27\n\nRepairing time\n\n3 hours 30 minutes\n\n\n\nState on boot\n\nConsole enters the Red Light Boot state, required for further troubleshooting and repairs\nLCD doesn’t show image\nThe fluorescent tube lights up but changing brightness doesn’t make a difference\nWhen tested with other working audio boards, game sound works",
+    "crumbs": [
+      "SEGA",
+      "Game Gear",
+      "Game Gear VA0 - 5"
+    ]
+  },
+  {
+    "objectID": "repairs/SEGA/Game Gear/VA0-B20720239.html#further-checks-on-power-board",
+    "href": "repairs/SEGA/Game Gear/VA0-B20720239.html#further-checks-on-power-board",
+    "title": "Game Gear VA0 - 5",
+    "section": "Further checks on power board",
+    "text": "Further checks on power board\n\nMaybe capacitors aren’t correctly connected or there’s a broken path\nVoltage regulator might be faulty\nMaybe other components (diodes) are also faulty?",
+    "crumbs": [
+      "SEGA",
+      "Game Gear",
+      "Game Gear VA0 - 5"
+    ]
+  },
+  {
+    "objectID": "repairs/SEGA/Game Gear/VA0-B20720239.html#further-checks-on-audio-board",
+    "href": "repairs/SEGA/Game Gear/VA0-B20720239.html#further-checks-on-audio-board",
+    "title": "Game Gear VA0 - 5",
+    "section": "Further checks on audio board",
+    "text": "Further checks on audio board\n\nMaybe capacitors aren’t correctly connected or there’s a broken path",
+    "crumbs": [
+      "SEGA",
+      "Game Gear",
+      "Game Gear VA0 - 5"
+    ]
+  },
+  {
+    "objectID": "repairs/SEGA/Game Gear/VA0-B20720239.html#further-checks-on-mother-board",
+    "href": "repairs/SEGA/Game Gear/VA0-B20720239.html#further-checks-on-mother-board",
+    "title": "Game Gear VA0 - 5",
+    "section": "Further checks on mother board",
+    "text": "Further checks on mother board\n\nAgain, maybe some capacitor traces are broken or it’s just a non-functional screen\nCheck LCD traces, see if there’s any discontinuity\n\n\n\n\n\n\n\nScreen replacement\n\n\n\nGame boots and there’s sound, so unless there’s a major flaw not detected, this is a good candidate for an IPS screen",
+    "crumbs": [
+      "SEGA",
+      "Game Gear",
+      "Game Gear VA0 - 5"
+    ]
+  },
+  {
+    "objectID": "retro-sdks/nintendo/nes.html#installing-sdk",
+    "href": "retro-sdks/nintendo/nes.html#installing-sdk",
+    "title": "NES SDKs",
+    "section": "Installing SDK",
+    "text": "Installing SDK",
+    "crumbs": [
+      "Nintendo",
+      "NES SDKs"
+    ]
+  },
+  {
+    "objectID": "retro-sdks/nintendo/nes.html#text-editors",
+    "href": "retro-sdks/nintendo/nes.html#text-editors",
+    "title": "NES SDKs",
+    "section": "Text editors",
+    "text": "Text editors",
+    "crumbs": [
+      "Nintendo",
+      "NES SDKs"
+    ]
+  },
+  {
+    "objectID": "deploy-guides/self-hosted-servers/02_part_db.html",
+    "href": "deploy-guides/self-hosted-servers/02_part_db.html",
+    "title": "Part-DB",
+    "section": "",
+    "text": "According to Part-DB docs:\n\nPart-DB is an Open-Source inventory management system for your electronic components. It is installed on a web server and so can be accessed with any browser without the need to install additional software.",
+    "crumbs": [
+      "Self Hosted Servers",
+      "Part-DB"
+    ]
+  },
+  {
+    "objectID": "deploy-guides/self-hosted-servers/02_part_db.html#docker-compose",
+    "href": "deploy-guides/self-hosted-servers/02_part_db.html#docker-compose",
+    "title": "Part-DB",
+    "section": "Docker compose",
+    "text": "Docker compose\nFollow the instructions in this link to deploy the required services for part-db to run. By default, Part-DB will use an internal SQLite database, but this can be changed to MariaDB, MongoDB or PostgreSQL.\n\n\nDocker compose\n\nversion: '3.3'\nservices:\n  partdb:\n    container_name: partdb\n    # By default Part-DB will be running under Port 8080, you can change it here\n    ports:\n      - '8080:80'\n    volumes:\n      # By default\n      - ./uploads:/var/www/html/uploads\n      - ./public_media:/var/www/html/public/media\n      - ./db:/var/www/html/var/db\n    restart: unless-stopped\n    image: jbtronics/part-db1:latest\n    environment:\n      # Put SQLite database in our mapped folder. You can configure some other kind of database here too.\n      - DATABASE_URL=sqlite:///%kernel.project_dir%/var/db/app.db\n      # In docker env logs will be redirected to stderr\n      - APP_ENV=docker\n\n      # You can configure Part-DB using environment variables\n      # Below you can find the most essential ones predefined\n      # However you can add any other environment configuration you want here\n      # See .env file for all available options or https://docs.part-db.de/configuration.html\n      # !!! Do not use quotes around the values, as they will be interpreted as part of the value and this will lead to errors !!!\n\n      # The language to use serverwide as default (en, de, ru, etc.)\n      - DEFAULT_LANG=en\n      # The default timezone to use serverwide (e.g. Europe/Berlin)\n      - DEFAULT_TIMEZONE=Europe/Berlin\n      # The currency that is used inside the DB (and is assumed when no currency is set). This can not be changed later, so be sure to set it the currency used in your country\n      - BASE_CURRENCY=EUR\n      # The name of this installation. This will be shown as title in the browser and in the header of the website\n      - INSTANCE_NAME=Part-DB\n\n      # Allow users to download attachments to the server by providing an URL\n      # This could be a potential security issue, as the user can retrieve any file the server has access to (via internet)\n      - ALLOW_ATTACHMENT_DOWNLOADS=0\n      # Use gravatars for user avatars, when user has no own avatar defined\n      - USE_GRAVATAR=0\n\n      # Override value if you want to show a given text on homepage.\n      # When this is empty the content of config/banner.md is used as banner\n      #- BANNER=This is a test banner&lt;br&gt;with a line break\n    \n      # If you use a reverse proxy in front of Part-DB, you must configure the trusted proxies IP addresses here (see reverse proxy documentation for more information):\n      # - TRUSTED_PROXIES=127.0.0.0/8,::1,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16\n\n      # Part information providers\n      ## LCSC: Unofficial API\n      - PROVIDER_LCSC_ENABLED=1\n      ## MOUSER: Request a Search API token here: https://www.mouser.es/MyMouser/MouserSearchApplication.aspx\n      - PROVIDER_MOUSER_KEY=&lt;your-search-api-token&gt;\n\n\n\n\n\n\n\nTODO\n\n\n\nCreate a Docker compose that uses PostgreSQL instead. Use the docker-compose.yaml example for MySQL database as a starting point.",
+    "crumbs": [
+      "Self Hosted Servers",
+      "Part-DB"
+    ]
+  },
+  {
+    "objectID": "deploy-guides/self-hosted-servers/02_part_db.html#enabling-information-providers",
+    "href": "deploy-guides/self-hosted-servers/02_part_db.html#enabling-information-providers",
+    "title": "Part-DB",
+    "section": "Enabling Information Providers",
+    "text": "Enabling Information Providers\nIn order to use component information from providers, these must first be enabled through environment variables in your Docker Compose file.\n\nLCSC\n\nPROVIDER_LCSC_ENABLED=1: this allows Part-DB to use an unofficial API for searching components\n\n\n\nMOUSER\n\nPROVIDER_MOUSER_KEY=&lt;your-search-api-token&gt;: don’t mistake this API token with the Purchase/Order API token available from your Mouser’s User panel. In order to get the right token you must access this page:\n\n\n\nMouser - User Panel: API search link\n\n\nOr you can directly go to the Search API register page:\n\n\n\nMouser - API search register page\n\n\nMouser will request you to fill a form and then it will send you a verification code; with this you’ll receive an API token.\nOnce configured the environment variable and the container is recreated (docker compose up -d), you should be able to search for Mouser’s parts through keywords:\n\n\n\nPart-DB - Mouser API search example",
+    "crumbs": [
+      "Self Hosted Servers",
+      "Part-DB"
     ]
   }
 ]
