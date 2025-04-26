@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.57">
+<meta name="generator" content="quarto-1.6.43">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -40,12 +40,12 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-3dcdecd13913f125147a991d2fd0eaa7.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-139f9198a071e9c0c5f7c12a0477efd5.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../../site_libs/bootstrap/bootstrap-1de54bd96ae21d14517abee5bd010d99.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark-35e02a496309d4b09695711d6018b584.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -251,7 +251,8 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#console-details" id="toc-console-details" class="nav-link active" data-scroll-target="#console-details">Console details</a>
+  <li><a href="#console-status" id="toc-console-status" class="nav-link active" data-scroll-target="#console-status">Console status</a></li>
+  <li><a href="#console-details" id="toc-console-details" class="nav-link" data-scroll-target="#console-details">Console details</a>
   <ul class="collapse">
   <li><a href="#specs" id="toc-specs" class="nav-link" data-scroll-target="#specs">Specs</a></li>
   </ul></li>
@@ -276,29 +277,25 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#audio-board-1" id="toc-audio-board-1" class="nav-link" data-scroll-target="#audio-board-1">Audio board</a></li>
   <li><a href="#main-board-1" id="toc-main-board-1" class="nav-link" data-scroll-target="#main-board-1">Main board</a></li>
   <li><a href="#battery-contacts-1" id="toc-battery-contacts-1" class="nav-link" data-scroll-target="#battery-contacts-1">Battery contacts</a></li>
-  </ul></li>
-  </ul></li>
-  <li><a href="#operation-verification" id="toc-operation-verification" class="nav-link" data-scroll-target="#operation-verification">Operation verification</a>
-  <ul class="collapse">
-  <li><a href="#red-light-boot-state" id="toc-red-light-boot-state" class="nav-link" data-scroll-target="#red-light-boot-state">Red Light Boot state</a></li>
-  <li><a href="#audio" id="toc-audio" class="nav-link" data-scroll-target="#audio">Audio</a></li>
-  <li><a href="#screen" id="toc-screen" class="nav-link" data-scroll-target="#screen">Screen</a></li>
-  </ul></li>
-  <li><a href="#console-status" id="toc-console-status" class="nav-link" data-scroll-target="#console-status">Console status</a>
-  <ul class="collapse">
-  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section">2024/06/22</a>
-  <ul class="collapse">
-  <li><a href="#repairing-time" id="toc-repairing-time" class="nav-link" data-scroll-target="#repairing-time">Repairing time</a></li>
+  <li><a href="#operation-verification" id="toc-operation-verification" class="nav-link" data-scroll-target="#operation-verification">Operation verification</a></li>
   <li><a href="#state-on-stable-boot" id="toc-state-on-stable-boot" class="nav-link" data-scroll-target="#state-on-stable-boot">State on stable boot</a></li>
+  <li><a href="#repairing-time" id="toc-repairing-time" class="nav-link" data-scroll-target="#repairing-time">Repairing time</a></li>
   </ul></li>
-  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1">2024/06/24</a>
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section">2024/06/24</a>
   <ul class="collapse">
   <li><a href="#power-led-always-blinking" id="toc-power-led-always-blinking" class="nav-link" data-scroll-target="#power-led-always-blinking">Power LED always blinking</a></li>
+  </ul></li>
+  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1">2025/04/25</a>
+  <ul class="collapse">
+  <li><a href="#repairing-time-1" id="toc-repairing-time-1" class="nav-link" data-scroll-target="#repairing-time-1">Repairing time</a></li>
+  <li><a href="#ruling-out-power-board-harness-issues" id="toc-ruling-out-power-board-harness-issues" class="nav-link" data-scroll-target="#ruling-out-power-board-harness-issues">Ruling out power board harness issues</a></li>
+  <li><a href="#workaround-for-power-led-always-blinking" id="toc-workaround-for-power-led-always-blinking" class="nav-link" data-scroll-target="#workaround-for-power-led-always-blinking">Workaround for power LED always blinking</a></li>
+  <li><a href="#flatten-brightness-wheel" id="toc-flatten-brightness-wheel" class="nav-link" data-scroll-target="#flatten-brightness-wheel">Flatten brightness wheel</a></li>
+  <li><a href="#left-asic-encapsulation-has-cracks" id="toc-left-asic-encapsulation-has-cracks" class="nav-link" data-scroll-target="#left-asic-encapsulation-has-cracks">Left ASIC encapsulation has cracks</a></li>
   </ul></li>
   </ul></li>
   <li><a href="#next-steps" id="toc-next-steps" class="nav-link" data-scroll-target="#next-steps">Next steps</a>
   <ul class="collapse">
-  <li><a href="#brightness-wheel" id="toc-brightness-wheel" class="nav-link" data-scroll-target="#brightness-wheel">Brightness wheel</a></li>
   <li><a href="#screen-replacement" id="toc-screen-replacement" class="nav-link" data-scroll-target="#screen-replacement">Screen replacement</a></li>
   </ul></li>
   </ul>
@@ -340,6 +337,12 @@ ul.task-list li input[type="checkbox"] {
     </div>
   </div>
   
+    <div>
+    <div class="quarto-title-meta-heading">Modified</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">April 26, 2025</p>
+    </div>
+  </div>
     
   </div>
   
@@ -348,6 +351,55 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<section id="console-status" class="level1">
+<h1>Console status</h1>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 10%">
+<col style="width: 19%">
+<col style="width: 19%">
+<col style="width: 19%">
+<col style="width: 19%">
+<col style="width: 9%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Date</th>
+<th style="text-align: center;">Power</th>
+<th style="text-align: center;">Sound</th>
+<th style="text-align: center;">RLB</th>
+<th style="text-align: center;">Game operation</th>
+<th style="text-align: center;">Screen</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>2024/06/22</td>
+<td style="text-align: center;"><span class="emoji" data-emoji="heavy_check_mark">✔️</span></td>
+<td style="text-align: center;"><span class="emoji" data-emoji="heavy_check_mark">✔️</span></td>
+<td style="text-align: center;"><span class="emoji" data-emoji="heavy_check_mark">✔️</span></td>
+<td style="text-align: center;"><span class="emoji" data-emoji="heavy_check_mark">✔️</span></td>
+<td style="text-align: center;"><span class="emoji" data-emoji="warning">⚠️</span></td>
+</tr>
+<tr class="even">
+<td>2024/06/24</td>
+<td style="text-align: center;"><span class="emoji" data-emoji="warning">⚠️</span></td>
+<td style="text-align: center;"><span class="emoji" data-emoji="heavy_check_mark">✔️</span></td>
+<td style="text-align: center;"><span class="emoji" data-emoji="heavy_check_mark">✔️</span></td>
+<td style="text-align: center;"><span class="emoji" data-emoji="heavy_check_mark">✔️</span></td>
+<td style="text-align: center;"><span class="emoji" data-emoji="warning">⚠️</span></td>
+</tr>
+<tr class="odd">
+<td>2025/04/25</td>
+<td style="text-align: center;"><span class="emoji" data-emoji="heavy_check_mark">✔️</span></td>
+<td style="text-align: center;"><span class="emoji" data-emoji="heavy_check_mark">✔️</span></td>
+<td style="text-align: center;"><span class="emoji" data-emoji="heavy_check_mark">✔️</span></td>
+<td style="text-align: center;"><span class="emoji" data-emoji="heavy_check_mark">✔️</span></td>
+<td style="text-align: center;"><span class="emoji" data-emoji="warning">⚠️</span></td>
+</tr>
+</tbody>
+</table>
+</section>
 <section id="console-details" class="level1">
 <h1>Console details</h1>
 <ul>
@@ -683,13 +735,11 @@ Remember this trick for surface-mount capacitors removal!
 </div>
 <p>Connection cables have been replaced. Original ones didn’t stick when applying new solder.</p>
 </section>
-</section>
-</section>
-<section id="operation-verification" class="level1">
-<h1>Operation verification</h1>
+<section id="operation-verification" class="level3">
+<h3 class="anchored" data-anchor-id="operation-verification">Operation verification</h3>
 <p>All verifications except battery ones are done with a SEGA Mega Drive power supply (Model no. 1602-18, 10V - 1.2A).</p>
-<section id="red-light-boot-state" class="level2">
-<h2 class="anchored" data-anchor-id="red-light-boot-state">Red Light Boot state</h2>
+<section id="red-light-boot-state" class="level4">
+<h4 class="anchored" data-anchor-id="red-light-boot-state">Red Light Boot state</h4>
 <ul>
 <li>Console enters the <a href="https://www.retrosix.wiki/getting-to-red-light-boot-game-gear">Red Light Boot state</a>, required for further troubleshooting and repairs
 <ul>
@@ -697,14 +747,14 @@ Remember this trick for surface-mount capacitors removal!
 </ul></li>
 </ul>
 </section>
-<section id="audio" class="level2">
-<h2 class="anchored" data-anchor-id="audio">Audio</h2>
+<section id="audio" class="level4">
+<h4 class="anchored" data-anchor-id="audio">Audio</h4>
 <ul>
 <li>Audio board works, both the speaker output and the output jack</li>
 </ul>
 </section>
-<section id="screen" class="level2">
-<h2 class="anchored" data-anchor-id="screen">Screen</h2>
+<section id="screen" class="level4">
+<h4 class="anchored" data-anchor-id="screen">Screen</h4>
 <ul>
 <li>LCD screen turns on and the fluorescent tube lights up.</li>
 <li><strong>Brightness can’t be adjusted with the Bright wheel</strong>
@@ -739,50 +789,6 @@ Remember this trick for surface-mount capacitors removal!
 </figure>
 </div>
 </section>
-</section>
-<section id="console-status" class="level1">
-<h1>Console status</h1>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 13%">
-<col style="width: 21%">
-<col style="width: 21%">
-<col style="width: 21%">
-<col style="width: 21%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Date</th>
-<th style="text-align: center;">Power</th>
-<th style="text-align: center;">Sound</th>
-<th style="text-align: center;">Game operation</th>
-<th style="text-align: center;">Screen</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>2024/06/22</td>
-<td style="text-align: center;"><span class="emoji" data-emoji="heavy_check_mark">✔️</span></td>
-<td style="text-align: center;"><span class="emoji" data-emoji="heavy_check_mark">✔️</span></td>
-<td style="text-align: center;"><span class="emoji" data-emoji="heavy_check_mark">✔️</span></td>
-<td style="text-align: center;"><span class="emoji" data-emoji="warning">⚠️</span></td>
-</tr>
-<tr class="even">
-<td>2024/06/24</td>
-<td style="text-align: center;"><span class="emoji" data-emoji="warning">⚠️</span></td>
-<td style="text-align: center;"><span class="emoji" data-emoji="heavy_check_mark">✔️</span></td>
-<td style="text-align: center;"><span class="emoji" data-emoji="heavy_check_mark">✔️</span></td>
-<td style="text-align: center;"><span class="emoji" data-emoji="warning">⚠️</span></td>
-</tr>
-</tbody>
-</table>
-<section id="section" class="level2">
-<h2 class="anchored" data-anchor-id="section">2024/06/22</h2>
-<section id="repairing-time" class="level3">
-<h3 class="anchored" data-anchor-id="repairing-time">Repairing time</h3>
-<ul>
-<li>12 hours</li>
-</ul>
 </section>
 <section id="state-on-stable-boot" class="level3">
 <h3 class="anchored" data-anchor-id="state-on-stable-boot">State on stable boot</h3>
@@ -823,9 +829,15 @@ Remember this trick for surface-mount capacitors removal!
 <li>After a three-hour session, the console operation is stable</li>
 </ul>
 </section>
+<section id="repairing-time" class="level3">
+<h3 class="anchored" data-anchor-id="repairing-time">Repairing time</h3>
+<ul>
+<li>12 hours</li>
+</ul>
 </section>
-<section id="section-1" class="level2">
-<h2 class="anchored" data-anchor-id="section-1">2024/06/24</h2>
+</section>
+<section id="section" class="level2">
+<h2 class="anchored" data-anchor-id="section">2024/06/24</h2>
 <section id="power-led-always-blinking" class="level3">
 <h3 class="anchored" data-anchor-id="power-led-always-blinking">Power LED always blinking</h3>
 <ul>
@@ -833,19 +845,73 @@ Remember this trick for surface-mount capacitors removal!
 </ul>
 </section>
 </section>
+<section id="section-1" class="level2">
+<h2 class="anchored" data-anchor-id="section-1">2025/04/25</h2>
+<section id="repairing-time-1" class="level3">
+<h3 class="anchored" data-anchor-id="repairing-time-1">Repairing time</h3>
+<ul>
+<li>2 days</li>
+</ul>
+</section>
+<section id="ruling-out-power-board-harness-issues" class="level3">
+<h3 class="anchored" data-anchor-id="ruling-out-power-board-harness-issues">Ruling out power board harness issues</h3>
+<ul>
+<li>Unit tested with three different power boards and two different wall bricks:
+<ul>
+<li><p>All voltages are within specs (5V, VRef, VRes, VOnOff, VBat and 34V).</p></li>
+<li><p>Bypassed power harness to rule out issues with the wires, LED always blinks: <img src="../../../images/repairs/SEGA/Game Gear/VA0/B0153410/20250425_power_board_harness_bypass.jpg" class="img-fluid" alt="Game Gear - Power board harness bypassed"></p></li>
+<li><p>Bypassed power harness to rule out issues with the wires AND VRef disabled from power board and grounded on main board, LED stops blinking: <img src="../../../images/repairs/SEGA/Game Gear/VA0/B0153410/20250425_power_board_vref_grounded.jpg" class="img-fluid" alt="Game Gear - Power board VRef disabled and grounded"></p></li>
+</ul></li>
+</ul>
+</section>
+<section id="workaround-for-power-led-always-blinking" class="level3">
+<h3 class="anchored" data-anchor-id="workaround-for-power-led-always-blinking">Workaround for power LED always blinking</h3>
+<ul>
+<li>VRef signal coming from the power board disabled in the GG main board and grounded. Left ASIC internal voltage comparator is busted.
+<ul>
+<li>This prevents low-battery indicator to work but at least LED isn’t always blinking.</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../../images/repairs/SEGA/Game Gear/VA0/B0153410/20250425_vref_workaround_blinking_power_led.jpg" class="img-fluid figure-img"></p>
+<figcaption>Game Gear - VRef workaround</figcaption>
+</figure>
+</div></li>
+</ul>
+</section>
+<section id="flatten-brightness-wheel" class="level3">
+<h3 class="anchored" data-anchor-id="flatten-brightness-wheel">Flatten brightness wheel</h3>
+<ul>
+<li>Resoldering the brightness wheel and pushing it as much as possible to the board has ensured that it doesn’t touch the upper shell anymore.</li>
+</ul>
+</section>
+<section id="left-asic-encapsulation-has-cracks" class="level3">
+<h3 class="anchored" data-anchor-id="left-asic-encapsulation-has-cracks">Left ASIC encapsulation has cracks</h3>
+<ul>
+<li><p>This is a probable proof of its internal voltage comparator being broken. Pictures of the board before and after recapping show that these weren’t there initially, but the cause of them is unknown:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../../images/repairs/SEGA/Game Gear/VA0/B0153410/20250425_asics_before_recap_no_cracks.jpg" class="img-fluid figure-img"></p>
+<figcaption>Game Gear - ASICs before recapping</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../../images/repairs/SEGA/Game Gear/VA0/B0153410/20250425_asics_after_recap_with_cracks.jpg" class="img-fluid figure-img"></p>
+<figcaption>Game Gear - ASICs after recapping, visible cracks on the surface</figcaption>
+</figure>
+</div></li>
+</ul>
+</section>
+</section>
 </section>
 <section id="next-steps" class="level1">
 <h1>Next steps</h1>
-<section id="brightness-wheel" class="level2">
-<h2 class="anchored" data-anchor-id="brightness-wheel">Brightness wheel</h2>
-<ul>
-<li>Resolder it as flat as possible to the boart to avoid friction with the shell</li>
-</ul>
-</section>
 <section id="screen-replacement" class="level2">
 <h2 class="anchored" data-anchor-id="screen-replacement">Screen replacement</h2>
 <ul>
-<li>Of all the repaired Game Gears, this is the one with the best original screen, but due to the brightness issue (and if any of the pending Game Gears to repair has a better LCD) this console might be a good candidate to install a modern screen</li>
+<li>Of all the repaired Game Gears, this is the one with the best original screen, but due to the brightness issue (and if any of the pending Game Gears to repair has a better LCD) this console might be a good candidate to install a modern screen.</li>
+<li>Recent fixes on the board have shown that the left ASIC is partially damaged (voltage comparator not working), so this might not be the best console where to invest on modern replacements if the custom chips aren’t in perfect conditions.</li>
 </ul>
 
 
@@ -1079,8 +1145,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -1191,7 +1255,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {

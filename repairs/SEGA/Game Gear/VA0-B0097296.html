@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.57">
+<meta name="generator" content="quarto-1.6.43">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -39,12 +39,12 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-3dcdecd13913f125147a991d2fd0eaa7.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-139f9198a071e9c0c5f7c12a0477efd5.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../../site_libs/bootstrap/bootstrap-1de54bd96ae21d14517abee5bd010d99.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark-35e02a496309d4b09695711d6018b584.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -250,7 +250,8 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#console-details" id="toc-console-details" class="nav-link active" data-scroll-target="#console-details">Console details</a>
+  <li><a href="#console-status" id="toc-console-status" class="nav-link active" data-scroll-target="#console-status">Console status</a></li>
+  <li><a href="#console-details" id="toc-console-details" class="nav-link" data-scroll-target="#console-details">Console details</a>
   <ul class="collapse">
   <li><a href="#specs" id="toc-specs" class="nav-link" data-scroll-target="#specs">Specs</a></li>
   </ul></li>
@@ -274,20 +275,14 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#analog-5v-issues" id="toc-analog-5v-issues" class="nav-link" data-scroll-target="#analog-5v-issues">Analog 5V issues</a></li>
   <li><a href="#cartridge-slot-contacts" id="toc-cartridge-slot-contacts" class="nav-link" data-scroll-target="#cartridge-slot-contacts">Cartridge slot contacts</a></li>
   <li><a href="#screen-swap" id="toc-screen-swap" class="nav-link" data-scroll-target="#screen-swap">Screen swap</a></li>
-  </ul></li>
-  </ul></li>
-  <li><a href="#console-status" id="toc-console-status" class="nav-link" data-scroll-target="#console-status">Console status</a>
-  <ul class="collapse">
-  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section">2023/10/21</a>
-  <ul class="collapse">
   <li><a href="#repairing-time" id="toc-repairing-time" class="nav-link" data-scroll-target="#repairing-time">Repairing time</a></li>
   <li><a href="#state-on-boot" id="toc-state-on-boot" class="nav-link" data-scroll-target="#state-on-boot">State on boot</a></li>
   </ul></li>
-  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1">2024/06/22</a>
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section">2024/06/22</a>
   <ul class="collapse">
   <li><a href="#contrast-wheel-removed" id="toc-contrast-wheel-removed" class="nav-link" data-scroll-target="#contrast-wheel-removed">Contrast wheel removed</a></li>
   </ul></li>
-  <li><a href="#section-2" id="toc-section-2" class="nav-link" data-scroll-target="#section-2">2024/06/24</a>
+  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1">2024/06/24</a>
   <ul class="collapse">
   <li><a href="#repairing-time-1" id="toc-repairing-time-1" class="nav-link" data-scroll-target="#repairing-time-1">Repairing time</a></li>
   <li><a href="#additional-fixes" id="toc-additional-fixes" class="nav-link" data-scroll-target="#additional-fixes">Additional fixes</a></li>
@@ -347,6 +342,47 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<section id="console-status" class="level1">
+<h1>Console status</h1>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 15%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 27%">
+<col style="width: 27%">
+<col style="width: 13%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Date</th>
+<th style="text-align: center;">Power</th>
+<th style="text-align: center;">Sound</th>
+<th style="text-align: center;">RLB</th>
+<th style="text-align: center;">Game operation</th>
+<th style="text-align: center;">Screen</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>2023/10/21</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;"><span class="emoji" data-emoji="heavy_check_mark">✔️</span></td>
+<td style="text-align: center;"><span class="emoji" data-emoji="heavy_check_mark">✔️</span></td>
+<td style="text-align: center;"><span class="emoji" data-emoji="warning">⚠️</span></td>
+</tr>
+<tr class="even">
+<td>2024/06/24</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;"><span class="emoji" data-emoji="heavy_check_mark">✔️</span></td>
+<td style="text-align: center;"><span class="emoji" data-emoji="heavy_check_mark">✔️</span></td>
+<td style="text-align: center;"><span class="emoji" data-emoji="warning">⚠️</span></td>
+</tr>
+</tbody>
+</table>
+</section>
 <section id="console-details" class="level1">
 <h1>Console details</h1>
 <ul>
@@ -761,34 +797,32 @@ Bad cartridge slot
 <p>Testing the main board with a working audio board from another console we get sound from an inserted cartridge. At this point we can assure that the console works and we can proceed replacing the capacitors.</p>
 <p>Once verified that the console reaches the RLB state, it’s time to solder the new capacitors. As with the previous VA-0 <a href="../../../repairs/SEGA/Game Gear/VA0-B0126683.html">B0126683</a>, these are the ceramic capacitors characteristics:</p>
 <ul>
-<li>All original capacitors rated lower than 1uF are replaced with 1uF/50V ceramic capacitors</li>
-<li>All original capacitors rated lower between 1uF and 10uF are replaced with 10uF/50V ceramic capacitors</li>
-<li>All original capacitors rated higher than 10uF are replaced with 100uF/10V ceramic capacitors</li>
+<li><p>All original capacitors rated lower than 1uF are replaced with 1uF/50V ceramic capacitors</p></li>
+<li><p>All original capacitors rated lower between 1uF and 10uF are replaced with 10uF/50V ceramic capacitors</p></li>
+<li><p>All original capacitors rated higher than 10uF are replaced with 100uF/10V ceramic capacitors</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Missing recapped board pictures!!
+</div>
+</div>
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
+<!-- MISSING PICTURES!!
+![Main board - Fully recapped](../../../images/repairs/SEGA/Game%20Gear/VA0/B0097296/20231021_main_board_recap.jpg)
+
+![Main board - Left side recap detail](../../../images/repairs/SEGA/Game%20Gear/VA0/B0097296/20231021_main_board_recap_detail_left.jpg)
+
+![Main board - Left side recap detail 2](../../../images/repairs/SEGA/Game%20Gear/VA0/B0097296/20231021_main_board_recap_detail_left_2.jpg)
+
+![Main board - Right side recap detail](../../../images/repairs/SEGA/Game%20Gear/VA0/B0097296/20231021_main_board_recap_detail_right.jpg)
+--></li>
 </ul>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../../../images/repairs/SEGA/Game Gear/VA0/B0097296/20231021_main_board_recap.jpg" class="img-fluid figure-img"></p>
-<figcaption>Main board - Fully recapped</figcaption>
-</figure>
-</div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../../../images/repairs/SEGA/Game Gear/VA0/B0097296/20231021_main_board_recap_detail_left.jpg" class="img-fluid figure-img"></p>
-<figcaption>Main board - Left side recap detail</figcaption>
-</figure>
-</div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../../../images/repairs/SEGA/Game Gear/VA0/B0097296/20231021_main_board_recap_detail_left_2.jpg" class="img-fluid figure-img"></p>
-<figcaption>Main board - Left side recap detail 2</figcaption>
-</figure>
-</div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../../../images/repairs/SEGA/Game Gear/VA0/B0097296/20231021_main_board_recap_detail_right.jpg" class="img-fluid figure-img"></p>
-<figcaption>Main board - Right side recap detail</figcaption>
-</figure>
-</div>
 <p>This time I didn’t use soldering paste because in the previous repair the result wasn’t cleaner enough for me and although there wasn’t shorts it seemed like the paste might create a bridge under the cap. The results are cleaner caps and brighter soldering points.</p>
 <p>The soldering technique used this time consisted on the following steps:</p>
 <ul>
@@ -905,39 +939,6 @@ Bad cartridge slot
 <p>Original screen showed a dim image only when brightess wheel was set to a very specific position. Without an oscilloscope there’s no way to check if the video signals are correct. A screen swap with a spare one from unit 030011013 (not documented) where a BennVenn IPS screen mod was installed hasn’t solved anything, so the issue might still be in the main board.</p>
 <p>The original screen is kept but not yet reinstalled.</p>
 </section>
-</section>
-</section>
-<section id="console-status" class="level1">
-<h1>Console status</h1>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Date</th>
-<th style="text-align: center;">Power</th>
-<th style="text-align: center;">Sound</th>
-<th style="text-align: center;">Game operation</th>
-<th style="text-align: center;">Screen</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>2023/10/21</td>
-<td style="text-align: center;">❌</td>
-<td style="text-align: center;">❌</td>
-<td style="text-align: center;"><span class="emoji" data-emoji="heavy_check_mark">✔️</span></td>
-<td style="text-align: center;"><span class="emoji" data-emoji="warning">⚠️</span></td>
-</tr>
-<tr class="even">
-<td>2024/06/24</td>
-<td style="text-align: center;">❌</td>
-<td style="text-align: center;">❌</td>
-<td style="text-align: center;"><span class="emoji" data-emoji="heavy_check_mark">✔️</span></td>
-<td style="text-align: center;"><span class="emoji" data-emoji="warning">⚠️</span></td>
-</tr>
-</tbody>
-</table>
-<section id="section" class="level2">
-<h2 class="anchored" data-anchor-id="section">2023/10/21</h2>
 <section id="repairing-time" class="level3">
 <h3 class="anchored" data-anchor-id="repairing-time">Repairing time</h3>
 <ul>
@@ -963,8 +964,8 @@ Bad cartridge slot
 <p><strong>It seems as if the recap didn’t make any effect at all</strong></p>
 </section>
 </section>
-<section id="section-1" class="level2">
-<h2 class="anchored" data-anchor-id="section-1">2024/06/22</h2>
+<section id="section" class="level2">
+<h2 class="anchored" data-anchor-id="section">2024/06/22</h2>
 <section id="contrast-wheel-removed" class="level3">
 <h3 class="anchored" data-anchor-id="contrast-wheel-removed">Contrast wheel removed</h3>
 <ul>
@@ -972,8 +973,8 @@ Bad cartridge slot
 </ul>
 </section>
 </section>
-<section id="section-2" class="level2">
-<h2 class="anchored" data-anchor-id="section-2">2024/06/24</h2>
+<section id="section-1" class="level2">
+<h2 class="anchored" data-anchor-id="section-1">2024/06/24</h2>
 <section id="repairing-time-1" class="level3">
 <h3 class="anchored" data-anchor-id="repairing-time-1">Repairing time</h3>
 <ul>
@@ -1259,8 +1260,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -1371,7 +1370,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {
