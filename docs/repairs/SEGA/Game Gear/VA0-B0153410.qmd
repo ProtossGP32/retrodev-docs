@@ -2,7 +2,7 @@
 title: "Game Gear VA0 - 4"
 author: ProtossGP32
 date: 2024/06/22
-date-modified: 2025/04/26
+date-modified: last-modified
 description: "Game Gear bought on Japan 2023"
 categories: ["Game Gear", "SEGA", "Repair"]
 ---
