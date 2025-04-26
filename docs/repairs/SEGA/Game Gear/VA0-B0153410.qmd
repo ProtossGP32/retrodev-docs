@@ -2,9 +2,18 @@
 title: "Game Gear VA0 - 4"
 author: ProtossGP32
 date: 2024/06/22
+date-modified: 2025/04/26
 description: "Game Gear bought on Japan 2023"
 categories: ["Game Gear", "SEGA", "Repair"]
 ---
+
+# Console status
+
+| Date       | Power              | Sound              | RLB                | Game operation     | Screen    |
+| ---------- | :----------------: | :----------------: | :----------------: | :----------------: | :-------: |
+| 2024/06/22 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :warning: |
+| 2024/06/24 | :warning:          | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :warning: |
+| 2025/04/25 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :warning: |
 
 # Console details
 
@@ -105,7 +114,7 @@ Following [Retrosix's wiki](https://www.retrosix.wiki/capacitor-replacement-game
 
 ![Power board - Fully recapped](../../../images/repairs/SEGA/Game%20Gear/VA0/B0153410/20240622_power_board_recap.jpg)
 
-:::callout-note
+:::{.callout-note}
 ## A kind advice on thru-hole capacitors removal!
 Removing some capacitors proved to be quite challenging, even with an electrical desoldering pump. The trick to keep the vias intact is to reapply new solder several times to mix old solder with new one. Flux is indispensable to help transfer heat on already old and dry solder as well!
 
@@ -122,7 +131,7 @@ Also use the desoldering wick to free the hole from solder before putting the ne
 
 ![Audio board - Fully recapped](../../../images/repairs/SEGA/Game%20Gear/VA0/B0153410/20240622_audio_board_recap.jpg)
 
-:::callout-note
+:::{.callout-note}
 ## A kind advice on surface-mount capacitors removal!
 Removing these surface-mount capacitors without proper care can damage the underlying pads and vias. The trick to keep the pads intact is to reapply new solder to mix old solder with new one. Flux is indispensable to help transfer heat on already old and dry solder as well!
 
@@ -136,7 +145,7 @@ Following [RetroSix Wiki advises](https://www.retrosix.wiki/getting-to-red-light
 >
 >_It's worth noting that **audio ICs**, every **aluminium capacitor**, the **LCD, MPU, Work RAM** nor **Video RAM** or **main crystal** are involved or even needed to be soldered on the board to get to red light boot. **Don't waste your time on those** until you get red light._
 
-:::callout-note
+:::{.callout-note}
 ## Remember this trick for surface-mount capacitors removal!
 Prior to dettach the capacitor from the board, use the desoldering wick to remove as much solder as possible between the pad and the capacitor leg. This will help reduce mechanical stress on the pad when snapping the glue beneath the capacitor.
 :::
@@ -183,18 +192,18 @@ The battery contacts have been soaked in white vinegar to remove as much corrosi
 
 Connection cables have been replaced. Original ones didn't stick when applying new solder.
 
-# Operation verification
+### Operation verification
 
 All verifications except battery ones are done with a SEGA Mega Drive power supply (Model no. 1602-18, 10V - 1.2A).
 
-## Red Light Boot state
+#### Red Light Boot state
 - Console enters the [Red Light Boot state](https://www.retrosix.wiki/getting-to-red-light-boot-game-gear), required for further troubleshooting and repairs
     - Voltage levels are slightly higher than the ones specified in the previous Wiki, but the console run games without issues
 
-## Audio
+#### Audio
 - Audio board works, both the speaker output and the output jack
 
-## Screen
+#### Screen
 - LCD screen turns on and the fluorescent tube lights up.
 - **Brightness can't be adjusted with the Bright wheel**
   - The game image is very dim and visual artifacts appear when spinning the brightness wheel, such as light bands coming from top to bottom, like a scanning light, or vertical lines
@@ -209,17 +218,6 @@ All verifications except battery ones are done with a SEGA Mega Drive power supp
 ![Game Gear - Brightness wheel replaced. Bad brightness at the center of screen](../../../images/repairs/SEGA/Game%20Gear/VA0/B0153410/20240622_brightness_wheel_bad_brightness.jpg)
 
 ![Game Gear - Brightness wheel replaced. Bad brightness more noticeable on Sonic 2 splash screen](../../../images/repairs/SEGA/Game%20Gear/VA0/B0153410/20240622_brightness_wheel_bad_brightness_2.jpg)
-
-# Console status
-
-| Date | Power | Sound | Game operation | Screen |
-| --- | :---: | :---: | :---: | :---: |
-| 2024/06/22 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :warning: |
-| 2024/06/24 | :warning: | :heavy_check_mark: | :heavy_check_mark: | :warning: |
-
-## 2024/06/22
-### Repairing time
-- 12 hours
 
 ### State on stable boot
 - Console enters the [Red Light Boot state](https://www.retrosix.wiki/getting-to-red-light-boot-game-gear), required for further troubleshooting and repairs
@@ -238,13 +236,44 @@ All verifications except battery ones are done with a SEGA Mega Drive power supp
 
 - After a three-hour session, the console operation is stable
 
+### Repairing time
+- 12 hours
+
 ## 2024/06/24
 ### Power LED always blinking
 - After opening the console to use its power and audio boards for tests with [B0097296](VA0-B0097296.qmd), now it always shows a blinking power LED, either with a power supply or batteries. According to Retrosix, this should only happen when the console runs on low batteries. **A new check on voltage values is required.**
 
+## 2025/04/25
+### Repairing time
+- 2 days
+
+### Ruling out power board harness issues
+- Unit tested with three different power boards and two different wall bricks:
+  - All voltages are within specs (5V, VRef, VRes, VOnOff, VBat and 34V).
+  - Bypassed power harness to rule out issues with the wires, LED always blinks:
+    ![Game Gear - Power board harness bypassed](/images/repairs/SEGA/Game%20Gear/VA0/B0153410/20250425_power_board_harness_bypass.jpg)
+
+  - Bypassed power harness to rule out issues with the wires AND VRef disabled from power board and grounded on main board, LED stops blinking:
+    ![Game Gear - Power board VRef disabled and grounded](/images/repairs/SEGA/Game%20Gear/VA0/B0153410/20250425_power_board_vref_grounded.jpg)
+
+### Workaround for power LED always blinking
+- VRef signal coming from the power board disabled in the GG main board and grounded. Left ASIC internal voltage comparator is busted.
+  - This prevents low-battery indicator to work but at least LED isn't always blinking.
+  
+  ![Game Gear - VRef workaround](/images/repairs/SEGA/Game%20Gear/VA0/B0153410/20250425_vref_workaround_blinking_power_led.jpg)
+
+### Flatten brightness wheel
+- Resoldering the brightness wheel and pushing it as much as possible to the board has ensured that it doesn't touch the upper shell anymore.
+
+### Left ASIC encapsulation has cracks
+- This is a probable proof of its internal voltage comparator being broken. Pictures of the board before and after recapping show that these weren't there initially, but the cause of them is unknown:
+
+  ![Game Gear - ASICs before recapping](/images/repairs/SEGA/Game%20Gear/VA0/B0153410/20250425_asics_before_recap_no_cracks.jpg)
+
+  ![Game Gear - ASICs after recapping, visible cracks on the surface](/images/repairs/SEGA/Game%20Gear/VA0/B0153410/20250425_asics_after_recap_with_cracks.jpg)
+
 # Next steps
-## Brightness wheel
-- Resolder it as flat as possible to the boart to avoid friction with the shell
 
 ## Screen replacement
-- Of all the repaired Game Gears, this is the one with the best original screen, but due to the brightness issue (and if any of the pending Game Gears to repair has a better LCD) this console might be a good candidate to install a modern screen
+- Of all the repaired Game Gears, this is the one with the best original screen, but due to the brightness issue (and if any of the pending Game Gears to repair has a better LCD) this console might be a good candidate to install a modern screen.
+- Recent fixes on the board have shown that the left ASIC is partially damaged (voltage comparator not working), so this might not be the best console where to invest on modern replacements if the custom chips aren't in perfect conditions.

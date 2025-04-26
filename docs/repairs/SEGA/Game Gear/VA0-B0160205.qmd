@@ -6,6 +6,12 @@ description: "Game Gear bought on Japan 2023"
 categories: ["Game Gear", "SEGA", "Repair"]
 ---
 
+# Console status
+
+| Date       | Power              | Sound              | RLB                | Game operation     | Screen    |
+| ---------- | :----------------: | :----------------: | :----------------: | :----------------: | :-------: |
+| 2023/10/08 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :warning: |
+
 # Console details
 
 - Japanese Game Gear bought during my trip to Japan on August 2023
@@ -65,7 +71,7 @@ Following [Retrosix's wiki](https://www.retrosix.wiki/capacitor-replacement-game
 
 ![Power board - Fully recapped](../../../images/repairs/SEGA/Game%20Gear/VA0/B0160205/20231008_power_board_recap.jpg)
 
-:::callout-note
+:::{.callout-note}
 ## A kind advice on thru-hole capacitors removal!
 Removing some capacitors proved to be quite challenging, even with an electrical desoldering pump. The trick to keep the vias intact is to reapply new solder several times to mix old solder with new one. Flux is indispensable to help transfer heat on already old and dry solder as well!
 
@@ -126,12 +132,6 @@ The soldering technique used this time consisted on the following steps:
 - After that apply solder to the other side
 - Once done, rework the first pad by applying additional solder and adjusting the capacitor by applying heat to both pads if necessary
 - Use a pair of tweezers to secure the capacitor in place while applying heat
-
-# Console status
-
-| Date | Power | Sound | Game operation | Screen |
-| --- | :---: | :---: | :---: | :---: |
-| 2023/10/08 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :warning: |
 
 ## 2023/10/08
 ### State on stable boot

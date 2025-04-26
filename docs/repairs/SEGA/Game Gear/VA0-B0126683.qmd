@@ -6,13 +6,19 @@ description: "Game Gear bought on Japan 2023"
 categories: ["Game Gear", "SEGA", "Repair"]
 ---
 
+# Console status
+
+| Date       | Power              | Sound              | RLB                | Game operation | Screen |
+| ---------- | :----------------: | :----------------: | :----------------: | :------------: | :----: |
+| 2023/10/01 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :warning:      | ❌     |
+
 # Console details
 
 - Japanese Game Gear bought during my trip to Japan on August 2023
 - It came with a broken japanese TV tuner
 - The screen protector was already replaced but the console seemed unmodified (screws were tight and capacitors were the stock ones)
 
-:::callout-warning
+:::{.callout-warning}
 Add a picture of the console here. Show them the goods!
 :::
 
@@ -28,8 +34,8 @@ Add a picture of the console here. Show them the goods!
 - Outside: The outside has visible scratches from usage but no cracks
 - Main board: capacitor leaks are visible on its legs. Zone next to the fluorescent tube is damaged, it is just below the corroded battery spring so battery leak might have been the cause
 
-:::callout-warning
-No available picture of original caps in main board.
+:::{.callout-warning}
+## No available picture of original caps in main board.
 Add picture of corroded zone of the main board.
 :::
 
@@ -58,7 +64,7 @@ Following [Retrosix's wiki](https://www.retrosix.wiki/capacitor-replacement-game
 
 ![Power board - Fully recapped](../../../images/repairs/SEGA/Game%20Gear/VA0/B0126683/20231001_power_board_recap.jpg)
 
-:::callout-note
+:::{.callout-note}
 ## A kind advice on thru-hole capacitors removal!
 Removing some capacitors proved to be quite challenging, even with an electrical desoldering pump. The trick to keep the vias intact is to reapply new solder several times to mix old solder with new one. Flux is indispensable to help transfer heat on already old and dry solder as well!
 
@@ -86,12 +92,6 @@ If a leg is stubbornly stuck, use some desoldering wick with new solder and a lo
 
 Some capacitor pads presented a huge amount of corrosion, making it a little bit difficult to reheat and clean them. Before applying any heat to the corroded pads, **I applied some vinegar in order to neutralize as much as possible the leaked acids**. Using soldering paste proved to be quite useful in areas where the soldering iron could potentially melt plastic connectors, as its low-temp melting point made for quicker joins.
 
-# Console status
-
-| Date | Power | Sound | Game operation | Screen |
-| --- | :---: | :---: | :---: | :---: |
-| 2023/10/01 | :heavy_check_mark: | :heavy_check_mark: | :warning: | ❌ |
-
 ## 2023/10/01
 ### State on stable boot
 - Console enters the [Red Light Boot state](https://www.retrosix.wiki/getting-to-red-light-boot-game-gear), required for further troubleshooting and repairs
@@ -105,7 +105,7 @@ Some capacitor pads presented a huge amount of corrosion, making it a little bit
 - Fluorescent tube fuses are OK
 - **No continuity between cartridge pin 1 and the +34V rail**
 
-:::callout-tip
+:::{.callout-tip}
 If everything else is fine, this console could be a good candidate for a screen replacement
 :::
 

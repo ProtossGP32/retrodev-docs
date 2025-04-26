@@ -6,6 +6,12 @@ description: "Game Gear received from JamQue"
 categories: ["Game Gear", "SEGA", "Repair"]
 ---
 
+# Console status
+
+| Date       | Power | Sound | RLB                | Game operation     | Screen |
+| ---------- | :---: | :---: | :----------------: | :----------------: | :----: |
+| 2024/10/27 | ❌    | ❌    | :heavy_check_mark: | :heavy_check_mark: | ❌     |
+
 # Console details
 
 - European Game Gear received from JamQue
@@ -59,9 +65,14 @@ categories: ["Game Gear", "SEGA", "Repair"]
 
 - Audio board: capacitors already replaced
 
+  :::{.callout-warning}
+  ## Missing audio board pictures!
+  :::
+  <!-- MISSING PICTURES!
   ![Audio board - original capacitors already replaced](../../../images/repairs/SEGA/Game%20Gear/VA0/B20720239/20241027_audio_board_original_caps.jpg)
 
   ![Audio board - rear view. Rear side has some residues](../../../images/repairs/SEGA/Game%20Gear/VA0/B20720239/20241027_audio_board_rear_view.jpg)
+  -->
 
 
 ## First boot
@@ -96,7 +107,7 @@ Power board doesn't properly provide 34V even after recapping. Using a functiona
 
 **Using a functional power board the console reaches Red Boot Light without issues.**
 
-:::callout-note
+:::{.callout-note}
 ## A kind advice on thru-hole capacitors removal!
 Removing some capacitors proved to be quite challenging, even with an electrical desoldering pump. The trick to keep the vias intact is to reapply new solder several times to mix old solder with new one. Flux is indispensable to help transfer heat on already old and dry solder as well!
 
@@ -108,8 +119,12 @@ Also use the desoldering wick to free the hole from solder before putting the ne
 ### Audio board
 - Testing already soldered capacitors, it doesn't seem to provide audio
 
+:::{.callout-warning}
+## Missing recapped audio board pictures!
+:::
 <!--
 ![Audio board - Fully recapped](../../../images/repairs/SEGA/Game%20Gear/VA0/B20720239/20241027_audio_board_recap.jpg)
+-->
 
 :::{.callout-warning}
 ## Bad audio board!
@@ -138,8 +153,13 @@ As with the previous VA-0 [B0126683](VA0-B0126683.qmd), these are the ceramic ca
 - All original capacitors rated lower between 1uF and 10uF are replaced with 10uF/50V ceramic capacitors
 - All original capacitors rated higher than 10uF are replaced with 100uF/10V ceramic capacitors
 
-![Main board - Fully recapped](../../../images/repairs/SEGA/Game%20Gear/VA0/B20720239/20241027_main_board_recap.jpg)
+:::{.callout-warning}
+## Missing picture of whole main board recapped!
+:::
 
+<!-- MISSING PICTURE!!
+![Main board - Fully recapped](../../../images/repairs/SEGA/Game%20Gear/VA0/B20720239/20241027_main_board_recap.jpg)
+-->
 ![Main board - Left side recap detail](../../../images/repairs/SEGA/Game%20Gear/VA0/B20720239/20241027_main_board_recap_detail_left.jpg)
 
 ![Main board - Right side recap detail](../../../images/repairs/SEGA/Game%20Gear/VA0/B20720239/20241027_main_board_recap_detail_right.jpg)
@@ -154,13 +174,6 @@ The soldering technique used this time consisted on the following steps:
 
 Once recapped, test with working power and audio boards still don't show image on the screen.
 
-# Console status
-
-| Date | Power | Sound | RLB | Game operation | Screen |
-| --- | :---: | :---: | :---: | :---: | :---: |
-| 2024/10/27 | ❌ | ❌ | :heavy_check_mark: | :heavy_check_mark: | ❌ |
-
-## 2024/10/27
 ### Repairing time
 
 - 3 hours 30 minutes
