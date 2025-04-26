@@ -251,9 +251,11 @@ All verifications except battery ones are done with a SEGA Mega Drive power supp
 - Unit tested with three different power boards and two different wall bricks:
   - All voltages are within specs (5V, VRef, VRes, VOnOff, VBat and 34V).
   - Bypassed power harness to rule out issues with the wires, LED always blinks:
+  
     ![Game Gear - Power board harness bypassed](/images/repairs/SEGA/Game%20Gear/VA0/B0153410/20250425_power_board_harness_bypass.jpg)
 
   - Bypassed power harness to rule out issues with the wires AND VRef disabled from power board and grounded on main board, LED stops blinking:
+  
     ![Game Gear - Power board VRef disabled and grounded](/images/repairs/SEGA/Game%20Gear/VA0/B0153410/20250425_power_board_vref_grounded.jpg)
 
 ### Workaround for power LED always blinking
