@@ -150,6 +150,18 @@ The soldering technique used this time consisted on the following steps:
 ### Continuity checks
 - Fluorescent tube fuses are OK
 
+## 2026/04/06
+
+### Faulty power harness
+
+- 5V connection in the power harness is unstable. As a workaround, a wire has been soldered between the power board's 5V pad and the main board's 5V pad:
+
+  ![Game Gear - Workaround for harness 5V bypass](../../../images/repairs/SEGA/Game%20Gear/VA0/B0160205/20260406_game_gear_power_harness_bypass.jpg)
+
 # Next steps
 ## Screen replacement
 - Due to the green pixels in the screen, if any of the pending Game Gears to repair has a better LCD, this console might be a good candidate to install a modern screen
+
+## Power harness replacement
+
+- Order a new power harness replacement from Retrosix or any other trusted vendor.
