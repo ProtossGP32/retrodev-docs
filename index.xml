@@ -9,8 +9,19 @@
 <link>https://protossgp32.github.io/retrodev-docs/</link>
 <atom:link href="https://protossgp32.github.io/retrodev-docs/index.xml" rel="self" type="application/rss+xml"/>
 <description>A place for anything related to retro-gaming</description>
-<generator>quarto-1.9.36</generator>
-<lastBuildDate>Sun, 27 Oct 2024 00:00:00 GMT</lastBuildDate>
+<generator>quarto-1.9.37</generator>
+<lastBuildDate>Thu, 09 Apr 2026 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>Game Gear VA1 - 1</title>
+  <dc:creator>ProtossGP32 </dc:creator>
+  <link>https://protossgp32.github.io/retrodev-docs/repairs/SEGA/Game Gear/VA1-P30006067.html</link>
+  <description><![CDATA[ Game Gear bought on Japan 2023 ]]></description>
+  <category>Game Gear</category>
+  <category>SEGA</category>
+  <category>Repair</category>
+  <guid>https://protossgp32.github.io/retrodev-docs/repairs/SEGA/Game Gear/VA1-P30006067.html</guid>
+  <pubDate>Thu, 09 Apr 2026 00:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Game Gear VA0 - 5</title>
   <dc:creator>ProtossGP32 </dc:creator>
